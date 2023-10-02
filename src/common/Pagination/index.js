@@ -21,7 +21,10 @@ export const Pagination = () => {
                 <ButtonContent>Previous</ButtonContent>
             </Button>
             <PagesCounter>
-                Page<PageNumber>1</PageNumber>of<PageNumber>500</PageNumber>
+                Page
+                <PageNumber>1</PageNumber>
+                of
+                <PageNumber>500</PageNumber>
             </PagesCounter>
             <Button>
                 <ButtonContent>Next</ButtonContent>
