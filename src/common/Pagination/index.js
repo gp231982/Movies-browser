@@ -1,37 +1,34 @@
 import {
     StyledPagination,
     Button,
-    ButtonText,
+    ButtonContent,
     PreviousArrowIcon,
     NextArrowIcon,
     PagesCounter,
     PageNumber,
-} from "/.styled";
+} from "./styled";
 
 export const Pagination = () => {
-    const theFirstPage = page === 1;
-    const theLastPage = page === totalPages;
-   
     return (
         <StyledPagination>
-            <Button disabled={theFirstPage}> 
+            <Button>
                 <PreviousArrowIcon />
                 <PreviousArrowIcon />
-                <ButtonText>First</ButtonText>
+                <ButtonContent>First</ButtonContent>
             </Button>
-            <Button disabled={theFirstPage}>
+            <Button>
                 <PreviousArrowIcon />
-                <ButtonText>Previous</ButtonText>
+                <ButtonContent>Previous</ButtonContent>
             </Button>
             <PagesCounter>
-                Page <PageNumber>{page}</PageNumber> of <PageNumber>{totalPages}</PageNumber>
+                Page<PageNumber>1</PageNumber>of<PageNumber>500</PageNumber>
             </PagesCounter>
-            <Button disabled={theLastPage}>
-                <ButtonText>Next</ButtonText>
+            <Button>
+                <ButtonContent>Next</ButtonContent>
                 <NextArrowIcon />
             </Button>
-            <Button disabled={theLastPage}>
-                <ButtonText>Last</ButtonText>
+            <Button>
+                <ButtonContent>Last</ButtonContent>
                 <NextArrowIcon />
                 <NextArrowIcon />
             </Button>
