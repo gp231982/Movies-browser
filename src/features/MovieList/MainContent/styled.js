@@ -23,13 +23,21 @@ export const Wrapper = styled.div`
   grid-column-gap: 24px;
 `;
 
-export const MovieWrapper = styled.div`
+export const MovieWrapper = styled.button`
   padding: 16px;
   max-width: 324px;
   height: 650px;
   border-radius: 5px;
   background-color: #fff;
   box-shadow: 0px 4px 12px 0px rgba(186, 199, 213, 0.5);
+  cursor: pointer;
+  border: none;
+
+  &:hover {
+    box-shadow: 0px 10px 20px 0px rgba(186, 199, 213, 0.5);
+    transform: translate(-1px, -1px);
+    transition: all 0.3s;
+  }
 `;
 
 export const Picture = styled.img`
