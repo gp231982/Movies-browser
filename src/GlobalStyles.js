@@ -12,8 +12,12 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     body {
-        background-color: rgb(245, 245, 250);
+        background-color: ${({ theme }) => theme.color.whisper};
         font-family: 'Poppins', sans-serif;
         margin: 0;
+    }
+
+    button {
+        cursor: pointer;
     }
 `;
