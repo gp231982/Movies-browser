@@ -1,9 +1,13 @@
 import "./App.css";
+import GlobalStyles from "./common/GlobalStyles";
+
+import Header from "./common/Header";
 
 function App() {
   return (
-    <div>
-     Hello Grzegorz !!!
+    <div className="App">
+      <GlobalStyles />
+      <Header />
     </div>
   );
 }
