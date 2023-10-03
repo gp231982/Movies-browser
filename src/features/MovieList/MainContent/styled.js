@@ -13,7 +13,7 @@ export const SectionTile = styled.h1`
   font-size: normal;
   font-weight: 600;
   line-height: 1.2;
-  color: #181818;
+  color: ${({ theme }) => theme.color.woodSmoke};
 `;
 
 export const Wrapper = styled.div`
@@ -28,13 +28,13 @@ export const MovieWrapper = styled.button`
   max-width: 324px;
   height: 650px;
   border-radius: 5px;
-  background-color: #fff;
-  box-shadow: 0px 4px 12px 0px rgba(186, 199, 213, 0.5);
+  background-color: ${({ theme }) => theme.color.white};
+  box-shadow: ${({ theme }) => theme.boxShadow.medium};
   cursor: pointer;
   border: none;
 
   &:hover {
-    box-shadow: 0px 10px 20px 0px rgba(186, 199, 213, 0.5);
+    box-shadow: ${({ theme }) => theme.boxShadow.hover};
     transform: translate(-1px, -1px);
     transition: all 0.3s;
   }
@@ -68,7 +68,7 @@ export const Date = styled.p`
   font-weight: 400;
   line-height: 1.5;
   margin: 0 0 8px 0;
-  color: #7e839a;
+  color: ${({ theme }) => theme.color.waterloo};
 `;
 
 export const TypesWrapper = styled.div`
@@ -78,14 +78,14 @@ export const TypesWrapper = styled.div`
 `;
 
 export const Type = styled.div`
-  background-color: #e4e6f0;
+  background-color: ${({ theme }) => theme.color.mystic};
   border-radius: 5px;
   padding: 8px 16px;
 `;
 
 export const Rating = styled.div`
-  display: inline-flex;
-  justify-content: center;
+  display: flex;
+  align-items: center;
   gap: 12px;
   margin-top: 39px;
 `;
@@ -99,7 +99,7 @@ export const Rate = styled.p`
 
 export const Votes = styled.p`
   font-size: 16px;
-  color: #7e839a;
+  color: ${({ theme }) => theme.color.waterloo};
   font-weight: 400;
   line-height: 1.5;
   margin: 0;

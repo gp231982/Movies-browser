@@ -2,7 +2,7 @@
   "name": "movies-browser",
   "version": "0.1.0",
   "private": true,
-  "movies-browser": "",
+  "movies-browser": "https://r0galkj.github.io/Movies-browser/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",

@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { ReactComponent as CameraIcon } from "../../common/icons/camera.svg";
-import { ReactComponent as SearchIcon } from "../../common/icons/search.svg";
+import { ReactComponent as CameraIcon } from "./camera.svg";
+import { ReactComponent as SearchIcon } from "./search.svg";
 
 export const MoviesHeaderWrapper = styled.div`
   width: 100vw;
