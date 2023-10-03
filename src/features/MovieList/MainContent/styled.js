@@ -84,8 +84,8 @@ export const Type = styled.div`
 `;
 
 export const Rating = styled.div`
-  display: inline-flex;
-  justify-content: center;
+  display: flex;
+  align-items: center;
   gap: 12px;
   margin-top: 39px;
 `;
