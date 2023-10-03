@@ -20,11 +20,11 @@ export const Button = styled.button`
   padding: 8px 12px;
   margin-right: 12px;
 
-  &hover {
+  &:hover {
     background-color: ${({ theme }) => theme.color.sail};
   }
 
-  &disabled {
+  &:disabled {
     background-color: ${({ theme }) => theme.color.mystic};
     color: ${({ theme }) => theme.color.woodSmoke};
     cursor: not-allowed;
