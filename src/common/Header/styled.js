@@ -68,7 +68,7 @@ export const PageLinkFrame = styled.div`
   }
 `;
 
-export const PageTitle = styled.div`
+export const StyledMainPage = styled.div`
   width: 168px;
   height: 40px;
   color: white;
@@ -130,6 +130,7 @@ export const StyledMenuItemContent = styled.p`
   font-weight: 600;
   line-height: normal;
   text-transform: uppercase;
+  coursor: pointer;
 
   @media (max-width: 600px) {
     color: var(--White, #fff);
