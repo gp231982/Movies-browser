@@ -11,6 +11,7 @@ import { MoviePeopleWrapper, TilesWrapper } from "./styled";
 import Header from "./Header";
 import PersonTile from "../../../common/PersonTile";
 import { SectionTile } from "../MainContent/styled";
+import { Pagination } from "../../../common/Pagination";
 
 const MoviePeople = ({ headerName }) => {
   const dispatch = useDispatch();
@@ -32,18 +33,21 @@ const MoviePeople = ({ headerName }) => {
   }
 
   return (
-    <MoviePeopleWrapper>
-      <SectionTile>Popular people</SectionTile>
-      <Header content={headerName} />
-      <TilesWrapper>
-        {people.map((person) => (
-          <PersonTile
-            posterImage={`https://www.themoviedb.org/t/p/w185_and_h278_bestv2${person.profile_path}`}
-            personName={person.name}
-          />
-        ))}
-      </TilesWrapper>
-    </MoviePeopleWrapper>
+    <>
+      <MoviePeopleWrapper>
+        <SectionTile>Popular people</SectionTile>
+        <Header content={headerName} />
+        <TilesWrapper>
+          {people.map((person) => (
+            <PersonTile
+              posterImage={`https://www.themoviedb.org/t/p/w185_and_h278_bestv2${person.profile_path}`}
+              personName={person.name}
+            />
+          ))}
+        </TilesWrapper>
+      </MoviePeopleWrapper>
+      <Pagination />
+    </>
   );
 };
 
