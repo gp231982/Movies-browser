@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const Content = styled.div`
   margin-top: 150px 276px;
   max-width: 1368px;
-  height: 1391px;
   flex-shrink: 0;
   margin: 0 auto;
 `;
@@ -32,11 +31,10 @@ export const MovieWrapper = styled.button`
   box-shadow: ${({ theme }) => theme.boxShadow.medium};
   cursor: pointer;
   border: none;
+  transition: all 0.5s ease 0s;
 
   &:hover {
-    box-shadow: ${({ theme }) => theme.boxShadow.hover};
-    transform: translate(-1px, -1px);
-    transition: all 0.3s;
+    transform: scale(1.05);
   }
 `;
 
