@@ -24,6 +24,8 @@ import {
   selectMovie,
 } from "../../../slices/movieSlice";
 
+const basicImageUrl = `https://image.tmdb.org/t/p/w500`;
+
 export const MainContent = () => {
   const dispatch = useDispatch();
   const movies = useSelector(selectMovie);
@@ -49,7 +51,7 @@ export const MainContent = () => {
       <Wrapper>
         {movies.map((movie) => (
           <MovieWrapper key={movie.id}>
-            <Picture src={poster} />
+            <Picture src={`${basicImageUrl}${movie.poster_path}`} />
             <Information>
               <Tile>{movie.title}</Tile>
               <Date>2020</Date>
@@ -61,8 +63,8 @@ export const MainContent = () => {
             </TypesWrapper>
             <Rating>
               <RateIcon />
-              <Rate>7,8</Rate>
-              <Votes>35 votes</Votes>
+              <Rate>{movie.vote_average}</Rate>
+              <Votes>{movie.vote_count}</Votes>
             </Rating>
           </MovieWrapper>
         ))}
