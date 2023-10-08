@@ -1,14 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './core/App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { HashRouter as Router } from "react-router-dom";
+import App from "./core/App";
+import reportWebVitals from "./reportWebVitals";
+import { Provider } from "react-redux";
+import store from "./store";
 
 //nowy komentarz testowy
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <Router>
+        <App />
+      </Router>
+    </Provider>
   </React.StrictMode>
 );
 
