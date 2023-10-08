@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 import { ReactComponent as CameraIcon } from "./camera.svg";
 import { ReactComponent as SearchIcon } from "./search.svg";
 
@@ -103,6 +104,7 @@ export const MenuItemsWrapper = styled.div`
 
   @media (max-width: 600px) {
     grid-gap: 10px;
+    margin-top:25px
   }
 `;
 
@@ -112,18 +114,15 @@ export const MenuItem = styled.div`
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  outline: 1px solid white;
-  border-radius: 29px;
 
   @media (max-width: 600px) {
     height: 34px;
     padding: 8px 12px;
-    margin-top: 24px;
   }
 `;
 
 export const StyledMenuItemContent = styled.p`
-  color: var(--White, #fff);
+  ${"" /* color: var(--White, #fff); */}
   font-family: Poppins;
   font-size: 14px;
   font-style: normal;
@@ -187,5 +186,25 @@ export const Search = styled.input`
 export const SearchInput = styled(Search)`
   &:focus {
     outline: none;
+  }
+`;
+
+const activeClassName = "active";
+
+export const StyledNavLink = styled(NavLink).attrs(() => ({
+  activeClassName,
+}))`
+  &.${activeClassName} {
+    outline: 1px solid white;
+    border-radius: 29px;
+  }
+  & {
+    text-decoration: none;
+    color: white;
+    font-weight: normal;
+    transition: 0.3s;
+  }
+  &:hover {
+    color: rgb(255, 255, 255, 0.8);
   }
 `;

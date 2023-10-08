@@ -1,3 +1,4 @@
+import { StyledNavLink } from "./styled";
 import { NavLink } from "react-router-dom";
 import {
   MoviesHeaderWrapper,
@@ -20,20 +21,20 @@ const Header = () => {
         <NavLink to="/">
           <PageLinkFrame>
             <StyledCameraIcon />
-            <MainPage content="Movie Browser"/>
+            <MainPage content="Movie Browser" />
           </PageLinkFrame>
         </NavLink>
         <MenuItemsWrapper>
-          <NavLink to="/movies">
+          <StyledNavLink to="/movies">
             <MenuItem>
               <MenuItemContent content="Movies" />
             </MenuItem>
-          </NavLink>
-          <NavLink to="/people">
+          </StyledNavLink>
+          <StyledNavLink to="/people">
             <MenuItem>
               <MenuItemContent content="People" />
             </MenuItem>
-          </NavLink>
+          </StyledNavLink>
         </MenuItemsWrapper>
         <SearchWrapper>
           <StyledSearchIcon />

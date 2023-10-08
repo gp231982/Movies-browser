@@ -7,19 +7,29 @@ export const Wrapper = styled.div`
   align-items: center;
   gap: 12px;
   background: #fff;
-  width: 208px;
-  height: 339px;
-  outline: 1px solid grey;
+  ${"" /* width: 208px; */}
+  ${"" /* height: 339px; */}
+  ${'' /* outline: 1px solid grey; */}
+  height: auto;
+  cursor: pointer;
+  transition: all 0.5s ease 0s;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: rgba(11, 106, 194, 0.6) 0px 4px 12px;
+  }
 `;
 
 export const Img = styled.img`
   width: 175.99px;
+  width: 100%;
   height: 231px;
+  height: auto;
   border-radius: 5px;
 `;
 
 export const PersonName = styled.p`
-  width: 176px;
+  ${"" /* width: 176px; */}
   color: var(--Black, #18181b);
   text-align: center;
   font-family: Poppins;

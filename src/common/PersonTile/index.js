@@ -5,7 +5,7 @@ const PersonTile = ({ posterImage, personName, characterName }) => {
     <Wrapper>
       <Img src={posterImage} alt="obrazek" />
       <PersonName>{personName}</PersonName>
-      <CharacterName>{characterName}</CharacterName>
+      {characterName && <CharacterName>{characterName}</CharacterName>}
     </Wrapper>
   );
 };
