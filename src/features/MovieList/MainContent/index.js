@@ -1,28 +1,13 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import poster from "./poster.png";
-import {
-  Content,
-  SectionTile,
-  Wrapper,
-  MovieWrapper,
-  Picture,
-  Tile,
-  Date,
-  TypesWrapper,
-  Type,
-  Rating,
-  Information,
-  Rate,
-  Votes,
-} from "./styled";
-import { ReactComponent as RateIcon } from "./rate.svg";
+import { Content, SectionTile, Wrapper } from "./styled";
 import {
   fetchMovieRequest,
   selectError,
   selectLoading,
   selectMovie,
 } from "../../../slices/movieSlice";
+import { MovieTile } from "../../../common/MovieTile";
 
 const basicImageUrl = `https://image.tmdb.org/t/p/w500`;
 
@@ -50,23 +35,15 @@ export const MainContent = () => {
       <SectionTile>Popular movies</SectionTile>
       <Wrapper>
         {movies.map((movie) => (
-          <MovieWrapper key={movie.id}>
-            <Picture src={`${basicImageUrl}${movie.poster_path}`} />
-            <Information>
-              <Tile>{movie.title}</Tile>
-              <Date>2020</Date>
-            </Information>
-            <TypesWrapper>
-              <Type>Action</Type>
-              <Type>Adventure</Type>
-              <Type>Drama</Type>
-            </TypesWrapper>
-            <Rating>
-              <RateIcon />
-              <Rate>{movie.vote_average}</Rate>
-              <Votes>{movie.vote_count}</Votes>
-            </Rating>
-          </MovieWrapper>
+          <MovieTile
+            key={movie.id}
+            title={movie.title}
+            posterPath={`${basicImageUrl}${movie.poster_path}`}
+            releaseDate={movie.release_date.slice(0, 4)}
+            voteAverage={movie.vote_average}
+            voteCount={movie.vote_count}
+            genre_ids={movie.genre_ids.slice(0, 2)}
+          />
         ))}
       </Wrapper>
     </Content>
