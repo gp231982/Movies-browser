@@ -1,21 +1,32 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import {
   fetchMovieRequest,
-  fetchPeopleSuccess,
-  fetchPeopleFailure,
+  fetchMovieSuccess,
+  fetchMovieFailure,
+  fetchMovieGenre,
 } from "../slices/movieSlice";
 import axios from "axios";
-import { popularMovieApiUrl } from "../common/apiURLs";
+import { genresApiUrl, popularMovieApiUrl } from "../common/apiURLs";
 
 function* fetchMovies() {
   try {
     const response = yield call(axios.get, popularMovieApiUrl);
-    yield put(fetchPeopleSuccess(response.data.results));
+    yield put(fetchMovieSuccess(response.data.results));
   } catch (error) {
-    yield put(fetchPeopleFailure(error));
+    yield put(fetchMovieFailure(error));
+  }
+}
+
+function* fetchGenres() {
+  try {
+    const response = yield call(axios.get, genresApiUrl);
+    yield put(fetchMovieGenre(response.data.genres));
+  } catch (error) {
+    yield put(fetchMovieFailure(error));
   }
 }
 
 export function* watchFetchMovies() {
   yield takeLatest(fetchMovieRequest.type, fetchMovies);
+  yield takeLatest(fetchMovieRequest.type, fetchGenres);
 }
