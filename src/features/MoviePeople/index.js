@@ -1,17 +1,18 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPeopleRequest } from "../../../slices/peopleSlice";
+import { fetchPeopleRequest } from "../../slices/peopleSlice";
 import {
   selectData,
   selectLoading,
   selectError,
-} from "../../../slices/peopleSlice";
+} from "../../slices/peopleSlice";
 
 import { MoviePeopleWrapper, TilesWrapper } from "./styled";
 import Header from "./Header";
-import PersonTile from "../../../common/PersonTile";
-import { SectionTile } from "../MainContent/styled";
-import { Pagination } from "../../../common/Pagination";
+import PersonTile from "../../common/PersonTile";
+import { SectionTile } from "../MovieList/styled";
+import { Pagination } from "../../common/Pagination";
+import { Error } from "../../common/States/Error";
 
 const MoviePeople = ({ headerName }) => {
   const dispatch = useDispatch();
@@ -29,7 +30,7 @@ const MoviePeople = ({ headerName }) => {
   }
 
   if (error) {
-    return <div>Error: {error.message}</div>;
+    return <Error />;
   }
 
   return (
