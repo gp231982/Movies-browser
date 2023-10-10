@@ -46,7 +46,7 @@ export const MovieTile = ({
           <RateIcon />
         </RateIconBox>
         <Rate>{voteAverage}</Rate>
-        <Votes>{voteCount}</Votes>
+        <Votes>{voteCount} votes</Votes>
       </Rating>
     </MovieWrapper>
   );
