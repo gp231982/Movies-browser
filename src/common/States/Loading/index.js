@@ -4,11 +4,8 @@ import { SpinnerIcon } from "./styled";
 
 export const Loading = () => {
   return (
-    <>
-      <SectionTile>Search results for</SectionTile>
-      <Wrapper>
-        <SpinnerIcon />
-      </Wrapper>
-    </>
+    <Wrapper>
+      <SpinnerIcon />
+    </Wrapper>
   );
 };
