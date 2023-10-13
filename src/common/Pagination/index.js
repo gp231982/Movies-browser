@@ -7,17 +7,17 @@ import {
     PagesCounter,
     PageNumber,
 } from "./styled";
-import { getPagination } from "./getPagination";
+import { usePagination } from "./usePagination";
 
 export const Pagination = () => {
     const {
-        page, 
-        allPages, 
-        setNextPage, 
-        setPreviousPage, 
-        setFirstPage, 
+        page,
+        allPages,
+        setNextPage,
+        setPreviousPage,
+        setFirstPage,
         setLastPage,
-    } = getPagination();
+    } = usePagination();
     const firstPage = page === 1;
     const lastPage = page === allPages;
 

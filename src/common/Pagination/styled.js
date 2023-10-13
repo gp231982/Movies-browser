@@ -19,6 +19,7 @@ export const Button = styled.button`
   color: ${({ theme }) => theme.color.mineShaft};
   padding: 8px 12px;
   margin-right: 12px;
+  cursor: pointer;
 
   &:hover {
     background-color: ${({ theme }) => theme.color.sail};
