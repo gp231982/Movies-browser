@@ -41,6 +41,7 @@ export const MovieDetail = () => {
         <Rating>
           <RateIcon />
           <Rate>9</Rate>
+          <TotalRate>/ 10</TotalRate>
           <Votes>500 votes</Votes>
         </Rating>
         <Genres>
