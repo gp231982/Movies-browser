@@ -10,6 +10,7 @@ import {
 import { MovieTile } from "../../common/MovieTile";
 import { Pagination } from "../../common/Pagination";
 import { Error } from "../../common/States/Error";
+import { Loading } from "../../common/States/Loading";
 
 const basicImageUrl = `https://image.tmdb.org/t/p/w500`;
 
@@ -25,7 +26,7 @@ export const MovieList = () => {
   }, [dispatch]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   if (error) {
