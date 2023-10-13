@@ -1,37 +1,18 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Content, SectionTile, Wrapper } from "./styled";
-import {
-  fetchMovieRequest,
-  selectError,
-  selectLoading,
-  selectMovie,
-} from "../../slices/movieSlice";
+import { fetchMovieRequest, selectMovie } from "../../slices/movieSlice";
 import { MovieTile } from "../../common/MovieTile";
 import { Pagination } from "../../common/Pagination";
-import { Error } from "../../common/States/Error";
-import { Loading } from "../../common/States/Loading";
-
 const basicImageUrl = `https://image.tmdb.org/t/p/w500`;
 
 export const MovieList = () => {
   const dispatch = useDispatch();
   const movies = useSelector(selectMovie);
-  console.log(movies);
-  const loading = useSelector(selectLoading);
-  const error = useSelector(selectError);
 
   useEffect(() => {
     dispatch(fetchMovieRequest());
   }, [dispatch]);
-
-  if (loading) {
-    return <Loading />;
-  }
-
-  if (error) {
-    return <Error />;
-  }
 
   return (
     <Content>
