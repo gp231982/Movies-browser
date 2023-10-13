@@ -11,6 +11,7 @@ export const theme = {
     scienceBlue: "#0044CC",
     white: "#fff",
     royalBlue: "#3369D6",
+    stormGray: "#74788B",
   },
 
   breakpoint: {
