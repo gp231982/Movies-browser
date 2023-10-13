@@ -9,14 +9,14 @@ export const Wrapper = styled.div`
   background: #fff;
   ${"" /* width: 208px; */}
   ${"" /* height: 339px; */}
-  ${'' /* outline: 1px solid grey; */}
+  ${"" /* outline: 1px solid grey; */}
   height: auto;
   cursor: pointer;
   transition: all 0.5s ease 0s;
 
   &:hover {
     transform: scale(1.05);
-    box-shadow: rgba(11, 106, 194, 0.6) 0px 4px 12px;
+    box-shadow: ${({ theme }) => theme.boxShadow.medium};
   }
 `;
 
