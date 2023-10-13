@@ -13,6 +13,7 @@ import PersonTile from "../../common/PersonTile";
 import { SectionTile } from "../MovieList/styled";
 import { Pagination } from "../../common/Pagination";
 import { Error } from "../../common/States/Error";
+import { Loading } from "../../common/States/Loading";
 
 const MoviePeople = ({ headerName }) => {
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ const MoviePeople = ({ headerName }) => {
   }, [dispatch]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   if (error) {
