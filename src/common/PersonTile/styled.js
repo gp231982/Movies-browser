@@ -37,7 +37,7 @@ export const PersonName = styled.p`
   font-style: normal;
   font-weight: 500;
   line-height: 130%; /* 28.6px */
-  height: 29px;
+  ${"" /* height: 29px; */}
   margin: 0px;
 `;
 
@@ -49,6 +49,18 @@ export const CharacterName = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 27px */
-  height: 29px;
+  ${"" /* height: 29px; */}
+  margin: 0px;
+`;
+
+export const Job = styled.p`
+  color: var(--Darker-grey, #7e839a);
+  text-align: center;
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 27px */
+  ${"" /* height: 29px; */}
   margin: 0px;
 `;
