@@ -4,26 +4,24 @@ import {
   selectData,
   selectLoading,
   selectError,
-} from "../../../slices/creditsSlice";
+} from "../../slices/creditsSlice";
 
 import { useParams } from "react-router-dom";
 
-import { fetchCreditsRequest } from "../../../slices/creditsSlice";
+import { fetchCreditsRequest } from "../../slices/creditsSlice";
 import { MoviePeopleWrapper, TilesWrapper } from "../MoviePeople/styled";
-import { selectMovie, selectMovieId } from "../../../slices/movieSlice";
-import { Pagination } from "../../../common/Pagination";
-import { SectionTile } from "../MainContent/styled";
+import { selectMovie, selectMovieId } from "../../slices/movieSlice";
+import { Pagination } from "../../common/Pagination";
+import { SectionTile } from "../MovieList/styled";
 import Header from "../MoviePeople/Header";
 import headerName from "../MoviePeople/Header";
-import PersonTile from "../../../common/PersonTile";
-import BlankPicture from "../../../common/PersonTile/BlankPicture.png";
+import PersonTile from "../../common/PersonTile";
 
 const MovieDetails = () => {
   const selectedMovieId = useParams();
   // const selectedMovieId = useSelector(selectMovieId);
   console.log(selectedMovieId);
   const dispatch = useDispatch();
-  
 
   const credits = useSelector(selectData);
   const loading = useSelector(selectLoading);

@@ -7,13 +7,13 @@ import {
   selectError,
   selectLoading,
   selectMovie,
-} from "../../../slices/movieSlice";
-import { MovieTile } from "../../../common/MovieTile";
-import { handleMovieClick } from "../../../slices/movieSlice";
+} from "../../slices/movieSlice";
+import { MovieTile } from "../../common/MovieTile";
+import { handleMovieClick } from "../../slices/movieSlice";
 
 const basicImageUrl = `https://image.tmdb.org/t/p/w500`;
 
-export const MainContent = () => {
+export const MovieList = () => {
   const dispatch = useDispatch();
   const movies = useSelector(selectMovie);
   const loading = useSelector(selectLoading);
