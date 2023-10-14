@@ -19,10 +19,12 @@ import PersonTile from "../../../common/PersonTile";
 import BlankPicture from "../../../common/PersonTile/BlankPicture.png";
 
 const MovieDetails = () => {
-  const { id } = useParams();
-  console.log(id);
+  const selectedMovieId = useParams();
+  // const selectedMovieId = useSelector(selectMovieId);
+  console.log(selectedMovieId);
   const dispatch = useDispatch();
-  const selectedMovieId = useSelector(selectMovieId);
+  
+
   const credits = useSelector(selectData);
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
@@ -44,9 +46,7 @@ const MovieDetails = () => {
   }
 
   if (!credits || !Array.isArray(credits.cast)) {
-    // If data is not available or `credits.cast` is not an array, render a message or fallback UI
-    // return <div>No cast information available.</div>;
-    return
+    return;
   }
 
   return (
