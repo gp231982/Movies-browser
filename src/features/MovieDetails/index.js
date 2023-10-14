@@ -4,18 +4,18 @@ import {
   selectData,
   selectLoading,
   selectError,
-} from "../../slices/creditsSlice";
+} from "../../../slices/creditsSlice";
 
 import { useParams } from "react-router-dom";
 
-import { fetchCreditsRequest } from "../../slices/creditsSlice";
+import { fetchCreditsRequest } from "../../../slices/creditsSlice";
 import { MoviePeopleWrapper, TilesWrapper } from "../MoviePeople/styled";
-import { selectMovie, selectMovieId } from "../../slices/movieSlice";
-import { Pagination } from "../../common/Pagination";
+import { selectMovie, selectMovieId } from "../../../slices/movieSlice";
+import { Pagination } from "../../../common/Pagination";
 import { SectionTile } from "../MainContent/styled";
 import Header from "../MoviePeople/Header";
 import headerName from "../MoviePeople/Header";
-import PersonTile from "../../common/PersonTile";
+import PersonTile from "../../../common/PersonTile";
 import BlankPicture from "../../../common/PersonTile/BlankPicture.png";
 
 const MovieDetails = () => {
