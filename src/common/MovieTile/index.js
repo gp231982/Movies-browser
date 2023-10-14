@@ -25,7 +25,6 @@ export const MovieTile = ({
   genre_ids,
 }) => {
   const genres = useSelector(selectGenre);
-  console.log(genres);
   return (
     <MovieWrapper key={id}>
       <Picture src={posterPath} />
@@ -46,7 +45,7 @@ export const MovieTile = ({
           <RateIcon />
         </RateIconBox>
         <Rate>{voteAverage}</Rate>
-        <Votes>{voteCount}</Votes>
+        <Votes>{voteCount} votes</Votes>
       </Rating>
     </MovieWrapper>
   );

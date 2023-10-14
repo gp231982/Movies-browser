@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
 
   &:hover {
     transform: scale(1.05);
-    box-shadow: rgba(11, 106, 194, 0.6) 0px 4px 12px;
+    box-shadow: ${({ theme }) => theme.boxShadow.medium};
   }
 `;
 

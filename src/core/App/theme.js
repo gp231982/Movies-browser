@@ -3,13 +3,15 @@ export const theme = {
     whisper: "#F5F5FA",
     black: "#000000",
     pattensBlue: "#D6E4FF",
-    sail: "##ACC6FA",
+    sail: "#ACC6FA",
     mineShaft: "#333333",
     mystic: "#E4E6F0",
     woodSmoke: "#18181B",
     waterloo: "#7E839A",
     scienceBlue: "#0044CC",
     white: "#fff",
+    royalBlue: "#3369D6",
+    stormGray: "#74788B",
   },
 
   breakpoint: {

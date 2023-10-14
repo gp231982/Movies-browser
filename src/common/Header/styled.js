@@ -59,7 +59,6 @@ export const PageLinkFrame = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-right: 80px;
-  outline: 1px solid grey;
 
   @media (max-width: 600px) {
     height: 34px;
@@ -104,7 +103,7 @@ export const MenuItemsWrapper = styled.div`
 
   @media (max-width: 600px) {
     grid-gap: 10px;
-    margin-top:25px
+    margin-top: 25px;
   }
 `;
 
@@ -129,7 +128,7 @@ export const StyledMenuItemContent = styled.p`
   font-weight: 600;
   line-height: normal;
   text-transform: uppercase;
-  coursor: pointer;
+  cursor: pointer;
 
   @media (max-width: 600px) {
     color: var(--White, #fff);
@@ -202,9 +201,10 @@ export const StyledNavLink = styled(NavLink).attrs(() => ({
     text-decoration: none;
     color: white;
     font-weight: normal;
-    transition: 0.3s;
+    border-radius: 29px;
   }
   &:hover {
     color: rgb(255, 255, 255, 0.8);
+    transition: all 0.3s;
   }
 `;
