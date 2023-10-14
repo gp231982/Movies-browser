@@ -32,13 +32,15 @@ const MoviePeople = ({ headerName }) => {
     return <div>Error: {error.message}</div>;
   }
 
+  console.log(people.length)
+
   return (
     <>
       <MoviePeopleWrapper>
         <SectionTile>Popular people</SectionTile>
         <Header content={headerName} />
         <TilesWrapper>
-          {people.map((person) => (
+          {people.slice(0,24).map((person) => (
             <PersonTile
               posterImage={`https://www.themoviedb.org/t/p/w185_and_h278_bestv2${person.profile_path}`}
               personName={person.name}
