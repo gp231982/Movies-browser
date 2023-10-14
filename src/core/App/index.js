@@ -7,7 +7,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { MovieList } from "../../features/MovieList";
 import MoviePeople from "../../features/MoviePeople";
 import Header from "../../common/Header";
-import MovieDetails from "../../features/MovieList/MovieDetails";
+import MovieDetails from "../../features/MovieDetails";
 
 function App() {
   return (
