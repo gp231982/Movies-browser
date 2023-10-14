@@ -1,19 +1,18 @@
-import { call, put, takeLatest, select } from "redux-saga/effects";
+import { call, put, takeLatest, select, delay } from "redux-saga/effects";
 import {
   fetchCreditsRequest,
   fetchCreditsSuccess,
   fetchCreditsFailure,
 } from "../slices/creditsSlice";
 import axios from "axios";
-import { creditsApiUrl } from "../common/apiURLs";
 import { selectMovieId } from "../slices/movieSlice";
 import { apiKey } from "../common/apiURLs";
 
 // Saga do pobierania danych credits
 function* fetchCredits() {
   try {
+    yield delay(500);
     const selectedMovieId = yield select(selectMovieId);
-    yield console.log(selectedMovieId);
     if (selectedMovieId) {
       const apiUrl = `https://api.themoviedb.org/3/movie/${selectedMovieId}/credits?language=en-US&api_key=${apiKey}`;
       // const apiUrl = `https://api.themoviedb.org/3/movie/:movieId/credits?language=en-US&api_key=${apiKey}`;
