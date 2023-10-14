@@ -11,6 +11,8 @@ import {
 import { MovieTile } from "../../common/MovieTile";
 import { handleMovieClick } from "../../slices/movieSlice";
 import { Pagination } from "../../common/Pagination";
+import { Loading } from "../../common/States/Loading";
+import { Error } from "../../common/States/Error";
 
 const basicImageUrl = `https://image.tmdb.org/t/p/w500`;
 
@@ -25,11 +27,11 @@ export const MovieList = () => {
   }, [dispatch]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   if (error) {
-    return <div>Error: {error.message}</div>;
+    return <Error />;
   }
 
   const handleMovieClickHandler = (movieId) => {
