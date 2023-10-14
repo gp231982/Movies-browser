@@ -8,6 +8,7 @@ export const MoviePeopleWrapper = styled.div`
 
 export const StyledHeader = styled.h2`
   color: #000;
+  color: ${({ theme }) => theme.color.waterloo};
 
   /* Desktop/H1 */
   font-family: Poppins;
@@ -19,7 +20,7 @@ export const StyledHeader = styled.h2`
 
 export const TilesWrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   flex-wrap: wrap;
   flex-shrink: 0;
   gap: 24px;
@@ -34,5 +35,9 @@ export const TilesWrapper = styled.div`
 
   @media (max-width: 600px) {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 400px) {
+    grid-template-columns: repeat(1, 1fr);
   }
 `;
