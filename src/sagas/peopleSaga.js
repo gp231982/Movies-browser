@@ -1,4 +1,4 @@
-import { call, put, takeLatest } from "redux-saga/effects";
+import { call, delay, put, takeLatest } from "redux-saga/effects";
 import {
   fetchPeopleRequest,
   fetchPeopleSuccess,
@@ -9,6 +9,7 @@ import { popularPeopleApiUrl } from "../common/apiURLs";
 
 function* fetchPeople() {
   try {
+    yield delay(500);
     const response = yield call(axios.get, popularPeopleApiUrl);
     yield put(fetchPeopleSuccess(response.data.results));
     console.log(response);

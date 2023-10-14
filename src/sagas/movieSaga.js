@@ -1,4 +1,4 @@
-import { call, put, takeLatest } from "redux-saga/effects";
+import { call, delay, put, takeLatest } from "redux-saga/effects";
 import {
   fetchMovieRequest,
   fetchMovieSuccess,
@@ -10,6 +10,7 @@ import { genresApiUrl, popularMovieApiUrl } from "../common/apiURLs";
 
 function* fetchMovies() {
   try {
+    yield delay(500);
     const response = yield call(axios.get, popularMovieApiUrl);
     yield put(fetchMovieSuccess(response.data.results));
   } catch (error) {
@@ -19,6 +20,7 @@ function* fetchMovies() {
 
 function* fetchGenres() {
   try {
+    yield delay(500);
     const response = yield call(axios.get, genresApiUrl);
     yield put(fetchMovieGenre(response.data.genres));
   } catch (error) {

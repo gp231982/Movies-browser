@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const MoviePeopleWrapper = styled.div`
   max-width: 1368px;
   ${"" /* height: 777px; */}
-  outline: 1px solid grey;
   margin: 0 auto;
 `;
 
