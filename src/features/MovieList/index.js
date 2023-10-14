@@ -10,6 +10,7 @@ import {
 } from "../../slices/movieSlice";
 import { MovieTile } from "../../common/MovieTile";
 import { handleMovieClick } from "../../slices/movieSlice";
+import { Pagination } from "../../common/Pagination";
 
 const basicImageUrl = `https://image.tmdb.org/t/p/w500`;
 
@@ -57,6 +58,7 @@ export const MovieList = () => {
           </Link>
         ))}
       </Wrapper>
+      <Pagination />
     </Content>
   );
 };
