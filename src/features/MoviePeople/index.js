@@ -12,8 +12,8 @@ import Header from "./Header";
 import PersonTile from "../../common/PersonTile";
 import { SectionTile } from "../MovieList/styled";
 import { Pagination } from "../../common/Pagination";
-import { Error } from "../../common/States/Error";
 import { Loading } from "../../common/States/Loading";
+import { Error } from "../../common/States/Error";
 
 const MoviePeople = ({ headerName }) => {
   const dispatch = useDispatch();
@@ -34,15 +34,13 @@ const MoviePeople = ({ headerName }) => {
     return <Error />;
   }
 
-  console.log(people.length)
-
   return (
     <>
       <MoviePeopleWrapper>
         <SectionTile>Popular people</SectionTile>
         <Header content={headerName} />
         <TilesWrapper>
-          {people.slice(0,24).map((person) => (
+          {people.slice(0, 24).map((person) => (
             <PersonTile
               posterImage={`https://www.themoviedb.org/t/p/w185_and_h278_bestv2${person.profile_path}`}
               personName={person.name}

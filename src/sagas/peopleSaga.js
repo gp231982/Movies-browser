@@ -1,4 +1,4 @@
-import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
+import { call, delay, put, takeLatest } from "redux-saga/effects";
 import {
   fetchPeopleRequest,
   fetchPeopleSuccess,
@@ -37,6 +37,7 @@ function* fetchAllPeople() {
     const apiUrl = `https://api.themoviedb.org/3/person/popular?language=en-US&page=${page}&api_key=${apiKey}`;
 
     try {
+      yield delay(500);
       const response = yield call(axios.get, apiUrl);
       yield put(fetchPeopleSuccess(response.data.results));
       // const data = await response.json();
