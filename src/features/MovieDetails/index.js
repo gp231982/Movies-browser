@@ -81,9 +81,9 @@ const MovieDetails = () => {
     <>
       <StyledMoviePage>
         <BigPoster>
-          <img src={`${basicImageUrl}${details.backdrop_path}`} />
+          <img src />
           <MainInfo>
-            <Title>{details.title}</Title>
+            <Title></Title>
             <Raiting>
               <Star>
                 <img src />
