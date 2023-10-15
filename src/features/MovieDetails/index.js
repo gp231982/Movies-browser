@@ -5,8 +5,6 @@ import {
   selectLoading,
   selectError,
 } from "../../slices/creditsSlice";
-
-import { useParams } from "react-router-dom";
 import { Genre } from "../../common/Genre";
 import { Genres } from "../../common/Genres";
 import {
@@ -32,18 +30,15 @@ import { ReactComponent as RateIcon } from "../../common/MovieTile/rate.svg";
 
 import { fetchCreditsRequest } from "../../slices/creditsSlice";
 import { MoviePeopleWrapper, TilesWrapper } from "../MoviePeople/styled";
-import { selectMovie, selectMovieId } from "../../slices/movieSlice";
+import { selectMovieId } from "../../slices/movieSlice";
 import { Pagination } from "../../common/Pagination";
-import { SectionTile, Wrapper } from "../MovieList/styled";
-import Header from "../MoviePeople/Header";
-import headerName from "../MoviePeople/Header";
+import { SectionTile } from "../MovieList/styled";
 import PersonTile from "../../common/PersonTile";
 import { Loading } from "../../common/States/Loading";
 import { Error } from "../../common/States/Error";
 
 const MovieDetails = () => {
-  const selectedMovieId = useParams();
-  // const selectedMovieId = useSelector(selectMovieId);
+  const selectedMovieId = useSelector(selectMovieId);
   console.log(selectedMovieId);
   const dispatch = useDispatch();
 
@@ -53,7 +48,6 @@ const MovieDetails = () => {
 
   useEffect(() => {
     console.log(selectedMovieId);
-    // Pobieraj dane osób z credits przy użyciu akcji `fetchCreditsRequest`
     if (selectedMovieId) {
       dispatch(fetchCreditsRequest(selectedMovieId));
     }

@@ -6,16 +6,14 @@ import {
 } from "../slices/creditsSlice";
 import axios from "axios";
 import { selectMovieId } from "../slices/movieSlice";
-import { apiKey } from "../common/apiURLs";
+import { creditsApiUrl, apiKey } from "../common/apiURLs";
 
-// Saga do pobierania danych credits
 function* fetchCredits() {
   try {
     yield delay(500);
     const selectedMovieId = yield select(selectMovieId);
     if (selectedMovieId) {
-      const apiUrl = `https://api.themoviedb.org/3/movie/${selectedMovieId}/credits?language=en-US&api_key=${apiKey}`;
-      // const apiUrl = `https://api.themoviedb.org/3/movie/:movieId/credits?language=en-US&api_key=${apiKey}`;
+      const apiUrl = creditsApiUrl(selectedMovieId, apiKey);
       const response = yield call(axios.get, apiUrl);
       yield put(fetchCreditsSuccess(response.data));
       console.log(response.data);
@@ -24,8 +22,6 @@ function* fetchCredits() {
     yield put(fetchCreditsFailure(error));
   }
 }
-
-// Włącz sagę na żądanie fetchCreditsRequest
 export function* watchFetchCredits() {
   yield takeLatest(fetchCreditsRequest.type, fetchCredits);
 }

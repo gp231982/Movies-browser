@@ -49,7 +49,6 @@ export const MovieList = () => {
             onClick={() => handleMovieClickHandler(movie.id)}
           >
             <MovieTile
-              // key={movie.id}
               title={movie.title}
               posterPath={`${basicImageUrl}${movie.poster_path}`}
               releaseDate={movie.release_date.slice(0, 4)}
