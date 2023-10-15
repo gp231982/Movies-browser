@@ -1,5 +1,5 @@
 import { StyledNavLink } from "./styled";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import {
   MoviesHeaderWrapper,
   MenuItem,
@@ -13,8 +13,25 @@ import {
 } from "./styled";
 import MenuItemContent from "./MenuItemContent";
 import MainPage from "./MainPage";
+import {
+  useQueryParameter,
+  useReplaceQueryParameter,
+} from "../../features/MoviePeople/queryParameters";
+import searchQueryParamName from "../../features/MoviePeople/searchQueryParamName";
 
 const Header = () => {
+  const path = useLocation().pathname;
+
+  const query = useQueryParameter(searchQueryParamName);
+  const replaceQueryParameter = useReplaceQueryParameter();
+
+  const onInputChange = ({ target }) => {
+    replaceQueryParameter({
+      key: searchQueryParamName,
+      value: target.value.trim() !== "" ? target.value : undefined,
+    });
+  };
+
   return (
     <MoviesHeaderWrapper>
       <MoviesHeader>
@@ -38,7 +55,13 @@ const Header = () => {
         </MenuItemsWrapper>
         <SearchWrapper>
           <StyledSearchIcon />
-          <SearchInput placeholder="Search for movies..." />
+          <SearchInput
+            placeholder={`Search for ${
+              path === "/people" ? "people" : "movies"
+            }...`}
+            value={query || ""}
+            onChange={onInputChange}
+          />
         </SearchWrapper>
       </MoviesHeader>
     </MoviesHeaderWrapper>

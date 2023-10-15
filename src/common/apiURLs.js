@@ -6,8 +6,9 @@ export const popularMovieApiUrl = `https://api.themoviedb.org/3/movie/popular?la
 
 export const genresApiUrl = `https://api.themoviedb.org/3/genre/movie/list?language=en-US&api_key=${apiKey}`;
 
-export const creditsApiUrl = `https://api.themoviedb.org/3/movie/926393/credits?language=en-US&api_key=${apiKey}`;
+export const generatePeopleApiUrl = (page, apiKey) => {
+  return `https://api.themoviedb.org/3/person/popular?language=en-US&page=${page}&api_key=${apiKey}`;
+};
 
-// export const creditsApiUrl = (selectedId) => {
-//     return `https://api.themoviedb.org/3/movie/${selectedId}/credits?language=en-US&api_key=${apiKey}`;
-//   };
+export const creditsApiUrl = (movieId, apiKey) =>
+  `https://api.themoviedb.org/3/movie/${movieId}/credits?language=en-US&api_key=${apiKey}`;

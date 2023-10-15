@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPeopleRequest } from "../../slices/peopleSlice";
+import {
+  fetchPeopleRequest,
+  selectPeopleByQuery,
+} from "../../slices/peopleSlice";
 import {
   selectData,
   selectLoading,
@@ -15,12 +18,19 @@ import { Pagination } from "../../common/Pagination";
 import { Loading } from "../../common/States/Loading";
 import { Error } from "../../common/States/Error";
 
+import { useQueryParameter } from "./queryParameters";
+import searchQueryParamName from "./searchQueryParamName";
+
 const MoviePeople = ({ headerName }) => {
   const dispatch = useDispatch();
-  const people = useSelector(selectData);
-  console.log(people);
+  // const people = useSelector(selectData);
+  // console.log(people);
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
+
+  const query = useQueryParameter(searchQueryParamName);
+
+  const people = useSelector((state) => selectPeopleByQuery(state, query));
 
   useEffect(() => {
     dispatch(fetchPeopleRequest());
@@ -40,7 +50,7 @@ const MoviePeople = ({ headerName }) => {
         <SectionTile>Popular people</SectionTile>
         <Header content={headerName} />
         <TilesWrapper>
-          {people.slice(0, 24).map((person) => (
+          {people.slice(0,24).map((person) => (
             <PersonTile
               posterImage={`https://www.themoviedb.org/t/p/w185_and_h278_bestv2${person.profile_path}`}
               personName={person.name}

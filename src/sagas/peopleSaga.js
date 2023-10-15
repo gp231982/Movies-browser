@@ -6,53 +6,26 @@ import {
   fetchAllPeopleSuccess,
 } from "../slices/peopleSlice";
 import axios from "axios";
-import { popularPeopleApiUrl } from "../common/apiURLs";
-
-import { apiUrlAll } from "../common/apiURLs";
-
-// function* fetchPeople() {
-//   try {
-//     const response = yield call(axios.get, popularPeopleApiUrl);
-//     yield put(fetchPeopleSuccess(response.data.results));
-//     console.log(response);
-//   } catch (error) {
-//     yield put(fetchPeopleFailure(error));
-//   }
-// }
-
-// export function* watchFetchPeople() {
-//   yield takeLatest(fetchPeopleRequest.type, fetchPeople);
-// }
+import { generatePeopleApiUrl, apiKey } from "../common/apiURLs";
 
 function* fetchAllPeople() {
   const allPeople = [];
-  const apiKey = "4b8fe2faad502d0967a22b78268baad6"; // Zastąp 'TwójKluczAPI' swoim własnym kluczem API
+  const totalPagesToFetch = 500;
 
-  const totalPagesToFetch = 500; // Ilość stron do pobrania (zmień na potrzebę)
-
-  // Funkcja do pobierania danych z API
-
-  for (let page = 1; page <= totalPagesToFetch; page++) {
-    // const apiUrl = `https://api.themoviedb.org/3/person/popular?language=en-US&page=${page}&api_key=${apiKey}`;
-    const apiUrl = `https://api.themoviedb.org/3/person/popular?language=en-US&page=${page}&api_key=${apiKey}`;
-
-    try {
-      yield delay(500);
+  try {
+    yield delay(500);
+    for (let page = 1; page <= totalPagesToFetch; page++) {
+      const apiUrl = generatePeopleApiUrl(page, apiKey);
       const response = yield call(axios.get, apiUrl);
+      allPeople.push(...response.data.results);
       yield put(fetchPeopleSuccess(response.data.results));
-      // const data = await response.json();
-      yield allPeople.push(...response.data.results);
-      console.log(`Fetched page ${page}, total results: ${allPeople.length}`);
-      yield put(fetchAllPeopleSuccess(allPeople));
-    } catch (error) {
-      console.error(error);
     }
+    yield put(fetchAllPeopleSuccess(allPeople));
+  } catch (error) {
+    console.error(error);
+    yield put(fetchPeopleFailure("Wystąpił błąd podczas pobierania danych."));
   }
-
-  console.log(allPeople);
-  // return allMovies;
 }
-
 export function* watchFetchPeople() {
   yield takeLatest(fetchPeopleRequest.type, fetchAllPeople);
 }
