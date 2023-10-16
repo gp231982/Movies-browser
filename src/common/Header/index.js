@@ -16,12 +16,11 @@ import MainPage from "./MainPage";
 import {
   useQueryParameter,
   useReplaceQueryParameter,
-} from "../../features/MoviePeople/queryParameters";
-import searchQueryParamName from "../../features/MoviePeople/searchQueryParamName";
+} from "../queryParameters";
+import searchQueryParamName from "../searchQueryParamName";
 
 const Header = () => {
   const path = useLocation().pathname;
-
   const query = useQueryParameter(searchQueryParamName);
   const replaceQueryParameter = useReplaceQueryParameter();
 

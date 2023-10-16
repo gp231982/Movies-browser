@@ -18,13 +18,11 @@ import { Pagination } from "../../common/Pagination";
 import { Loading } from "../../common/States/Loading";
 import { Error } from "../../common/States/Error";
 
-import { useQueryParameter } from "./queryParameters";
-import searchQueryParamName from "./searchQueryParamName";
+import { useQueryParameter } from "../../common/queryParameters";
+import searchQueryParamName from "../../common/searchQueryParamName";
 
 const MoviePeople = ({ headerName }) => {
   const dispatch = useDispatch();
-  // const people = useSelector(selectData);
-  // console.log(people);
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
 
