@@ -8,7 +8,7 @@ export const Tile = styled.div`
   display: grid;
   grid-template-columns: auto 1fr;
   margin-bottom: 20px;
-  width: 1288px;
+  width: 1368px;
   height: 464;
   padding: 40px;
   margin: 0 auto;
@@ -20,6 +20,7 @@ export const Picture = styled.img`
   width: 312px;
   height: 464px;
   border-radius: 5px;
+  align-self: center;
 `;
 
 export const Information = styled.div`

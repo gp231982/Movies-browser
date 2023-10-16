@@ -14,7 +14,7 @@ import { Pagination } from "../../common/Pagination";
 import { Loading } from "../../common/States/Loading";
 import { Error } from "../../common/States/Error";
 
-const basicImageUrl = `https://image.tmdb.org/t/p/w500`;
+export const basicImageUrl = `https://image.tmdb.org/t/p/w500`;
 
 export const MovieList = () => {
   const dispatch = useDispatch();

@@ -27,7 +27,6 @@ import {
   Votes,
 } from "./styled";
 import { ReactComponent as RateIcon } from "../../common/MovieTile/rate.svg";
-
 import { fetchCreditsRequest } from "../../slices/creditsSlice";
 import { MoviePeopleWrapper, TilesWrapper } from "../MoviePeople/styled";
 import { selectMovieId } from "../../slices/movieSlice";
@@ -36,20 +35,40 @@ import { SectionTile } from "../MovieList/styled";
 import PersonTile from "../../common/PersonTile";
 import { Loading } from "../../common/States/Loading";
 import { Error } from "../../common/States/Error";
+import {
+  fetchMovieDetailsRequest,
+  selectDetailsData,
+} from "../../slices/movieDetailSlice";
+import { basicImageUrl } from "../MovieList";
+import {
+  StyledMoviePage,
+  BigPoster,
+  MainInfo,
+  Raiting,
+  Star,
+  Value,
+  SmallerValue,
+} from "../MovieList/MoviePage/styled";
+
+import blankPoster from "../MovieDetails/BlankMoviePoster.png";
+import star from "../MovieDetails/Star.png"
+
+const baseURL = "https://image.tmdb.org/t/p/";
+const bigPosterSize = "original";
+
 
 const MovieDetails = () => {
   const selectedMovieId = useSelector(selectMovieId);
-  console.log(selectedMovieId);
   const dispatch = useDispatch();
-
   const credits = useSelector(selectData);
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
+  const details = useSelector(selectDetailsData);
 
   useEffect(() => {
-    console.log(selectedMovieId);
     if (selectedMovieId) {
       dispatch(fetchCreditsRequest(selectedMovieId));
+      dispatch(fetchMovieDetailsRequest(selectedMovieId));
     }
   }, [dispatch, selectedMovieId]);
 
@@ -67,38 +86,69 @@ const MovieDetails = () => {
 
   return (
     <>
+      <StyledMoviePage>
+        <BigPoster>
+          <img src={
+            details.backdrop_path
+              ? `${baseURL}${bigPosterSize}${details.backdrop_path}`
+              : blankPoster}
+            alt="bigMoviePoster"
+          />
+          <MainInfo>
+            <Title>
+              {details.title ? details.title : null}
+            </Title>
+            <Raiting>
+              <Star>
+                <img src={star} alt="star" />
+              </Star>
+              <Value>
+                {details.vote_average
+                  ? details.vote_average.toFixed(1)
+                  : null}
+                <SmallerValue> /10</SmallerValue>
+              </Value>
+            </Raiting>
+            <Votes>
+              {details.vote_count
+                ? details.vote_count
+                : null}{" "}
+              votes
+            </Votes>
+          </MainInfo>
+        </BigPoster>
+      </StyledMoviePage>
+
       <Tile>
-        <Picture />
+        <Picture src={`${basicImageUrl}${details.poster_path}`} />
         <Information>
-          <Title>Mulan</Title>
-          <Year>2023</Year>
+          <Title>{details.title}</Title>
+          <Year>{details.release_date}</Year>
           <ProductionAndRelease>
             <ProductionBox>
               <Production>Production:</Production>
-              <ProductionData>China, United States of America</ProductionData>
+              {details.production_countries.map((production) => (
+                <ProductionData>{production.name}</ProductionData>
+              ))}
             </ProductionBox>
             <ReleaseBox>
               <Release>Release date:</Release>
-              <ReleaseData>24.10.2023</ReleaseData>
+              <ReleaseData>{details.release_date}</ReleaseData>
             </ReleaseBox>
           </ProductionAndRelease>
           <Rating>
             <RateIcon />
-            <Rate>9</Rate>
+            <Rate>{details.vote_average}</Rate>
             <TotalRate>/ 10</TotalRate>
-            <Votes>500 votes</Votes>
+            <Votes>{details.vote_count} votes</Votes>
           </Rating>
           <Genres>
-            <Genre>Horror</Genre>
-            <Genre>Horror</Genre>
-            <Genre>Horror</Genre>
+            <Genre></Genre>
+            {details.genres.map((genre) => (
+              <Genre>{genre.name}</Genre>
+            ))}
           </Genres>
-          <Description>
-            A young Chinese maiden disguises herself as a male warrior in order
-            to save her father. Disguises herself as a male warrior in order to
-            save her father. A young Chinese maiden disguises herself as a male
-            warrior in order to save her father.
-          </Description>
+          <Description>{details.overview}</Description>
         </Information>
       </Tile>
 

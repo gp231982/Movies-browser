@@ -12,3 +12,6 @@ export const generatePeopleApiUrl = (page, apiKey) => {
 
 export const creditsApiUrl = (movieId, apiKey) =>
   `https://api.themoviedb.org/3/movie/${movieId}/credits?language=en-US&api_key=${apiKey}`;
+
+export const movieDetailsApiUrl = (movieId, apiKey) =>
+  `https://api.themoviedb.org/3/movie/${movieId}?language=en-US&api_key=${apiKey}`;
