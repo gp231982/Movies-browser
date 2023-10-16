@@ -1,16 +1,16 @@
-import { styled, css } from "styled-components";
+import styled, { css } from "styled-components";
 
 export const StyledMoviePage = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    row-gap: 40px;
-    align-items: center;
-    background: ${({ theme }) => theme.color.whisper};
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+  align-items: center;
+  background: ${({ theme }) => theme.color.whisper};
 
-    @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
-        row-gap: 15px;
-    }
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+    row-gap: 15px;
+  }
 `;
 
 export const BigPoster = styled.div`
@@ -19,7 +19,21 @@ export const BigPoster = styled.div`
     align-items: center;
     justify-content: center;
     position: relative;
-    background: linear-gradient(
+    
+    img {
+    width: 70%;
+    height: auto;
+    object-fit: cover;
+    }
+
+    &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(
         189.44deg, 
         rgba(0, 0, 0, 0) 58.48%, 
         rgba(0, 0, 0, 0.106473) 63.17%, 
@@ -54,64 +68,74 @@ export const BigPoster = styled.div`
         rgba(0, 0, 0, 0.230315) 22.87%, 
         rgba(0, 0, 0, 0) 26.64%
     );
-
-  img {
-    width: 70%;
-    height: auto;
-    object-fit: cover;
   }
 `;
 
 export const MainInfo = styled.div`
+  position: absolute;
+  left: 15%;
+  bottom: 5%;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto auto;
+  row-gap: 8px;
+  column-gap: 8px;
 
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+    bottom: 3%;
+    left: 3%;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    row-gap: 0;
+  }
 `;
 
 export const Title = styled.div`
-    color: ${({ theme }) => theme.color.white};
-    font-size: 64px;
-    font-weight: 600;
-    text-align: left;
+  color: ${({ theme }) => theme.color.white};
+  font-size: 64px;
+  font-weight: 600;
+  text-align: left;
 
-    @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
-        font-size: 24px;
-    }
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+    font-size: 24px;
+  }
 `;
 
 export const Raiting = styled.div`
-    display: flex;
-    margin-top: 8px;
-    gap: 8px;
+  display: flex;
+  margin-top: 8px;
+  gap: 8px;
 `;
 
 export const Star = styled.div`
-    width: 40px;
-    height: 40px;
-    img {
-        width: 100%;
-    }
+  width: 40px;
+  height: 40px;
+  img {
+    width: 100%;
+  }
 
-    @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
     width: 16px;
     height: 15px;
   }
 `;
 
 export const Value = styled.div`
-    font-size: 30px;
-    font-weight: 500;
-    text-align: left;
-    align-items: baseline;
-    color: ${({ theme }) => theme.color.white};
+  font-size: 30px;
+  font-weight: 500;
+  text-align: left;
+  align-items: baseline;
+  color: ${({ theme }) => theme.color.white};
 
-    @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
-        font-size: 14px;
-    }
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+    font-size: 14px;
+  }
 `;
 
 export const SmallerValue = styled.span`
-    font-size: 16px;
-    font-weight: 400;
-    text-align: left;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: left;
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
     font-size: 10px;
