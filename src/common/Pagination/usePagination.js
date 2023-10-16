@@ -1,4 +1,4 @@
-import { useQueryParameter, useReplaceQueryParameter } from "./queryParameters";
+import { useQueryParameter, useReplaceQueryParameter } from "../../common/queryParameters";
 import paginationPage from "./paginationPage";
 import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";

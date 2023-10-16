@@ -16,7 +16,7 @@ const movieSlice = createSlice({
     },
     fetchMovieSuccess: (state, action) => {
       state.loading = false;
-      state.movies = action.payload;
+      state.movies.push(...action.payload);
     },
     fetchMovieFailure: (state, action) => {
       state.loading = false;
@@ -29,8 +29,22 @@ const movieSlice = createSlice({
     handleMovieClick: (state, action) => {
       state.movieId = action.payload;
     },
+    fetchAllMoviesSuccess: (state, action) => {
+      state.loading = false;
+      state.movies = action.payload;
+    },
   },
 });
+
+export const selectMoviesByQuery = (state, query) => {
+  const movies = selectMovie(state);
+  if (!query || query.trim() === "") {
+    return movies;
+  }
+  return selectMovie(state).filter((movie) =>
+    movie.title.toUpperCase().includes(query.trim().toUpperCase())
+  );
+};
 
 const selectMovieState = (state) => state.movie;
 export const selectMovie = (state) => selectMovieState(state).movies;
@@ -45,6 +59,7 @@ export const {
   fetchMovieFailure,
   fetchMovieGenre,
   handleMovieClick,
+  fetchAllMoviesSuccess,
 } = movieSlice.actions;
 
 export default movieSlice.reducer;

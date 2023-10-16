@@ -64,10 +64,12 @@ const MovieDetails = () => {
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
   const details = useSelector(selectDetailsData);
+  const details = useSelector(selectDetailsData);
 
   useEffect(() => {
     if (selectedMovieId) {
       dispatch(fetchCreditsRequest(selectedMovieId));
+      dispatch(fetchMovieDetailsRequest(selectedMovieId));
       dispatch(fetchMovieDetailsRequest(selectedMovieId));
     }
   }, [dispatch, selectedMovieId]);
@@ -121,7 +123,10 @@ const MovieDetails = () => {
 
       <Tile>
         <Picture src={`${basicImageUrl}${details.poster_path}`} />
+        <Picture src={`${basicImageUrl}${details.poster_path}`} />
         <Information>
+          <Title>{details.title}</Title>
+          <Year>{details.release_date}</Year>
           <Title>{details.title}</Title>
           <Year>{details.release_date}</Year>
           <ProductionAndRelease>
@@ -130,16 +135,22 @@ const MovieDetails = () => {
               {details.production_countries.map((production) => (
                 <ProductionData>{production.name}</ProductionData>
               ))}
+              {details.production_countries.map((production) => (
+                <ProductionData>{production.name}</ProductionData>
+              ))}
             </ProductionBox>
             <ReleaseBox>
               <Release>Release date:</Release>
+              <ReleaseData>{details.release_date}</ReleaseData>
               <ReleaseData>{details.release_date}</ReleaseData>
             </ReleaseBox>
           </ProductionAndRelease>
           <Rating>
             <RateIcon />
             <Rate>{details.vote_average}</Rate>
+            <Rate>{details.vote_average}</Rate>
             <TotalRate>/ 10</TotalRate>
+            <Votes>{details.vote_count} votes</Votes>
             <Votes>{details.vote_count} votes</Votes>
           </Rating>
           <Genres>
@@ -148,6 +159,7 @@ const MovieDetails = () => {
               <Genre>{genre.name}</Genre>
             ))}
           </Genres>
+          <Description>{details.overview}</Description>
           <Description>{details.overview}</Description>
         </Information>
       </Tile>

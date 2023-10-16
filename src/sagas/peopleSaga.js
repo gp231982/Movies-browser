@@ -20,7 +20,7 @@ function* fetchAllPeople() {
       allPeople.push(...response.data.results);
       yield put(fetchPeopleSuccess(response.data.results));
     }
-    yield put(fetchAllPeopleSuccess(allPeople));
+    yield put(fetchAllPeopleSuccess(allPeople));  
   } catch (error) {
     console.error(error);
     yield put(fetchPeopleFailure("Wystąpił błąd podczas pobierania danych."));
