@@ -64,7 +64,6 @@ const MovieDetails = () => {
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
   const details = useSelector(selectDetailsData);
-  const details = useSelector(selectDetailsData);
 
   useEffect(() => {
     if (selectedMovieId) {
