@@ -49,13 +49,9 @@ import {
   Value,
   SmallerValue,
 } from "../MovieList/MoviePage/styled";
-
 import blankPoster from "../MovieDetails/BlankMoviePoster.png";
-import star from "../MovieDetails/Star.png"
-
 const baseURL = "https://image.tmdb.org/t/p/";
 const bigPosterSize = "original";
-
 
 const MovieDetails = () => {
   const selectedMovieId = useSelector(selectMovieId);
@@ -68,7 +64,6 @@ const MovieDetails = () => {
   useEffect(() => {
     if (selectedMovieId) {
       dispatch(fetchCreditsRequest(selectedMovieId));
-      dispatch(fetchMovieDetailsRequest(selectedMovieId));
       dispatch(fetchMovieDetailsRequest(selectedMovieId));
     }
   }, [dispatch, selectedMovieId]);
@@ -89,32 +84,25 @@ const MovieDetails = () => {
     <>
       <StyledMoviePage>
         <BigPoster>
-          <img src={
-            details.backdrop_path
-              ? `${baseURL}${bigPosterSize}${details.backdrop_path}`
-              : blankPoster}
+          <img
+            src={
+              details.backdrop_path
+                ? `${baseURL}${bigPosterSize}${details.backdrop_path}`
+                : blankPoster
+            }
             alt="bigMoviePoster"
           />
           <MainInfo>
-            <Title>
-              {details.title ? details.title : null}
-            </Title>
+            <Title>{details.title ? details.title : null}</Title>
             <Raiting>
-              <Star>
-                <img src={star} alt="star" />
-              </Star>
+            <RateIcon />
               <Value>
-                {details.vote_average
-                  ? details.vote_average.toFixed(1)
-                  : null}
+                {details.vote_average ? details.vote_average.toFixed(1) : null}
                 <SmallerValue> /10</SmallerValue>
               </Value>
             </Raiting>
             <Votes>
-              {details.vote_count
-                ? details.vote_count
-                : null}{" "}
-              votes
+              {details.vote_count ? details.vote_count : null} votes
             </Votes>
           </MainInfo>
         </BigPoster>
@@ -122,10 +110,7 @@ const MovieDetails = () => {
 
       <Tile>
         <Picture src={`${basicImageUrl}${details.poster_path}`} />
-        <Picture src={`${basicImageUrl}${details.poster_path}`} />
         <Information>
-          <Title>{details.title}</Title>
-          <Year>{details.release_date}</Year>
           <Title>{details.title}</Title>
           <Year>{details.release_date}</Year>
           <ProductionAndRelease>
@@ -134,31 +119,23 @@ const MovieDetails = () => {
               {details.production_countries.map((production) => (
                 <ProductionData>{production.name}</ProductionData>
               ))}
-              {details.production_countries.map((production) => (
-                <ProductionData>{production.name}</ProductionData>
-              ))}
             </ProductionBox>
             <ReleaseBox>
               <Release>Release date:</Release>
-              <ReleaseData>{details.release_date}</ReleaseData>
               <ReleaseData>{details.release_date}</ReleaseData>
             </ReleaseBox>
           </ProductionAndRelease>
           <Rating>
             <RateIcon />
             <Rate>{details.vote_average}</Rate>
-            <Rate>{details.vote_average}</Rate>
             <TotalRate>/ 10</TotalRate>
-            <Votes>{details.vote_count} votes</Votes>
             <Votes>{details.vote_count} votes</Votes>
           </Rating>
           <Genres>
-            <Genre></Genre>
             {details.genres.map((genre) => (
               <Genre>{genre.name}</Genre>
             ))}
           </Genres>
-          <Description>{details.overview}</Description>
           <Description>{details.overview}</Description>
         </Information>
       </Tile>
