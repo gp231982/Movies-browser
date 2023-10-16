@@ -3,7 +3,6 @@ import { ThemeProvider } from "styled-components";
 import { theme } from "./theme";
 import { GlobalStyle } from "./GlobalStyle";
 import { Routes, Route, Navigate } from "react-router-dom";
-
 import { MovieList } from "../../features/MovieList";
 import MoviePeople from "../../features/MoviePeople";
 import Header from "../../common/Header";

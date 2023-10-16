@@ -17,7 +17,7 @@ import { Error } from "../../common/States/Error";
 import { useQueryParameter} from "../../common/queryParameters";
 import searchQueryParamName from "../../common/searchQueryParamName";
 
-const basicImageUrl = `https://image.tmdb.org/t/p/w500`;
+export const basicImageUrl = `https://image.tmdb.org/t/p/w500`;
 
 export const MovieList = () => {
   const dispatch = useDispatch();
