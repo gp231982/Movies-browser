@@ -21,7 +21,6 @@ export const basicImageUrl = `https://image.tmdb.org/t/p/w500`;
 
 export const MovieList = () => {
   const dispatch = useDispatch();
-  // const movies = useSelector(selectMovie);
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
   
