@@ -5,7 +5,6 @@ import {
   selectPeopleByQuery,
 } from "../../slices/peopleSlice";
 import {
-  selectData,
   selectLoading,
   selectError,
 } from "../../slices/peopleSlice";

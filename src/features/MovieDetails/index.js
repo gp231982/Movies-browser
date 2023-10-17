@@ -45,7 +45,6 @@ import {
   BigPoster,
   MainInfo,
   Raiting,
-  Star,
   Value,
   SmallerValue,
 } from "../MovieList/MoviePage/styled";

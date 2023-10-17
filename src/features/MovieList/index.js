@@ -47,6 +47,8 @@ export const MovieList = () => {
     dispatch(handleMovieClick(movieId));
   };
 
+
+
   return (
     <Content>
       <SectionTile>Popular movies</SectionTile>
