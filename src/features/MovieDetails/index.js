@@ -30,7 +30,6 @@ import { ReactComponent as RateIcon } from "../../common/MovieTile/rate.svg";
 import { fetchCreditsRequest } from "../../slices/creditsSlice";
 import { MoviePeopleWrapper, TilesWrapper } from "../MoviePeople/styled";
 import { selectMovieId } from "../../slices/movieSlice";
-import { Pagination } from "../../common/Pagination";
 import { SectionTile } from "../MovieList/styled";
 import PersonTile from "../../common/PersonTile";
 import { Loading } from "../../common/States/Loading";
@@ -45,7 +44,6 @@ import {
   BigPoster,
   MainInfo,
   Raiting,
-  Star,
   Value,
   SmallerValue,
 } from "../MovieList/MoviePage/styled";
@@ -170,7 +168,6 @@ const MovieDetails = () => {
           ))}
         </TilesWrapper>
       </MoviePeopleWrapper>
-      <Pagination />
     </>
   );
 };
