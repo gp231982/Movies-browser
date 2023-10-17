@@ -8,6 +8,15 @@ import {
 import { Genre } from "../../common/Genre";
 import { Genres } from "../../common/Genres";
 import {
+  StyledMoviePage,
+  BigPoster,
+  MainInfo,
+  BackgroundTitle,
+  BackgroundRating,
+  BackgroundStar,
+  BackgroundValue,
+  BackgorundSmallerValue,
+  BackgroundVotes,
   Tile,
   Picture,
   Information,
@@ -30,7 +39,6 @@ import { ReactComponent as RateIcon } from "../../common/MovieTile/rate.svg";
 import { fetchCreditsRequest } from "../../slices/creditsSlice";
 import { MoviePeopleWrapper, TilesWrapper } from "../MoviePeople/styled";
 import { selectMovieId } from "../../slices/movieSlice";
-import { Pagination } from "../../common/Pagination";
 import { SectionTile } from "../MovieList/styled";
 import PersonTile from "../../common/PersonTile";
 import { Loading } from "../../common/States/Loading";
@@ -40,16 +48,9 @@ import {
   selectDetailsData,
 } from "../../slices/movieDetailSlice";
 import { basicImageUrl } from "../MovieList";
-import {
-  StyledMoviePage,
-  BigPoster,
-  MainInfo,
-  Raiting,
-  Star,
-  Value,
-  SmallerValue,
-} from "../MovieList/MoviePage/styled";
 import blankPoster from "../MovieDetails/BlankMoviePoster.png";
+import star from "../MovieDetails/Star.png";
+
 const baseURL = "https://image.tmdb.org/t/p/";
 const bigPosterSize = "original";
 
@@ -93,84 +94,91 @@ const MovieDetails = () => {
             alt="bigMoviePoster"
           />
           <MainInfo>
-            <Title>{details.title ? details.title : null}</Title>
-            <Raiting>
-            <RateIcon />
-              <Value>
+            <BackgroundTitle>{details.title ? details.title : null}</BackgroundTitle>
+            <BackgroundRating>
+              <BackgroundStar><img src={star} alt="star" /></BackgroundStar>
+              <BackgroundValue>
                 {details.vote_average ? details.vote_average.toFixed(1) : null}
-                <SmallerValue> /10</SmallerValue>
-              </Value>
-            </Raiting>
-            <Votes>
-              {details.vote_count ? details.vote_count : null} votes
-            </Votes>
+                <BackgorundSmallerValue> /10</BackgorundSmallerValue>
+              </BackgroundValue>
+            </BackgroundRating>
+            <BackgroundVotes>
+              {details.vote_count ? details.vote_count : null}{" "}
+              votes
+            </BackgroundVotes>
           </MainInfo>
         </BigPoster>
-      </StyledMoviePage>
 
-      <Tile>
-        <Picture src={`${basicImageUrl}${details.poster_path}`} />
-        <Information>
-          <Title>{details.title}</Title>
-          <Year>{details.release_date}</Year>
-          <ProductionAndRelease>
-            <ProductionBox>
-              <Production>Production:</Production>
-              {details.production_countries.map((production) => (
-                <ProductionData>{production.name}</ProductionData>
+
+        <Tile>
+          <Picture src={`${basicImageUrl}${details.poster_path}`} />
+          <Information>
+            <Title>{details.title ? details.title : null}</Title>
+            <Year>
+              {details.release_date
+                ? details.release_date
+                : null}
+            </Year>
+            <ProductionAndRelease>
+              <ProductionBox>
+                <Production>Production:</Production>
+                {details.production_countries
+                  ? details.production_countries.map((production) => (
+                    <ProductionData>{production.name}</ProductionData>
+                  ))
+                  : null}
+              </ProductionBox>
+              <ReleaseBox>
+                <Release>Release date:</Release>
+                <ReleaseData>{details.release_date}</ReleaseData>
+              </ReleaseBox>
+            </ProductionAndRelease>
+            <Rating>
+              <RateIcon />
+              <Rate>{details.vote_average}</Rate>
+              <TotalRate>/ 10</TotalRate>
+              <Votes>{details.vote_count ? details.vote_count : null}{" "} votes</Votes>
+            </Rating>
+            <Genres>
+              {details.genres.map((genre) => (
+                <Genre>{genre.name}</Genre>
               ))}
-            </ProductionBox>
-            <ReleaseBox>
-              <Release>Release date:</Release>
-              <ReleaseData>{details.release_date}</ReleaseData>
-            </ReleaseBox>
-          </ProductionAndRelease>
-          <Rating>
-            <RateIcon />
-            <Rate>{details.vote_average}</Rate>
-            <TotalRate>/ 10</TotalRate>
-            <Votes>{details.vote_count} votes</Votes>
-          </Rating>
-          <Genres>
-            {details.genres.map((genre) => (
-              <Genre>{genre.name}</Genre>
-            ))}
-          </Genres>
-          <Description>{details.overview}</Description>
-        </Information>
-      </Tile>
+            </Genres>
+            <Description>{details.overview ? details.overview : null}</Description>
+          </Information>
+        </Tile>
 
-      <MoviePeopleWrapper>
-        <SectionTile>Cast</SectionTile>
-        <TilesWrapper>
-          {credits.cast.map((person) => (
-            <PersonTile
-              key={person.id}
-              posterImage={
-                person.profile_path &&
-                `https://image.tmdb.org/t/p/w500${person.profile_path}`
-              }
-              personName={person.name}
-              characterName={person.character}
-            />
-          ))}
-        </TilesWrapper>
-        <SectionTile>Crew</SectionTile>
-        <TilesWrapper>
-          {credits.crew.map((person) => (
-            <PersonTile
-              key={person.id}
-              posterImage={
-                person.profile_path &&
-                `https://image.tmdb.org/t/p/w500${person.profile_path}`
-              }
-              personName={person.name}
-              job={person.job}
-            />
-          ))}
-        </TilesWrapper>
-      </MoviePeopleWrapper>
-      <Pagination />
+        <MoviePeopleWrapper>
+          <SectionTile>Cast</SectionTile>
+          <TilesWrapper>
+            {credits.cast.map((person) => (
+              <PersonTile
+                key={person.id}
+                posterImage={
+                  person.profile_path &&
+                  `https://image.tmdb.org/t/p/w500${person.profile_path}`
+                }
+                personName={person.name}
+                characterName={person.character}
+              />
+            ))}
+          </TilesWrapper>
+          <SectionTile>Crew</SectionTile>
+          <TilesWrapper>
+            {credits.crew.map((person) => (
+              <PersonTile
+                key={person.id}
+                posterImage={
+                  person.profile_path &&
+                  `https://image.tmdb.org/t/p/w500${person.profile_path}`
+                }
+                personName={person.name}
+                job={person.job}
+              />
+            ))}
+          </TilesWrapper>
+        </MoviePeopleWrapper>
+      </StyledMoviePage>
     </>
   );
 };
