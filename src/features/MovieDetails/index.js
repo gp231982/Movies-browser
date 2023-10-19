@@ -48,15 +48,6 @@ import {
   selectDetailsData,
 } from "../../slices/movieDetailSlice";
 import { basicImageUrl } from "../MovieList";
-import {
-  StyledMoviePage,
-  BigPoster,
-  MainInfo,
-  Raiting,
-  Star,
-  Value,
-  SmallerValue,
-} from "../MovieList/MoviePage/styled";
 import blankPoster from "../MovieDetails/BlankMoviePoster.png";
 import star from "../MovieDetails/Star.png";
 
@@ -103,38 +94,36 @@ const MovieDetails = () => {
             alt="bigMoviePoster"
           />
           <MainInfo>
-            <BackgroundTitle>{details.title ? details.title : null}</BackgroundTitle>
+            <BackgroundTitle>
+              {details.title ? details.title : null}
+            </BackgroundTitle>
             <BackgroundRating>
-              <BackgroundStar><img src={star} alt="star" /></BackgroundStar>
+              <BackgroundStar>
+                <img src={star} alt="star" />
+              </BackgroundStar>
               <BackgroundValue>
                 {details.vote_average ? details.vote_average.toFixed(1) : null}
                 <BackgorundSmallerValue> /10</BackgorundSmallerValue>
               </BackgroundValue>
             </BackgroundRating>
             <BackgroundVotes>
-              {details.vote_count ? details.vote_count : null}{" "}
-              votes
+              {details.vote_count ? details.vote_count : null} votes
             </BackgroundVotes>
           </MainInfo>
         </BigPoster>
-
 
         <Tile>
           <Picture src={`${basicImageUrl}${details.poster_path}`} />
           <Information>
             <Title>{details.title ? details.title : null}</Title>
-            <Year>
-              {details.release_date
-                ? details.release_date
-                : null}
-            </Year>
+            <Year>{details.release_date ? details.release_date : null}</Year>
             <ProductionAndRelease>
               <ProductionBox>
                 <Production>Production:</Production>
                 {details.production_countries
                   ? details.production_countries.map((production) => (
-                    <ProductionData>{production.name}</ProductionData>
-                  ))
+                      <ProductionData>{production.name}</ProductionData>
+                    ))
                   : null}
               </ProductionBox>
               <ReleaseBox>
@@ -146,14 +135,18 @@ const MovieDetails = () => {
               <RateIcon />
               <Rate>{details.vote_average}</Rate>
               <TotalRate>/ 10</TotalRate>
-              <Votes>{details.vote_count ? details.vote_count : null}{" "} votes</Votes>
+              <Votes>
+                {details.vote_count ? details.vote_count : null} votes
+              </Votes>
             </Rating>
             <Genres>
               {details.genres.map((genre) => (
                 <Genre>{genre.name}</Genre>
               ))}
             </Genres>
-            <Description>{details.overview ? details.overview : null}</Description>
+            <Description>
+              {details.overview ? details.overview : null}
+            </Description>
           </Information>
         </Tile>
 
