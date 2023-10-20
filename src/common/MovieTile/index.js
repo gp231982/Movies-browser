@@ -8,10 +8,11 @@ import {
   Votes,
   Description,
   RateIconBox,
+  Main,
+  RateIcon,
 } from "./styled";
 import { Genres } from "../Genres";
 import { Genre } from "../Genre";
-import { ReactComponent as RateIcon } from "./rate.svg";
 import { useSelector } from "react-redux";
 import { selectGenre } from "../../slices/movieSlice";
 
@@ -28,25 +29,29 @@ export const MovieTile = ({
   return (
     <MovieWrapper key={id}>
       <Picture src={posterPath} />
-      <Description>
-        <Tile>{title}</Tile>
-        <Date>{releaseDate}</Date>
-        <Genres>
-          {Array.isArray(genre_ids)
-            ? genre_ids.map((genreId) => {
-                const genre = genres.find((g) => g.id === genreId);
-                return <Genre key={genreId}>{genre ? genre.name : null}</Genre>;
-              })
-            : null}
-        </Genres>
-      </Description>
-      <Rating>
-        <RateIconBox>
-          <RateIcon />
-        </RateIconBox>
-        <Rate>{voteAverage}</Rate>
-        <Votes>{voteCount} votes</Votes>
-      </Rating>
+      <Main>
+        <Description>
+          <Tile>{title}</Tile>
+          <Date>{releaseDate}</Date>
+          <Genres>
+            {Array.isArray(genre_ids)
+              ? genre_ids.map((genreId) => {
+                  const genre = genres.find((g) => g.id === genreId);
+                  return (
+                    <Genre key={genreId}>{genre ? genre.name : null}</Genre>
+                  );
+                })
+              : null}
+          </Genres>
+        </Description>
+        <Rating>
+          <RateIconBox>
+            <RateIcon />
+          </RateIconBox>
+          <Rate>{voteAverage}</Rate>
+          <Votes>{voteCount} votes</Votes>
+        </Rating>
+      </Main>
     </MovieWrapper>
   );
 };

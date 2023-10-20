@@ -22,7 +22,6 @@ function* fetchAllPeople() {
     }
     yield put(fetchAllPeopleSuccess(allPeople));  
   } catch (error) {
-    console.error(error);
     yield put(fetchPeopleFailure("Wystąpił błąd podczas pobierania danych."));
   }
 }

@@ -19,7 +19,7 @@ import {
   BackgroundVotes,
   Tile,
   Picture,
-  Information,
+  Main,
   Title,
   Year,
   ProductionAndRelease,
@@ -34,8 +34,8 @@ import {
   Rate,
   TotalRate,
   Votes,
+  RateIcon,
 } from "./styled";
-import { ReactComponent as RateIcon } from "../../common/MovieTile/rate.svg";
 import { fetchCreditsRequest } from "../../slices/creditsSlice";
 import { MoviePeopleWrapper, TilesWrapper } from "../MoviePeople/styled";
 import { selectMovieId } from "../../slices/movieSlice";
@@ -49,7 +49,6 @@ import {
 } from "../../slices/movieDetailSlice";
 import { basicImageUrl } from "../MovieList";
 import blankPoster from "../MovieDetails/BlankMoviePoster.png";
-import star from "../MovieDetails/Star.png";
 
 const baseURL = "https://image.tmdb.org/t/p/";
 const bigPosterSize = "original";
@@ -61,6 +60,7 @@ const MovieDetails = () => {
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
   const details = useSelector(selectDetailsData);
+  console.log(details);
 
   useEffect(() => {
     if (selectedMovieId) {
@@ -99,7 +99,7 @@ const MovieDetails = () => {
             </BackgroundTitle>
             <BackgroundRating>
               <BackgroundStar>
-                <img src={star} alt="star" />
+                <RateIcon />
               </BackgroundStar>
               <BackgroundValue>
                 {details.vote_average ? details.vote_average.toFixed(1) : null}
@@ -114,15 +114,17 @@ const MovieDetails = () => {
 
         <Tile>
           <Picture src={`${basicImageUrl}${details.poster_path}`} />
-          <Information>
+          <Main>
             <Title>{details.title ? details.title : null}</Title>
-            <Year>{details.release_date ? details.release_date : null}</Year>
+            <Year>
+              {details.release_date ? details.release_date.slice(0, 4) : null}
+            </Year>
             <ProductionAndRelease>
               <ProductionBox>
                 <Production>Production:</Production>
                 {details.production_countries
                   ? details.production_countries.map((production) => (
-                      <ProductionData>{production.name}</ProductionData>
+                      <ProductionData>{production.name}, </ProductionData>
                     ))
                   : null}
               </ProductionBox>
@@ -131,23 +133,25 @@ const MovieDetails = () => {
                 <ReleaseData>{details.release_date}</ReleaseData>
               </ReleaseBox>
             </ProductionAndRelease>
-            <Rating>
-              <RateIcon />
-              <Rate>{details.vote_average}</Rate>
-              <TotalRate>/ 10</TotalRate>
-              <Votes>
-                {details.vote_count ? details.vote_count : null} votes
-              </Votes>
-            </Rating>
             <Genres>
               {details.genres.map((genre) => (
                 <Genre>{genre.name}</Genre>
               ))}
             </Genres>
+            <Rating>
+              <RateIcon />
+              <Rate>
+                {details.vote_average ? details.vote_average.toFixed(1) : null}
+              </Rate>
+              <TotalRate>/ 10</TotalRate>
+              <Votes>
+                {details.vote_count ? details.vote_count : null} votes
+              </Votes>
+            </Rating>
             <Description>
               {details.overview ? details.overview : null}
             </Description>
-          </Information>
+          </Main>
         </Tile>
 
         <MoviePeopleWrapper>
