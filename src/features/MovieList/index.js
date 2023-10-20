@@ -1,39 +1,40 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Content, SectionTile, Wrapper } from "./styled";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   fetchMovieRequest,
   selectError,
   selectLoading,
-  selectMovie,
-  selectMoviesByQuery
+  selectMoviesByQuery,
 } from "../../slices/movieSlice";
 import { MovieTile } from "../../common/MovieTile";
 import { handleMovieClick } from "../../slices/movieSlice";
 import { Pagination } from "../../common/Pagination";
 import { Loading } from "../../common/States/Loading";
 import { Error } from "../../common/States/Error";
-import { useQueryParameter} from "../../common/queryParameters";
+import { useQueryParameter } from "../../common/queryParameters";
 import searchQueryParamName from "../../common/searchQueryParamName";
 
 export const basicImageUrl = `https://image.tmdb.org/t/p/w500`;
 
 export const MovieList = () => {
   const dispatch = useDispatch();
-  // const movies = useSelector(selectMovie);
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
-  
   const query = useQueryParameter(searchQueryParamName);
-
   const movies = useSelector((state) => selectMoviesByQuery(state, query));
-
-  console.log(movies.slice(0,5))
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const page = searchParams.get("page");
+  const itemsPerPage = 16;
+  const startIndex = (page - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const visibleMovies = movies.slice(startIndex, endIndex);
 
   useEffect(() => {
     dispatch(fetchMovieRequest());
-  }, [dispatch]);
+  }, [dispatch, page]);
 
   if (loading) {
     return <Loading />;
@@ -51,7 +52,7 @@ export const MovieList = () => {
     <Content>
       <SectionTile>Popular movies</SectionTile>
       <Wrapper>
-        {movies.slice(0,16).map((movie) => (
+        {visibleMovies.map((movie) => (
           <Link
             to={`/movie/${movie.id}`}
             key={movie.id}
