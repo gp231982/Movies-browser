@@ -28,7 +28,7 @@ export const MovieList = () => {
   const searchParams = new URLSearchParams(location.search);
   const page = searchParams.get("page");
   const itemsPerPage = 16;
-  const startIndex = (page - 1) * itemsPerPage;
+  const startIndex = (page - 1) * itemsPerPage; 
   const endIndex = startIndex + itemsPerPage;
   const visibleMovies = movies.slice(startIndex, endIndex);
 
