@@ -9,16 +9,6 @@ import {
 import axios from "axios";
 import { genresApiUrl, generateMoviesApiUrl, apiKey } from "../common/apiURLs";
 
-// function* fetchMovies() {
-//   try {
-//     yield delay(500);
-//     const response = yield call(axios.get, popularMovieApiUrl);
-//     yield put(fetchMovieSuccess(response.data.results));
-//   } catch (error) {
-//     yield put(fetchMovieFailure(error));
-//   }
-// }
-
 function* fetchAllMovies() {
   const allMovies = [];
   const totalPagesToFetch = 500;
@@ -33,7 +23,6 @@ function* fetchAllMovies() {
     }
     yield put(fetchAllMoviesSuccess(allMovies));
   } catch (error) {
-    console.error(error);
     yield put(fetchMovieFailure("Wystąpił błąd podczas pobierania danych."));
   }
 }
