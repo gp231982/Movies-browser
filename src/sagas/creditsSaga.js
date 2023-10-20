@@ -16,7 +16,6 @@ function* fetchCredits() {
       const apiUrl = creditsApiUrl(selectedMovieId, apiKey);
       const response = yield call(axios.get, apiUrl);
       yield put(fetchCreditsSuccess(response.data));
-      console.log(response.data);
     }
   } catch (error) {
     yield put(fetchCreditsFailure(error));
