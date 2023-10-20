@@ -34,7 +34,7 @@ const MoviePeople = ({ headerName }) => {
 
   useEffect(() => {
     dispatch(fetchPeopleRequest());
-  }, [dispatch]);
+  }, [dispatch, page]);
 
   if (loading) {
     return <Loading />;
