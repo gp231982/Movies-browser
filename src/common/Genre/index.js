@@ -8,4 +8,11 @@ export const Genre = styled.div`
   font-weight: 400;
   line-height: 1.4;
   text-align: left;
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 1.2;
+    padding: 4px 8px;
+  }
 `;
