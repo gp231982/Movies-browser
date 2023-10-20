@@ -15,7 +15,7 @@ export const theme = {
   },
 
   breakpoint: {
-    mobile: "768px",
+    mobile: "480px",
   },
 
   boxShadow: {
