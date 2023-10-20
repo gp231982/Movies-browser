@@ -1,12 +1,11 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Content, SectionTile, Wrapper } from "./styled";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   fetchMovieRequest,
   selectError,
   selectLoading,
-  selectMovie,
   selectMoviesByQuery,
 } from "../../slices/movieSlice";
 import { MovieTile } from "../../common/MovieTile";
@@ -25,10 +24,17 @@ export const MovieList = () => {
   const error = useSelector(selectError);
   const query = useQueryParameter(searchQueryParamName);
   const movies = useSelector((state) => selectMoviesByQuery(state, query));
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const page = searchParams.get("page");
+  const itemsPerPage = 16;
+  const startIndex = (page - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const visibleMovies = movies.slice(startIndex, endIndex);
 
   useEffect(() => {
     dispatch(fetchMovieRequest());
-  }, [dispatch]);
+  }, [dispatch, page]);
 
   if (loading) {
     return <Loading />;
@@ -46,7 +52,7 @@ export const MovieList = () => {
     <Content>
       <SectionTile>Popular movies</SectionTile>
       <Wrapper>
-        {movies.slice(0, 16).map((movie) => (
+        {visibleMovies.map((movie) => (
           <Link
             to={`/movie/${movie.id}`}
             key={movie.id}
