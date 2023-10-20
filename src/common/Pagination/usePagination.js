@@ -17,7 +17,6 @@ export const usePagination = () => {
     ? moviesData
     : peopleData;
   const allPages = data.total_pages > 500 ? 500 : data.total_pages;
-  console.log(data);
   const replaceQueryParameter = useReplaceQueryParameter();
   const [page, setPage] = useState(
     parseInt(useQueryParameter(paginationPage)) || 1
