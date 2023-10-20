@@ -7,14 +7,14 @@ import {
   selectError,
   selectLoading,
   selectMovie,
-  selectMoviesByQuery
+  selectMoviesByQuery,
 } from "../../slices/movieSlice";
 import { MovieTile } from "../../common/MovieTile";
 import { handleMovieClick } from "../../slices/movieSlice";
 import { Pagination } from "../../common/Pagination";
 import { Loading } from "../../common/States/Loading";
 import { Error } from "../../common/States/Error";
-import { useQueryParameter} from "../../common/queryParameters";
+import { useQueryParameter } from "../../common/queryParameters";
 import searchQueryParamName from "../../common/searchQueryParamName";
 
 export const basicImageUrl = `https://image.tmdb.org/t/p/w500`;
@@ -23,12 +23,8 @@ export const MovieList = () => {
   const dispatch = useDispatch();
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
-  
   const query = useQueryParameter(searchQueryParamName);
-
   const movies = useSelector((state) => selectMoviesByQuery(state, query));
-
-  console.log(movies.slice(0,5))
 
   useEffect(() => {
     dispatch(fetchMovieRequest());
@@ -50,7 +46,7 @@ export const MovieList = () => {
     <Content>
       <SectionTile>Popular movies</SectionTile>
       <Wrapper>
-        {movies.slice(0,16).map((movie) => (
+        {movies.slice(0, 16).map((movie) => (
           <Link
             to={`/movie/${movie.id}`}
             key={movie.id}
