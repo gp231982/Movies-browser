@@ -7,6 +7,7 @@ import { MovieList } from "../../features/MovieList";
 import MoviePeople from "../../features/MoviePeople";
 import Header from "../../common/Header";
 import MovieDetails from "../../features/MovieDetails";
+import { PersonDetails } from "../../features/PersonDetails";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <GlobalStyle />
         <Header />
         <Routes>
+          <Route path="/person/:id" element={<PersonDetails />} />
           <Route path="/movie/:id" element={<MovieDetails />} />
           <Route path="/movies" element={<MovieList />} />
           <Route path="/people" element={<MoviePeople />} />
