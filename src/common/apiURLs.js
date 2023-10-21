@@ -17,3 +17,9 @@ export const creditsApiUrl = (movieId, apiKey) =>
 
 export const movieDetailsApiUrl = (movieId, apiKey) =>
   `https://api.themoviedb.org/3/movie/${movieId}?language=en-US&api_key=${apiKey}`;
+
+export const personCreditsApiUrl = (movieId, apiKey) =>
+  `https://api.themoviedb.org/3/person/${movieId}/movie_credits?language=en-US&api_key=${apiKey}`;
+
+export const personDetailsApiUrl = (movieId, apiKey) =>
+  `https://api.themoviedb.org/3/person/${movieId}?language=en-US&api_key=${apiKey}`;
