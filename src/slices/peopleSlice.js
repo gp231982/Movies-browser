@@ -6,6 +6,7 @@ const peopleSlice = createSlice({
     data: [],
     loading: false,
     error: null,
+    peopleId: null,
   },
   reducers: {
     fetchPeopleRequest: (state) => {
@@ -24,6 +25,9 @@ const peopleSlice = createSlice({
       state.loading = false;
       state.data = action.payload;
     },
+    handlePeopleClick: (state, action) => {
+      state.peopleId = action.payload;
+    },
   },
 });
 
@@ -31,6 +35,7 @@ const selectPeopleState = (state) => state.people;
 export const selectData = (state) => selectPeopleState(state).data;
 export const selectLoading = (state) => selectPeopleState(state).loading;
 export const selectError = (state) => selectPeopleState(state).error;
+export const selectPersonId = (state) => selectPeopleState(state).peopleId;
 
 export const selectPeopleByQuery = (state, query) => {
   const people = selectData(state);
@@ -47,6 +52,7 @@ export const {
   fetchPeopleSuccess,
   fetchPeopleFailure,
   fetchAllPeopleSuccess,
+  handlePeopleClick,
 } = peopleSlice.actions;
 
 export default peopleSlice.reducer;
