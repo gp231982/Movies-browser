@@ -8,7 +8,7 @@ export const MoviesHeaderWrapper = styled.div`
   background-color: ${({ theme }) => theme.color.black};
   display: flex;
   justify-content: center;
-  @media (max-width: ${({ theme }) => theme.breakpoint.desktop}) ) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.desktop}) {
     margin-left: none;
   }
 `;
@@ -18,38 +18,36 @@ export const MoviesHeader = styled.header`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  @media (max-width: ${({ theme }) => theme.breakpoint.desktop})) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.desktop}) {
     justify-content: center;
   }
-  @media (max-width: ${({ theme }) => theme.breakpoint.tablet})) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
     align-content: space-evenly;
     justify-content: space-between;
     height: 142px;
     padding: 0 15px;
     width: 100%;
   }
-  @media (max-width: 480px) {
-    
 `;
 
 export const StyledCameraIcon = styled(CameraIcon)`
   width: 40px;
   height: 40px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) ) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     width: 30px;
     height: 30px;
     flex-shrink: 0;
     margin-right: 8px;
   }
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile2}) ) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile2}) {
     width: 22px;
     height: 22px;
     flex-shrink: 0;
     margin-right: 8px;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile1}) ) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile1}) {
     width: 17px;
     height: 17px;
     flex-shrink: 0;
@@ -69,12 +67,12 @@ export const PageLinkFrame = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-right: 80px;
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobileDual}) ) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileDual}) {
     width: 220px;
     margin-right: 8px;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) ) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     justify-content: flex-start;
     width: fit-content;
     margin-right: 0px;
@@ -95,20 +93,20 @@ export const StyledMainPage = styled.div`
   &:hover {
     color: ${({ theme }) => theme.color.transparentWhite};
   }
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) ) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 20px;
     font-style: normal;
     letter-spacing: -0.5px;
     width: auto;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile2}) ) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile2}) {
     font-size: 17px;
     font-style: normal;
     letter-spacing: -0.5px;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile1}) ) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile1}) {
     font-size: 13px;
     font-style: normal;
     letter-spacing: -0.5px;
@@ -119,7 +117,7 @@ export const MenuItemsWrapper = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-gap: 16px;
   align-items: center;
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) ) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     grid-gap: 10px;
   }
 `;
@@ -130,12 +128,12 @@ export const MenuItem = styled.div`
   display: flex;
   align-items: center;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobileDual}) ) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileDual}) {
     height: 34px;
     padding: 8px 12px;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) ) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     height: 34px;
     padding: 8px 12px;
   }
@@ -153,7 +151,7 @@ export const StyledMenuItemContent = styled.p`
   &:hover {
     color: ${({ theme }) => theme.color.transparentWhite};
   }
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) ) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 12px;
   }
 `;
@@ -169,14 +167,14 @@ export const SearchWrapper = styled.div`
   border: 1px solid ${({ theme }) => theme.color.mystic};
   color: ${({ theme }) => theme.color.waterloo};
   align-items: center;
-  @media (max-width: ${({ theme }) => theme.breakpoint.desktop}) ) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.desktop}) {
     margin-left: calc(100vw - 983px);
   }
-  @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) ) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
     width: 100%;
     margin: 0 auto;
   }
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) ) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     height: 44px;
     margin: 8px auto 8px;
   }
