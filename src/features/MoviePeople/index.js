@@ -9,7 +9,6 @@ import {
   handlePeopleClick,
 } from "../../slices/peopleSlice";
 import { MoviePeopleWrapper, TilesWrapper } from "./styled";
-import Header from "./Header";
 import PersonTile from "../../common/PersonTile";
 import { SectionTile } from "../MovieList/styled";
 import { Pagination } from "../../common/Pagination";
@@ -52,7 +51,6 @@ const MoviePeople = ({ headerName }) => {
     <>
       <MoviePeopleWrapper>
         <SectionTile>Popular people</SectionTile>
-        <Header content={headerName} />
         <TilesWrapper>
           {visiblePeople.slice(0, 24).map((person) => (
             <Link

@@ -37,7 +37,7 @@ export const TilesWrapper = styled.div`
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @media (max-width: 400px) {
+  ${'' /* @media (max-width: 400px) {
     grid-template-columns: repeat(1, 1fr);
-  }
+  } */}
 `;

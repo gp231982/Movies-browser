@@ -12,10 +12,16 @@ export const theme = {
     white: "#fff",
     royalBlue: "#3369D6",
     stormGray: "#74788B",
+    transparentWhite: "#ffffffcc",
   },
 
   breakpoint: {
-    mobile: "480px",
+    mobile1: "358px",
+    mobile2: "390px",
+    mobile3: "480px",
+    mobileDual: "600px",
+    tablet: "1000px",
+    desktop: "1360px",
   },
 
   boxShadow: {

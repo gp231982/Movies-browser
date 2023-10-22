@@ -80,6 +80,10 @@ const MovieDetails = () => {
     return;
   }
 
+  if (!details) {
+    return;
+  }
+
   return (
     <>
       <StyledMoviePage>
@@ -155,7 +159,7 @@ const MovieDetails = () => {
 
         <MoviePeopleWrapper>
           <SectionTile>Cast</SectionTile>
-          <TilesWrapper>
+          {/* <TilesWrapper>
             {credits.cast.map((person) => (
               <PersonTile
                 key={person.id}
@@ -167,9 +171,26 @@ const MovieDetails = () => {
                 characterName={person.character}
               />
             ))}
+          </TilesWrapper> */}
+          <TilesWrapper>
+            {credits.cast && Array.isArray(credits.cast) ? (
+              credits.cast.map((person) => (
+                <PersonTile
+                  key={person.id}
+                  posterImage={
+                    person.profile_path &&
+                    `https://image.tmdb.org/t/p/w500${person.profile_path}`
+                  }
+                  personName={person.name}
+                  characterName={person.character}
+                />
+              ))
+            ) : (
+              <div>No cast information available</div>
+            )}
           </TilesWrapper>
           <SectionTile>Crew</SectionTile>
-          <TilesWrapper>
+          {/* <TilesWrapper>
             {credits.crew.map((person) => (
               <PersonTile
                 key={person.id}
@@ -181,6 +202,24 @@ const MovieDetails = () => {
                 job={person.job}
               />
             ))}
+            
+          </TilesWrapper> */}
+          <TilesWrapper>
+            {credits.crew && Array.isArray(credits.crew) ? (
+              credits.crew.map((person) => (
+                <PersonTile
+                  key={person.id}
+                  posterImage={
+                    person.profile_path &&
+                    `https://image.tmdb.org/t/p/w500${person.profile_path}`
+                  }
+                  personName={person.name}
+                  job={person.job}
+                />
+              ))
+            ) : (
+              <div>No crew information available</div>
+            )}
           </TilesWrapper>
         </MoviePeopleWrapper>
       </StyledMoviePage>

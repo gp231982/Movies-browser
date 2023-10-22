@@ -1,5 +1,5 @@
-import { StyledNavLink } from "./styled";
-import { NavLink, useLocation } from "react-router-dom";
+import { StyledNavLink, HomeLink } from "./styled";
+import { useLocation } from "react-router-dom";
 import {
   MoviesHeaderWrapper,
   MenuItem,
@@ -34,12 +34,12 @@ const Header = () => {
   return (
     <MoviesHeaderWrapper>
       <MoviesHeader>
-        <NavLink to="/">
+        <HomeLink to="/">
           <PageLinkFrame>
             <StyledCameraIcon />
             <MainPage content="Movie Browser" />
           </PageLinkFrame>
-        </NavLink>
+        </HomeLink>
         <MenuItemsWrapper>
           <StyledNavLink to="/movies">
             <MenuItem>
