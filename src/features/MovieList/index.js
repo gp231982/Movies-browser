@@ -15,6 +15,7 @@ import { Loading } from "../../common/States/Loading";
 import { Error } from "../../common/States/Error";
 import { useQueryParameter } from "../../common/queryParameters";
 import searchQueryParamName from "../../common/searchQueryParamName";
+import { HomeLink } from "../../common/Header/styled";
 
 export const basicImageUrl = `https://image.tmdb.org/t/p/w500`;
 
@@ -53,7 +54,7 @@ export const MovieList = () => {
       <SectionTile>Popular movies</SectionTile>
       <Wrapper>
         {visibleMovies.map((movie) => (
-          <Link
+          <HomeLink
             to={`/movie/${movie.id}`}
             key={movie.id}
             onClick={() => handleMovieClickHandler(movie.id)}
@@ -66,7 +67,7 @@ export const MovieList = () => {
               voteCount={movie.vote_count}
               genre_ids={movie.genre_ids.slice(0, 2)}
             />
-          </Link>
+          </HomeLink>
         ))}
       </Wrapper>
       <Pagination />
