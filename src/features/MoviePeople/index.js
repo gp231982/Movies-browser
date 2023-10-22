@@ -44,11 +44,11 @@ const MoviePeople = ({ headerName }) => {
     return <Error />;
   }
 
-  return (
+  return (  
     <>
       <MoviePeopleWrapper>
         <SectionTile>Popular people</SectionTile>
-        <Header content={headerName} />
+        {/* <Header content={headerName} /> */}
         <TilesWrapper>
           {visiblePeople.slice(0, 24).map((person) => (
             <PersonTile

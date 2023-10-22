@@ -1,6 +1,5 @@
 import { Wrapper, Img, PersonName, CharacterName, Job } from "./styled";
 import BlankPicture from "../../common/PersonTile/BlankPicture.png";
-// import { StyledBlankPicture } from "./styled";
 
 const PersonTile = ({ posterImage, personName, characterName, job }) => {
   return (
