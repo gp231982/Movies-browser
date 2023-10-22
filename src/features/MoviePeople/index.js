@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   fetchPeopleRequest,
   selectPeopleByQuery,
+  selectLoading,
+  selectError,
+  handlePeopleClick,
 } from "../../slices/peopleSlice";
-import { selectLoading, selectError } from "../../slices/peopleSlice";
-
 import { MoviePeopleWrapper, TilesWrapper } from "./styled";
 import Header from "./Header";
 import PersonTile from "../../common/PersonTile";
@@ -14,7 +15,6 @@ import { SectionTile } from "../MovieList/styled";
 import { Pagination } from "../../common/Pagination";
 import { Loading } from "../../common/States/Loading";
 import { Error } from "../../common/States/Error";
-
 import { useQueryParameter } from "../../common/queryParameters";
 import searchQueryParamName from "../../common/searchQueryParamName";
 
@@ -34,7 +34,7 @@ const MoviePeople = ({ headerName }) => {
 
   useEffect(() => {
     dispatch(fetchPeopleRequest());
-  }, [dispatch]);
+  }, [dispatch, page]);
 
   if (loading) {
     return <Loading />;
@@ -44,6 +44,10 @@ const MoviePeople = ({ headerName }) => {
     return <Error />;
   }
 
+  const handlePeopleClickHandler = (personId) => {
+    dispatch(handlePeopleClick(personId));
+  };
+
   return (
     <>
       <MoviePeopleWrapper>
@@ -51,10 +55,15 @@ const MoviePeople = ({ headerName }) => {
         <Header content={headerName} />
         <TilesWrapper>
           {visiblePeople.slice(0, 24).map((person) => (
-            <PersonTile
-              posterImage={`https://www.themoviedb.org/t/p/w185_and_h278_bestv2${person.profile_path}`}
-              personName={person.name}
-            />
+            <Link
+              to={`/person/${person.id}`}
+              onClick={() => handlePeopleClickHandler(person.id)}
+            >
+              <PersonTile
+                posterImage={`https://www.themoviedb.org/t/p/w185_and_h278_bestv2${person.profile_path}`}
+                personName={person.name}
+              />
+            </Link>
           ))}
         </TilesWrapper>
       </MoviePeopleWrapper>

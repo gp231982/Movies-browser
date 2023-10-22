@@ -1,15 +1,15 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Content, SectionTile, Wrapper } from "./styled";
 import { Link, useLocation } from "react-router-dom";
+import { Content, SectionTile, Wrapper } from "./styled";
 import {
   fetchMovieRequest,
   selectError,
   selectLoading,
   selectMoviesByQuery,
+  handleMovieClick,
 } from "../../slices/movieSlice";
 import { MovieTile } from "../../common/MovieTile";
-import { handleMovieClick } from "../../slices/movieSlice";
 import { Pagination } from "../../common/Pagination";
 import { Loading } from "../../common/States/Loading";
 import { Error } from "../../common/States/Error";
