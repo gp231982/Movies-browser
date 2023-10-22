@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const movieDetailsSlice = createSlice({
   name: "details",
   initialState: {
-    detail: [],
+    details: [],
     loading: false,
     error: null,
   },
@@ -13,7 +13,7 @@ const movieDetailsSlice = createSlice({
       state.error = null;
     },
     fetchMovieDetailsSuccess: (state, action) => {
-      state.loading = false;
+      state.loading = false;  
       state.detail = action.payload;
     },
     fetchMovieDetailsFailure: (state, action) => {

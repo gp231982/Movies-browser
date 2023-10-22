@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Content = styled.div`
   margin-top: 150px 276px;
@@ -38,6 +39,9 @@ export const Wrapper = styled.div`
     flex-direction: column;
     align-items: center;
     gap: 16px;
-    
   }
+`;
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
 `;

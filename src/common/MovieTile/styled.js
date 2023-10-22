@@ -19,7 +19,7 @@ export const MovieWrapper = styled.button`
     transform: scale(1.05);
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     display: grid;
     grid-template-columns: auto 1fr;
     width: 288px;
@@ -36,7 +36,7 @@ export const Picture = styled.img`
   justify-self: center;
   border-radius: 5px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     max-width: 114px;
     max-height: 169px;
   }
@@ -45,7 +45,7 @@ export const Picture = styled.img`
 export const Description = styled.div`
   height: 134px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     max-height: 134;
   }
 `;
@@ -62,7 +62,7 @@ export const Tile = styled.h2`
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 16px;
     font-weight: 500;
     line-height: 1.3;
@@ -78,7 +78,7 @@ export const Date = styled.p`
   margin: 8px 0 0 0;
   color: ${({ theme }) => theme.color.waterloo};
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 13px;
     font-weight: 400;
     line-height: 1.3;
@@ -94,7 +94,7 @@ export const Rating = styled.div`
   height: 24px;
   margin: 16px 0 0 0;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     margin-top: 0px;
     gap: 8px;
     align-items: flex-start;
@@ -102,7 +102,7 @@ export const Rating = styled.div`
 `;
 
 export const RateIcon = styled(RateIc)`
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     width: 16px;
     height: 16px;
   }
@@ -114,7 +114,7 @@ export const Rate = styled.p`
   line-height: 1.5;
   margin: 0;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 13px;
     font-weight: 600;
     line-height: 1.3;
@@ -128,7 +128,7 @@ export const Votes = styled.p`
   line-height: 1.5;
   margin: 0;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 13px;
     font-weight: 400;
     line-height: 1.3;

@@ -1,5 +1,6 @@
 import { Wrapper, Img, PersonName, CharacterName, Job } from "./styled";
 import BlankPicture from "../../common/PersonTile/BlankPicture.png";
+// import { StyledBlankPicture } from "./styled";
 
 const PersonTile = ({ posterImage, personName, characterName, job }) => {
   return (
@@ -8,6 +9,7 @@ const PersonTile = ({ posterImage, personName, characterName, job }) => {
         <Img src={posterImage} alt="picture" />
       ) : (
         <Img src={BlankPicture} alt="no picture" />
+        
       )}
       <PersonName>{personName}</PersonName>
       {characterName && <CharacterName>{characterName}</CharacterName>}

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Content, SectionTile, Wrapper } from "./styled";
-import { Link, useLocation } from "react-router-dom";
+import { Content, SectionTile, StyledLink, Wrapper } from "./styled";
+import { useLocation } from "react-router-dom";
 import {
   fetchMovieRequest,
   selectError,
@@ -28,7 +28,7 @@ export const MovieList = () => {
   const searchParams = new URLSearchParams(location.search);
   const page = searchParams.get("page");
   const itemsPerPage = 16;
-  const startIndex = (page - 1) * itemsPerPage; 
+  const startIndex = (page - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const visibleMovies = movies.slice(startIndex, endIndex);
 
@@ -53,7 +53,7 @@ export const MovieList = () => {
       <SectionTile>Popular movies</SectionTile>
       <Wrapper>
         {visibleMovies.map((movie) => (
-          <Link
+          <StyledLink
             to={`/movie/${movie.id}`}
             key={movie.id}
             onClick={() => handleMovieClickHandler(movie.id)}
@@ -66,7 +66,7 @@ export const MovieList = () => {
               voteCount={movie.vote_count}
               genre_ids={movie.genre_ids.slice(0, 2)}
             />
-          </Link>
+          </StyledLink>
         ))}
       </Wrapper>
       <Pagination />
