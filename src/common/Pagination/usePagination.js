@@ -16,7 +16,7 @@ export const usePagination = () => {
   const data = location.pathname.startsWith("/movies")
     ? moviesData
     : peopleData;
-  const allPages = data.all_pages > 500 ? 500 : data.all_pages;
+  const allPages = data.total_pages > 500 ? 500 : data.total_pages;
   const replaceQueryParameter = useReplaceQueryParameter();
   const [page, setPage] = useState(
     parseInt(useQueryParameter(paginationPage)) || 1

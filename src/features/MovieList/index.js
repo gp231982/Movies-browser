@@ -1,15 +1,15 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Content, SectionTile, StyledLink, Wrapper } from "./styled";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { Content, SectionTile, Wrapper } from "./styled";
 import {
   fetchMovieRequest,
   selectError,
   selectLoading,
   selectMoviesByQuery,
+  handleMovieClick,
 } from "../../slices/movieSlice";
 import { MovieTile } from "../../common/MovieTile";
-import { handleMovieClick } from "../../slices/movieSlice";
 import { Pagination } from "../../common/Pagination";
 import { Loading } from "../../common/States/Loading";
 import { Error } from "../../common/States/Error";
@@ -53,7 +53,7 @@ export const MovieList = () => {
       <SectionTile>Popular movies</SectionTile>
       <Wrapper>
         {visibleMovies.map((movie) => (
-          <StyledLink
+          <Link
             to={`/movie/${movie.id}`}
             key={movie.id}
             onClick={() => handleMovieClickHandler(movie.id)}
@@ -66,7 +66,7 @@ export const MovieList = () => {
               voteCount={movie.vote_count}
               genre_ids={movie.genre_ids.slice(0, 2)}
             />
-          </StyledLink>
+          </Link>
         ))}
       </Wrapper>
       <Pagination />

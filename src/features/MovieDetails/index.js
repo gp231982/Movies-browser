@@ -1,10 +1,5 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  selectData,
-  selectLoading,
-  selectError,
-} from "../../slices/creditsSlice";
 import { Genre } from "../../common/Genre";
 import { Genres } from "../../common/Genres";
 import {
@@ -36,7 +31,12 @@ import {
   Votes,
   RateIcon,
 } from "./styled";
-import { fetchCreditsRequest } from "../../slices/creditsSlice";
+import {
+  fetchCreditsRequest,
+  selectData,
+  selectLoading,
+  selectError,
+} from "../../slices/creditsSlice";
 import { MoviePeopleWrapper, TilesWrapper } from "../MoviePeople/styled";
 import { selectMovieId } from "../../slices/movieSlice";
 import { SectionTile } from "../MovieList/styled";
@@ -60,7 +60,6 @@ const MovieDetails = () => {
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
   const details = useSelector(selectDetailsData);
-  console.log(details);
 
   useEffect(() => {
     if (selectedMovieId) {
