@@ -1,8 +1,5 @@
 import React from "react";
-import { ThemeProvider } from "styled-components";
-import { theme } from "./theme";
-import { GlobalStyle } from "./GlobalStyle";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, HashRouter } from "react-router-dom";
 import { MovieList } from "../../features/MovieList";
 import MoviePeople from "../../features/MoviePeople";
 import Header from "../../common/Header";
@@ -11,19 +8,16 @@ import { PersonDetails } from "../../features/PersonDetails";
 
 function App() {
   return (
-    <div>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <Header />
-        <Routes>
-          <Route path="/person/:id" element={<PersonDetails />} />
-          <Route path="/movie/:id" element={<MovieDetails />} />
-          <Route path="/movies" element={<MovieList />} />
-          <Route path="/people" element={<MoviePeople />} />
-          <Route path="/" element={<Navigate to="/movies" />} />
-        </Routes>
-      </ThemeProvider>
-    </div>
+    <HashRouter>
+      <Header />
+      <Routes>
+        <Route path="/person/:id" element={<PersonDetails />} />
+        <Route path="/movie/:id" element={<MovieDetails />} />
+        <Route path="/movies" element={<MovieList />} />
+        <Route path="/people" element={<MoviePeople />} />
+        <Route path="/" element={<Navigate to="/movies" />} />
+      </Routes>
+    </HashRouter>
   );
 }
 

@@ -5,6 +5,9 @@ import App from "./core/App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import store from "./store";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./core/App/theme";
+import { GlobalStyle } from "./core/App/GlobalStyle";
 
 //nowy komentarz testowy
 
@@ -12,9 +15,10 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Router>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
         <App />
-      </Router>
+      </ThemeProvider>
     </Provider>
   </React.StrictMode>
 );

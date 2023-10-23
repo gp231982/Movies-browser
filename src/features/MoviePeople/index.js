@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import {
   fetchPeopleRequest,
   selectPeopleByQuery,
@@ -16,8 +16,9 @@ import { Loading } from "../../common/States/Loading";
 import { Error } from "../../common/States/Error";
 import { useQueryParameter } from "../../common/queryParameters";
 import searchQueryParamName from "../../common/searchQueryParamName";
+import { HomeLink } from "../../common/Header/styled";
 
-const MoviePeople = ({ headerName }) => {
+const MoviePeople = () => {
   const dispatch = useDispatch();
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
@@ -53,15 +54,17 @@ const MoviePeople = ({ headerName }) => {
         <SectionTile>Popular people</SectionTile>
         <TilesWrapper>
           {visiblePeople.slice(0, 24).map((person) => (
-            <Link
+            <HomeLink
               to={`/person/${person.id}`}
               onClick={() => handlePeopleClickHandler(person.id)}
+              key={person.id}
             >
               <PersonTile
+                key={person.id}
                 posterImage={`https://www.themoviedb.org/t/p/w185_and_h278_bestv2${person.profile_path}`}
                 personName={person.name}
               />
-            </Link>
+            </HomeLink>
           ))}
         </TilesWrapper>
       </MoviePeopleWrapper>
