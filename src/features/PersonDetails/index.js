@@ -30,23 +30,33 @@ import { Loading } from "../../common/States/Loading";
 import { Error } from "../../common/States/Error";
 import { selectPersonId } from "../../slices/peopleSlice";
 import { basicImageUrl } from "../MovieList";
+import { handlePeopleClick } from "../../slices/peopleSlice";
 
 export const PersonDetails = () => {
-  const selectedPersonId = useSelector(selectPersonId);
   const dispatch = useDispatch();
+  const selectedPersonId = useSelector(selectPersonId);
   const credits = useSelector(selectData);
   const loading = useSelector(selectPersonLoading);
   const error = useSelector(selectPersonError);
   const details = useSelector(selectPersonDetails);
-  console.log(credits);
-  console.log(details);
 
   useEffect(() => {
     if (selectedPersonId) {
       dispatch(fetchPersonCreditsRequest(selectedPersonId));
       dispatch(fetchPersonDetailsRequest(selectedPersonId));
+      localStorage.setItem(
+        "selectedPersonId",
+        JSON.stringify(selectedPersonId)
+      );
     }
   }, [dispatch, selectedPersonId]);
+
+  useEffect(() => {
+    const storedPersonId = localStorage.getItem("selectedPersonId");
+    if (storedPersonId) {
+      dispatch(handlePeopleClick(JSON.parse(storedPersonId)));
+    }
+  }, [dispatch]);
 
   if (loading) {
     return <Loading />;
@@ -79,7 +89,7 @@ export const PersonDetails = () => {
         <CastPerson>
           <Title>Movies - cast</Title>
           <MovieList>
-            {credits.cast.map((personCast) => (
+            {/* {credits.cast.map((personCast) => (
               <MovieTile
                 title={personCast.title}
                 posterPath={`${basicImageUrl}${personCast.poster_path}`}
@@ -96,13 +106,13 @@ export const PersonDetails = () => {
                   personCast.genre_ids ? personCast.genre_ids.slice(0, 2) : null
                 }
               />
-            ))}
+            ))} */}
           </MovieList>
         </CastPerson>
         <CrewPerson>
           <Title>Movies - crew</Title>
           <MovieList>
-            {credits.crew.map((personCrew) => (
+            {/* {credits.crew.map((personCrew) => (
               <MovieTile
                 title={personCrew.title}
                 posterPath={`${basicImageUrl}${personCrew.poster_path}`}
@@ -119,7 +129,7 @@ export const PersonDetails = () => {
                   personCrew.genre_ids ? personCrew.genre_ids.slice(0, 2) : null
                 }
               />
-            ))}
+            ))} */}
           </MovieList>
         </CrewPerson>
       </StyledPersonDetails>
