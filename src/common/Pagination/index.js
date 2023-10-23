@@ -12,14 +12,14 @@ import { usePagination } from "./usePagination";
 export const Pagination = () => {
   const {
     page,
-    allPages,
+    totalPages,
     setNextPage,
     setPreviousPage,
     setFirstPage,
     setLastPage,
   } = usePagination();
   const firstPage = page === 1;
-  const lastPage = page === allPages;
+  const lastPage = page === totalPages;
 
   return (
     <StyledPagination>
@@ -36,7 +36,7 @@ export const Pagination = () => {
         Page
         <PageNumber>{page}</PageNumber>
         of 
-        <PageNumber>{allPages}</PageNumber>
+        <PageNumber>{totalPages}</PageNumber>
       </PagesCounter>
       <Button onClick={setNextPage} disabled={lastPage}>
         <ButtonContent>Next</ButtonContent>

@@ -10,47 +10,45 @@ import { selectData } from "../../slices/peopleSlice";
 import { useEffect, useState } from "react";
 
 export const usePagination = () => {
-  const location = useLocation();
-  const moviesData = useSelector(selectMovie);
-  const peopleData = useSelector(selectData);
-  const data = location.pathname.startsWith("/movies")
-    ? moviesData
-    : peopleData;
-  const allPages = data.total_pages > 500 ? 500 : data.total_pages;
-  const replaceQueryParameter = useReplaceQueryParameter();
-  const [page, setPage] = useState(
-    parseInt(useQueryParameter(paginationPage)) || 1
-  );
+    const location = useLocation();
+    const moviesData = useSelector(selectMovie);
+    const peopleData = useSelector(selectData);
+    const data = location.pathname.startsWith("/movies")
+        ? moviesData
+        : peopleData;
+    const totalPages = data.total_pages > 500 ? 500 : data.total_pages;
+    const replaceQueryParameter = useReplaceQueryParameter();
+    const [page, setPage] = useState(parseInt(useQueryParameter(paginationPage)) || 1);
 
-  useEffect(() => {
-    replaceQueryParameter({
-      key: paginationPage,
-      value: page,
-    });
-  }, [page]);
+    useEffect(() => {
+        replaceQueryParameter({
+            key: paginationPage,
+            value: page,
+        });
+    }, [page]);
 
-  const setNextPage = () => {
-    setPage((page) => (page += 1));
-  };
+    const setNextPage = () => {
+        setPage((page) => (page += 1));
+    };
 
-  const setPreviousPage = () => {
-    setPage((page) => (page -= 1));
-  };
+    const setPreviousPage = () => {
+        setPage((page) => (page -= 1));
+    };
 
-  const setFirstPage = () => {
-    setPage(1);
-  };
+    const setFirstPage = () => {
+        setPage(1);
+    };
 
-  const setLastPage = () => {
-    setPage(allPages);
-  };
+    const setLastPage = () => {
+        setPage(totalPages);
+    };
 
-  return {
-    page,
-    allPages,
-    setNextPage,
-    setPreviousPage,
-    setFirstPage,
-    setLastPage,
-  };
+    return {
+        page,
+        totalPages,
+        setNextPage,
+        setPreviousPage,
+        setFirstPage,
+        setLastPage,
+    };
 };
