@@ -62,10 +62,12 @@ export const MovieList = () => {
             <MovieTile
               title={movie.title}
               posterPath={`${basicImageUrl}${movie.poster_path}`}
-              releaseDate={movie.release_date.slice(0, 4)}
-              voteAverage={movie.vote_average}
-              voteCount={movie.vote_count}
-              genre_ids={movie.genre_ids.slice(0, 2)}
+              releaseDate={
+                movie.release_date ? movie.release_date.slice(0, 4) : null
+              }
+              voteAverage={movie.vote_average ? movie.vote_average : null}
+              voteCount={movie.vote_count ? movie.vote_count : null}
+              genre_ids={movie.genre_ids ? movie.genre_ids.slice(0, 2) : null}
             />
           </HomeLink>
         ))}
