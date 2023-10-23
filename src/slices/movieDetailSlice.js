@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const movieDetailsSlice = createSlice({
   name: "details",
   initialState: {
-    details: [],
+    detail: null,
     loading: false,
     error: null,
   },
