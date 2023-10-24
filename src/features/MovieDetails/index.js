@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Genre } from "../../common/Genre";
 import { Genres } from "../../common/Genres";
-
 import {
   StyledMoviePage,
   BigPoster,
@@ -50,6 +49,8 @@ import {
 } from "../../slices/movieDetailSlice";
 import { basicImageUrl } from "../MovieList";
 import blankPoster from "../MovieDetails/BlankMoviePoster.png";
+import { handlePeopleClick } from "../../slices/peopleSlice";
+import { HomeLink } from "../../common/Header/styled";
 
 const baseURL = "https://image.tmdb.org/t/p/";
 const bigPosterSize = "original";
@@ -76,6 +77,10 @@ const MovieDetails = () => {
       dispatch(handleMovieClick(JSON.parse(storedMovieId)));
     }
   });
+
+  const handlePeopleClickHandler = (movieId) => {
+    dispatch(handlePeopleClick(movieId));
+  };
 
   if (loading) {
     return <Loading />;
@@ -125,7 +130,10 @@ const MovieDetails = () => {
         </BigPoster>
 
         <Tile>
-          <Picture src={`${basicImageUrl}${details.poster_path}`} />
+          <Picture
+            src={`${basicImageUrl}${details.poster_path}`}
+            alt="picture"
+          />
           <Main>
             <Title>{details.title ? details.title : null}</Title>
             <Year>
@@ -167,37 +175,53 @@ const MovieDetails = () => {
         </Tile>
 
         <MoviePeopleWrapper>
-          <SectionTile>Cast</SectionTile>
+          <SectionTile>
+            Cast {credits.cast ? `(${credits.cast.length})` : null}
+          </SectionTile>
           <TilesWrapper>
             {credits.cast && Array.isArray(credits.cast) ? (
               credits.cast.map((person) => (
-                <PersonTile
+                <HomeLink
+                  onClick={() => handlePeopleClickHandler(person.id)}
+                  to={`/person/${person.id}`}
                   key={person.id}
-                  posterImage={
-                    person.profile_path &&
-                    `https://image.tmdb.org/t/p/w500${person.profile_path}`
-                  }
-                  personName={person.name}
-                  characterName={person.character}
-                />
+                >
+                  <PersonTile
+                    key={person.id}
+                    posterImage={
+                      person.profile_path &&
+                      `https://image.tmdb.org/t/p/w500${person.profile_path}`
+                    }
+                    personName={person.name}
+                    characterName={person.character}
+                  />
+                </HomeLink>
               ))
             ) : (
               <div>No cast information available</div>
             )}
           </TilesWrapper>
-          <SectionTile>Crew</SectionTile>
+          <SectionTile>
+            Crew {credits.crew ? `(${credits.crew.length})` : null}
+          </SectionTile>
           <TilesWrapper>
             {credits.crew && Array.isArray(credits.crew) ? (
               credits.crew.map((person) => (
-                <PersonTile
+                <HomeLink
+                  onClick={() => handlePeopleClickHandler(person.id)}
+                  to={`/person/${person.id}`}
                   key={person.id}
-                  posterImage={
-                    person.profile_path &&
-                    `https://image.tmdb.org/t/p/w500${person.profile_path}`
-                  }
-                  personName={person.name}
-                  job={person.job}
-                />
+                >
+                  <PersonTile
+                    key={person.id}
+                    posterImage={
+                      person.profile_path &&
+                      `https://image.tmdb.org/t/p/w500${person.profile_path}`
+                    }
+                    personName={person.name}
+                    job={person.job}
+                  />
+                </HomeLink>
               ))
             ) : (
               <div>No crew information available</div>
