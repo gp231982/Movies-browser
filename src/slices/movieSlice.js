@@ -36,23 +36,13 @@ const movieSlice = createSlice({
   },
 });
 
-// export const selectMoviesByQuery = (state, query) => {
-//   const movies = selectMovie(state);
-//   if (!query || query.trim() === "") {
-//     return movies;
-//   }
-//   return selectMovie(state).filter((movie) =>
-//     movie.title.toUpperCase().includes(query.trim().toUpperCase())
-//   );
-// };
-
 export const selectMoviesByQuery = (state, query) => {
   const movies = selectMovie(state);
   const seen = {};
   if (!query || query.trim() === "") {
     return movies;
   }
-  return selectMovie(state)
+  return movies
     .filter((movie) => {
       if (!seen[movie.title]) {
         seen[movie.title] = true;
