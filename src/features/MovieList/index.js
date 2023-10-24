@@ -16,6 +16,7 @@ import { Error } from "../../common/States/Error";
 import { useQueryParameter } from "../../common/queryParameters";
 import searchQueryParamName from "../../common/searchQueryParamName";
 import { HomeLink } from "../../common/Header/styled";
+import blankPoster from "../MovieDetails/BlankMoviePoster.png";
 
 export const basicImageUrl = `https://image.tmdb.org/t/p/w500`;
 
@@ -61,7 +62,11 @@ export const MovieList = () => {
           >
             <MovieTile
               title={movie.title}
-              posterPath={`${basicImageUrl}${movie.poster_path}`}
+              posterPath={
+                movie.poster_path
+                  ? `${basicImageUrl}${movie.poster_path}`
+                  : blankPoster
+              }
               releaseDate={
                 movie.release_date ? movie.release_date.slice(0, 4) : null
               }
