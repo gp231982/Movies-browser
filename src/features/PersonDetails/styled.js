@@ -106,18 +106,6 @@ export const Biography = styled.p`
   }
 `;
 
-export const CastPerson = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 0px 40px 0px 40px;
-`;
-
-export const CrewPerson = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 0px 40px 0px 40px;
-`;
-
 export const Title = styled.h1`
   font-size: 36px;
   font-weight: 600;
@@ -130,15 +118,3 @@ export const Title = styled.h1`
   }
 `;
 
-export const MovieList = styled.ul`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
-    width: 100%;
-    gap: 16px;
-    justify-content: center;
-    align-items: center;
-  }
-`;
