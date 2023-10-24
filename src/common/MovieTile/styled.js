@@ -32,7 +32,7 @@ export const MovieWrapper = styled.button`
 
 export const Picture = styled.img`
   max-width: 292px;
-  height: auto;
+  height: 434px;
   justify-self: center;
   border-radius: 5px;
 
