@@ -36,14 +36,33 @@ const movieSlice = createSlice({
   },
 });
 
+// export const selectMoviesByQuery = (state, query) => {
+//   const movies = selectMovie(state);
+//   if (!query || query.trim() === "") {
+//     return movies;
+//   }
+//   return selectMovie(state).filter((movie) =>
+//     movie.title.toUpperCase().includes(query.trim().toUpperCase())
+//   );
+// };
+
 export const selectMoviesByQuery = (state, query) => {
   const movies = selectMovie(state);
+  const seen = {};
   if (!query || query.trim() === "") {
     return movies;
   }
-  return selectMovie(state).filter((movie) =>
-    movie.title.toUpperCase().includes(query.trim().toUpperCase())
-  );
+  return selectMovie(state)
+    .filter((movie) => {
+      if (!seen[movie.title]) {
+        seen[movie.title] = true;
+        return true;
+      }
+      return false;
+    })
+    .filter((movie) => {
+      return movie.title.toUpperCase().includes(query.trim().toUpperCase());
+    });
 };
 
 const selectMovieState = (state) => state.movie;
