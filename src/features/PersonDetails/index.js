@@ -1,30 +1,30 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  Biography,
-  CastPerson,
-  CrewPerson,
-  Main,
-  MovieList,
-  PersonBirthData,
-  PersonBirthDetails,
-  PersonInfo,
-  PersonTile,
-  PersonTitle,
-  Picture,
-  StyledPersonDetails,
-  Title,
+    Biography,
+    CastPerson,
+    CrewPerson,
+    Main,
+    MovieList,
+    PersonBirthData,
+    PersonBirthDetails,
+    PersonInfo,
+    PersonTile,
+    PersonTitle,
+    Picture,
+    StyledPersonDetails,
+    Title,
 } from "./styled";
 import { MovieTile } from "../../common/MovieTile";
 import {
-  fetchPersonDetailsRequest,
-  selectPersonDetails,
-  selectPersonError,
-  selectPersonLoading,
+    fetchPersonDetailsRequest,
+    selectPersonDetails,
+    selectPersonError,
+    selectPersonLoading,
 } from "../../slices/personDetailSlice";
 import {
-  fetchPersonCreditsRequest,
-  selectData,
+    fetchPersonCreditsRequest,
+    selectData,
 } from "../../slices/personCreditsSlice";
 import { Loading } from "../../common/States/Loading";
 import { Error } from "../../common/States/Error";
@@ -33,63 +33,65 @@ import { basicImageUrl } from "../MovieList";
 import { handlePeopleClick } from "../../slices/peopleSlice";
 
 export const PersonDetails = () => {
-  const dispatch = useDispatch();
-  const selectedPersonId = useSelector(selectPersonId);
-  const credits = useSelector(selectData);
-  const loading = useSelector(selectPersonLoading);
-  const error = useSelector(selectPersonError);
-  const details = useSelector(selectPersonDetails);
+    const dispatch = useDispatch();
+    const selectedPersonId = useSelector(selectPersonId);
+    const credits = useSelector(selectData);
+    const loading = useSelector(selectPersonLoading);
+    const error = useSelector(selectPersonError);
+    const details = useSelector(selectPersonDetails);
 
-  useEffect(() => {
-    if (selectedPersonId) {
-      dispatch(fetchPersonCreditsRequest(selectedPersonId));
-      dispatch(fetchPersonDetailsRequest(selectedPersonId));
-      localStorage.setItem(
-        "selectedPersonId",
-        JSON.stringify(selectedPersonId)
-      );
+    useEffect(() => {
+        if (selectedPersonId) {
+            dispatch(fetchPersonCreditsRequest(selectedPersonId));
+            dispatch(fetchPersonDetailsRequest(selectedPersonId));
+            localStorage.setItem(
+                "selectedPersonId",
+                JSON.stringify(selectedPersonId)
+            );
+        }
+    }, [dispatch, selectedPersonId]);
+
+    useEffect(() => {
+        const storedPersonId = localStorage.getItem("selectedPersonId");
+        if (storedPersonId) {
+            dispatch(handlePeopleClick(JSON.parse(storedPersonId)));
+        }
+    }, [dispatch]);
+
+    if (loading) {
+        return <Loading />;
     }
-  }, [dispatch, selectedPersonId]);
 
-  useEffect(() => {
-    const storedPersonId = localStorage.getItem("selectedPersonId");
-    if (storedPersonId) {
-      dispatch(handlePeopleClick(JSON.parse(storedPersonId)));
+    if (error) {
+        return <Error />;
     }
-  }, [dispatch]);
 
-  if (loading) {
-    return <Loading />;
-  }
-
-  if (error) {
-    return <Error />;
-  }
-
-  return (
-    <>
-      <StyledPersonDetails>
-        <PersonTile>
-          <Picture src={`${basicImageUrl}${details.profile_path}`} />
-          <Main>
-            <PersonTitle>{details.name}</PersonTitle>
-            <PersonBirthDetails>
-              <PersonInfo>
-                Date of birth:
-                <PersonBirthData>{details.birthday}</PersonBirthData>
-              </PersonInfo>
-              <PersonInfo>
-                Place of birth:
-                <PersonBirthData>{details.place_of_birth}</PersonBirthData>
-              </PersonInfo>
-            </PersonBirthDetails>
-            <Biography>{details.biography}</Biography>
-          </Main>
-        </PersonTile>
-        <CastPerson>
-          <Title>Movies - cast</Title>
-          <MovieList>
-            {/* {credits.cast.map((personCast) => (
+    return (
+        <>
+            <StyledPersonDetails>
+                <PersonTile>
+                    <Picture src={`${basicImageUrl}${details.profile_path}`} />
+                    <Main>
+                        <PersonTitle>{details.name}</PersonTitle>
+                        <PersonBirthDetails>
+                            <PersonInfo>
+                                Date of birth:
+                                <PersonBirthData>{details.birthday
+                                    ? `${details.birthday.slice(8, 10)}.${details.birthday.slice(5, 7)}.${details.birthday.slice(0, 4)}`
+                                    : null}</PersonBirthData>
+                            </PersonInfo>
+                            <PersonInfo>
+                                Place of birth:
+                                <PersonBirthData>{details.place_of_birth}</PersonBirthData>
+                            </PersonInfo>
+                        </PersonBirthDetails>
+                        <Biography>{details.biography}</Biography>
+                    </Main>
+                </PersonTile>
+                <CastPerson>
+                    <Title>Movies - cast</Title>
+                    <MovieList>
+                        {/* {credits.cast.map((personCast) => (
               <MovieTile
                 title={personCast.title}
                 posterPath={`${basicImageUrl}${personCast.poster_path}`}
@@ -107,12 +109,12 @@ export const PersonDetails = () => {
                 }
               />
             ))} */}
-          </MovieList>
-        </CastPerson>
-        <CrewPerson>
-          <Title>Movies - crew</Title>
-          <MovieList>
-            {/* {credits.crew.map((personCrew) => (
+                    </MovieList>
+                </CastPerson>
+                <CrewPerson>
+                    <Title>Movies - crew</Title>
+                    <MovieList>
+                        {/* {credits.crew.map((personCrew) => (
               <MovieTile
                 title={personCrew.title}
                 posterPath={`${basicImageUrl}${personCrew.poster_path}`}
@@ -130,9 +132,9 @@ export const PersonDetails = () => {
                 }
               />
             ))} */}
-          </MovieList>
-        </CrewPerson>
-      </StyledPersonDetails>
-    </>
-  );
+                    </MovieList>
+                </CrewPerson>
+            </StyledPersonDetails>
+        </>
+    );
 };
