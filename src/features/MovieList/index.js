@@ -70,7 +70,7 @@ export const MovieList = () => {
               releaseDate={
                 movie.release_date ? movie.release_date.slice(0, 4) : null
               }
-              voteAverage={movie.vote_average ? movie.vote_average : null}
+              voteAverage={movie.vote_average.toFixed(1).toString().replace(".",",") ? movie.vote_average.toFixed(1).toString().replace(".",",") : null}
               voteCount={movie.vote_count ? movie.vote_count : null}
               genre_ids={movie.genre_ids ? movie.genre_ids.slice(0, 2) : null}
             />
