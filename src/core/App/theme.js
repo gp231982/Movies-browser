@@ -20,8 +20,8 @@ export const theme = {
     mobile2: "390px",
     mobile3: "480px",
     mobileDual: "600px",
-    tablet: "1000px",
-    desktop: "1360px",
+    tablet: "1050px",
+    desktop: "1380px",
   },
 
   boxShadow: {
