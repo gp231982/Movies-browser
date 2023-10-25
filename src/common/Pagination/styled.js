@@ -31,7 +31,7 @@ export const Button = styled.button`
     cursor: not-allowed;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     margin-right: 8px;
   }
 `;
@@ -51,7 +51,7 @@ export const PreviousArrowIcon = styled(prevArrow)`
       color: ${({ theme }) => theme.color.waterloo};
     `};
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     display: block;
   }
 `;
@@ -71,7 +71,7 @@ export const NextArrowIcon = styled(nextArrow)`
       color: ${({ theme }) => theme.color.waterloo};
     `};
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     display: block;
   }
 `;
@@ -79,7 +79,7 @@ export const NextArrowIcon = styled(nextArrow)`
 export const ButtonContent = styled.p`
   margin: 0 5px 0 5px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     display: none;
   }
 `;
@@ -89,7 +89,7 @@ export const PagesCounter = styled.div`
   color: ${({ theme }) => theme.color.waterloo};
   margin: 0 24px 0 16px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 10px;
     margin: 0 8px 0 8px;
   }
@@ -101,7 +101,7 @@ export const PageNumber = styled.span`
   margin: 0 8px 0 8px;
   font-weight: 600;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 10px;
     margin: 0 8px 0 8px;
   }
