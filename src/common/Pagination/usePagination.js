@@ -42,12 +42,12 @@ export const usePagination = () => {
     };
 
     const setLastPage = () => {
-        setPage(totalPages);
+        setPage(allPages);
     };
 
     return {
         page,
-        totalPages,
+        allPages,
         setNextPage,
         setPreviousPage,
         setFirstPage,

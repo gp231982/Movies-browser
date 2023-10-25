@@ -12,14 +12,14 @@ import { usePagination } from "./usePagination";
 export const Pagination = () => {
   const {
     page,
-    totalPages,
+    allPages,
     setNextPage,
     setPreviousPage,
     setFirstPage,
     setLastPage,
   } = usePagination();
   const firstPage = page === 1;
-  const lastPage = page === totalPages;
+  const lastPage = page === allPages;
 
   return (
     <StyledPagination>
