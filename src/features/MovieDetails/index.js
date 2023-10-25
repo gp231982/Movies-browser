@@ -119,7 +119,7 @@ const MovieDetails = () => {
                 <RateIcon />
               </BackgroundStar>
               <BackgroundValue>
-                {details.vote_average ? details.vote_average.toFixed(1) : null}
+                {details.vote_average ? details.vote_average.toFixed(1).toString().replace(".",",") : null}
                 <BackgorundSmallerValue> /10</BackgorundSmallerValue>
               </BackgroundValue>
             </BackgroundRating>
@@ -166,7 +166,7 @@ const MovieDetails = () => {
             <Rating>
               <RateIcon />
               <Rate>
-                {details.vote_average ? details.vote_average.toFixed(1) : null}
+                {details.vote_average ? details.vote_average.toFixed(1).toString().replace(".",",") : null}
               </Rate>
               <TotalRate>/ 10</TotalRate>
               <Votes>
