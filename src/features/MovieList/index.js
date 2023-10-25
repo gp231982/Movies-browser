@@ -17,6 +17,7 @@ import { useQueryParameter } from "../../common/queryParameters";
 import searchQueryParamName from "../../common/searchQueryParamName";
 import { HomeLink } from "../../common/Header/styled";
 import blankPoster from "../MovieDetails/BlankMoviePoster.png";
+import SectionTileContent from "../../common/States/SectionTileContent";
 
 export const basicImageUrl = `https://image.tmdb.org/t/p/w500`;
 
@@ -52,7 +53,9 @@ export const MovieList = () => {
 
   return (
     <Content>
-      <SectionTile>Popular movies</SectionTile>
+      <SectionTile>
+        <SectionTileContent query={query} movies={movies} />
+      </SectionTile>
       <Wrapper>
         {visibleMovies.map((movie) => (
           <HomeLink
