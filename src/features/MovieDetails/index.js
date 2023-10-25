@@ -119,7 +119,7 @@ const MovieDetails = () => {
                 <RateIcon />
               </BackgroundStar>
               <BackgroundValue>
-                {details.vote_average ? details.vote_average.toFixed(1) : null}
+                {details.vote_average ? details.vote_average.toFixed(1).toString().replace(".",",") : null}
                 <BackgorundSmallerValue> /10</BackgorundSmallerValue>
               </BackgroundValue>
             </BackgroundRating>
@@ -130,10 +130,10 @@ const MovieDetails = () => {
         </BigPoster>
 
         <Tile>
-          <Picture
-            src={`${basicImageUrl}${details.poster_path}`}
-            alt="picture"
-          />
+          <Picture src={
+            details.poster_path
+              ? `${basicImageUrl}${details.poster_path}`
+              : blankPoster} />
           <Main>
             <Title>{details.title ? details.title : null}</Title>
             <Year>
@@ -143,25 +143,30 @@ const MovieDetails = () => {
               <ProductionBox>
                 <Production>Production:</Production>
                 {details.production_countries
-                  ? details.production_countries.map((production) => (
-                      <ProductionData>{production.name}, </ProductionData>
-                    ))
+                  ? details.production_countries.map((country) => (
+                    <ProductionData key={country.name}>{country.name}, </ProductionData>
+                  ))
                   : null}
               </ProductionBox>
               <ReleaseBox>
                 <Release>Release date:</Release>
-                <ReleaseData>{details.release_date}</ReleaseData>
+                <ReleaseData>
+                  {details.release_date
+                    ? `${details.release_date.slice(8, 10)}.${details.release_date.slice(5, 7)}.${details.release_date.slice(0, 4)}`
+                    : null}
+                </ReleaseData>
               </ReleaseBox>
             </ProductionAndRelease>
             <Genres>
-              {details.genres.map((genre) => (
-                <Genre>{genre.name}</Genre>
-              ))}
+              {details.genres ? details.genres.map((genre) => (
+                <Genre key={genre.name}>{genre.name}</Genre>
+              ))
+                : null}
             </Genres>
             <Rating>
               <RateIcon />
               <Rate>
-                {details.vote_average ? details.vote_average.toFixed(1) : null}
+                {details.vote_average ? details.vote_average.toFixed(1).toString().replace(".",",") : null}
               </Rate>
               <TotalRate>/ 10</TotalRate>
               <Votes>

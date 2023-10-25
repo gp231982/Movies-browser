@@ -22,35 +22,35 @@ export const usePagination = () => {
     parseInt(useQueryParameter(paginationPage)) || 1
   );
 
-  useEffect(() => {
-    replaceQueryParameter({
-      key: paginationPage,
-      value: page,
-    });
-  }, [page]);
+    useEffect(() => {
+        replaceQueryParameter({
+            key: paginationPage,
+            value: page,
+        });
+    }, [page]);
 
-  const setNextPage = () => {
-    setPage((page) => (page += 1));
-  };
+    const setNextPage = () => {
+        setPage((page) => (page += 1));
+    };
 
-  const setPreviousPage = () => {
-    setPage((page) => (page -= 1));
-  };
+    const setPreviousPage = () => {
+        setPage((page) => (page -= 1));
+    };
 
-  const setFirstPage = () => {
-    setPage(1);
-  };
+    const setFirstPage = () => {
+        setPage(1);
+    };
 
-  const setLastPage = () => {
-    setPage(allPages);
-  };
+    const setLastPage = () => {
+        setPage(allPages);
+    };
 
-  return {
-    page,
-    allPages,
-    setNextPage,
-    setPreviousPage,
-    setFirstPage,
-    setLastPage,
-  };
+    return {
+        page,
+        allPages,
+        setNextPage,
+        setPreviousPage,
+        setFirstPage,
+        setLastPage,
+    };
 };
