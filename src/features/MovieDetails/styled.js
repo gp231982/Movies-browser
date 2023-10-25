@@ -9,7 +9,7 @@ export const StyledMoviePage = styled.div`
   align-items: center;
   background: ${({ theme }) => theme.color.whisper};
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     row-gap: 15px;
   }
 `;
@@ -82,7 +82,7 @@ export const MainInfo = styled.div`
   row-gap: 8px;
   column-gap: 8px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     bottom: 3%;
     left: 3%;
     grid-template-columns: auto auto;
@@ -98,7 +98,7 @@ export const BackgroundTitle = styled.div`
   line-height: 1.2;
   text-align: left;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 24px;
     grid-column: 1/3;
   }
@@ -117,7 +117,7 @@ export const BackgroundStar = styled.div`
     width: 100%;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     width: 16px;
     height: 15px;
   }
@@ -131,7 +131,7 @@ export const BackgroundValue = styled.div`
   align-items: baseline;
   color: ${({ theme }) => theme.color.white};
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 14px;
   }
 `;
@@ -141,7 +141,7 @@ export const BackgorundSmallerValue = styled.span`
   font-weight: 400;
   text-align: left;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 10px;
   }
 `;
@@ -153,7 +153,7 @@ export const BackgroundVotes = styled.div`
   margin-top: 5px;
   color: ${({ theme }) => theme.color.white};
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 10px;
     align-self: flex-end;
   }
@@ -170,7 +170,7 @@ export const Tile = styled.div`
   max-width: 1368px;
   margin: 0 auto;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     grid-template-columns: 114px auto;
     gap: 16px;
     padding: 16px;
@@ -183,7 +183,7 @@ export const Picture = styled.img`
   height: 464px;
   border-radius: 5px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     grid-row: 1;
     width: 114px;
     height: 169px;
@@ -195,7 +195,7 @@ export const Main = styled.div`
   flex-direction: column;
   gap: 24px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     grid-row: 1;
     grid-column: 2;
     gap: 8px;
@@ -210,7 +210,7 @@ export const Title = styled.h1`
   color: ${({ theme }) => theme.color.black};
   margin: 0;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 16px;
     font-weight: 500;
     line-height: 1.3;
@@ -226,7 +226,7 @@ export const Year = styled.p`
   color: ${({ theme }) => theme.color.black};
   margin: 0;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 13px;
     margin: 0;
   }
@@ -239,7 +239,7 @@ export const ProductionAndRelease = styled.div`
   text-align: left;
   margin: 0;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 12px;
     line-height: 2;
   }
@@ -257,7 +257,7 @@ export const Production = styled.p`
   color: ${({ theme }) => theme.color.stormGray};
   margin: 0;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     display: none;
   }
 `;
@@ -269,7 +269,7 @@ export const ProductionData = styled.p`
   color: ${({ theme }) => theme.color.black};
   margin: 0;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 12px;
     font-weight: 400;
     line-height: 1.3;
@@ -289,7 +289,7 @@ export const Release = styled.p`
   color: ${({ theme }) => theme.color.stormGray};
   margin: 0;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     display: none;
   }
 `;
@@ -301,7 +301,7 @@ export const ReleaseData = styled.p`
   color: ${({ theme }) => theme.color.black};
   margin: 0;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 12px;
     font-style: normal;
     font-weight: 400;
@@ -316,7 +316,7 @@ export const Description = styled.p`
   line-height: 1.6;
   margin: 0;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 14px;
     font-weight: 400;
     line-height: 1.6;
@@ -339,7 +339,7 @@ export const Rate = styled.p`
   font-weight: 500;
   line-height: 1.3;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 13px;
   }
 `;
@@ -351,7 +351,7 @@ export const TotalRate = styled.p`
   line-height: 1.2;
   margin: 0;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     display: none;
   }
 `;
@@ -362,7 +362,7 @@ export const Votes = styled.p`
   font-weight: 400;
   line-height: 1.2;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 13px;
     font-weight: 400;
     line-height: 1.3;
@@ -370,7 +370,7 @@ export const Votes = styled.p`
 `;
 
 export const RateIcon = styled(RateIc)`
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     width: 16px;
     height: 16px;
   }
