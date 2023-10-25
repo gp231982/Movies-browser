@@ -13,6 +13,7 @@ export const MovieWrapper = styled.button`
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   transition: transform 0.2s;
+  cursor: pointer;
 
   &:hover {
     transform: scale(1.05);
@@ -29,7 +30,7 @@ export const MovieWrapper = styled.button`
 
 export const Picture = styled.img`
   max-width: 292px;
-  max-height: 434px;
+  height: 434px;
   justify-self: center;
   border-radius: 5px;
 
