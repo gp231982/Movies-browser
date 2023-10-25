@@ -35,8 +35,8 @@ export const Pagination = () => {
       <PagesCounter>
         Page
         <PageNumber>{page}</PageNumber>
-        of 
-        <PageNumber></PageNumber>
+        of
+        <PageNumber>{allPages}</PageNumber>
       </PagesCounter>
       <Button onClick={setNextPage} disabled={lastPage}>
         <ButtonContent>Next</ButtonContent>
