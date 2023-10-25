@@ -62,9 +62,9 @@ export const PersonDetails = () => {
         }
     }, [dispatch]);
 
-  const handleMovieClickHandler = (movieId) => {
-    dispatch(handleMovieClick(movieId));
-  };
+    const handleMovieClickHandler = (movieId) => {
+        dispatch(handleMovieClick(movieId));
+    };
 
     if (loading) {
         return <Loading />;
@@ -74,111 +74,114 @@ export const PersonDetails = () => {
         return <Error />;
     }
 
-  return (
-    <>
-      <StyledPersonDetails>
-        <PersonTile>
-          <Picture src={`${basicImageUrl}${details.profile_path}`} />
-          <Main>
-            <PersonTitle>{details.name}</PersonTitle>
-            <PersonBirthDetails>
-              <PersonInfo>
-                Date of birth:
-                <PersonBirthData>{details.birthday}</PersonBirthData>
-              </PersonInfo>
-              <PersonInfo>
-                Place of birth:
-                <PersonBirthData>{details.place_of_birth}</PersonBirthData>
-              </PersonInfo>
-            </PersonBirthDetails>
-            <Biography>{details.biography}</Biography>
-          </Main>
-        </PersonTile>
-      </StyledPersonDetails>
-      <Content>
-        <Title>
-          Movies - cast {credits.cast ? `(${credits.cast.length})` : null}
-        </Title>
-        <Wrapper>
-          {credits.cast
-            ? credits.cast.map((personCast) => (
-                <HomeLink
-                  to={`/movie/${personCast.id}`}
-                  key={personCast.id}
-                  onClick={() => handleMovieClickHandler(personCast.id)}
-                >
-                  <MovieTile
-                    title={personCast.title ? personCast.title : null}
-                    posterPath={
-                      personCast.poster_path
-                        ? `${basicImageUrl}${personCast.poster_path}`
-                        : blankPoster
-                    }
-                    releaseDate={
-                      personCast.release_date
-                        ? personCast.release_date.slice(0, 4)
-                        : null
-                    }
-                    voteAverage={
-                      personCast.vote_average
-                        ? personCast.vote_average.toFixed(1)
-                        : null
-                    }
-                    voteCount={
-                      personCast.vote_count ? personCast.vote_count : null
-                    }
-                    genre_ids={
-                      personCast.genre_ids
-                        ? personCast.genre_ids.slice(0, 2)
-                        : null
-                    }
-                  />
-                </HomeLink>
-              ))
-            : null}
-        </Wrapper>
-      </Content>
-      <Content>
-        <Title>
-          Movies - crew {credits.crew ? `(${credits.crew.length})` : null}
-        </Title>
-        <Wrapper>
-          {credits.crew
-            ? credits.crew.map((personCrew) => (
-                <HomeLink
-                  to={`/movie/${personCrew.id}`}
-                  key={personCrew.id}
-                  onClick={() => handleMovieClickHandler(personCrew.id)}
-                >
-                  <MovieTile
-                    title={personCrew.title ? personCrew.title : null}
-                    posterPath={
-                      personCrew.poster_path
-                        ? `${basicImageUrl}${personCrew.poster_path}`
-                        : blankPoster
-                    }
-                    releaseDate={
-                      personCrew.release_date
-                        ? personCrew.release_date.slice(0, 4)
-                        : null
-                    }
-                    voteAverage={
-                      personCrew.vote_average ? personCrew.vote_average : null
-                    }
-                    voteCount={
-                      personCrew.vote_count ? personCrew.vote_count : null
-                    }
-                    genre_ids={
-                      personCrew.genre_ids
-                        ? personCrew.genre_ids.slice(0, 2)
-                        : null
-                    }
-                  />
-                </HomeLink>
-              ))
-            : null}
-        </Wrapper>
-      </Content>
-    </>
-  );
+    return (
+        <>
+            <StyledPersonDetails>
+                <PersonTile>
+                    <Picture src={`${basicImageUrl}${details.profile_path}`} />
+                    <Main>
+                        <PersonTitle>{details.name}</PersonTitle>
+                        <PersonBirthDetails>
+                            <PersonInfo>
+                                Date of birth:
+                                <PersonBirthData>{details.birthday
+                                    ? `${details.birthday.slice(8, 10)}.${details.birthday.slice(5, 7)}.${details.birthday.slice(0, 4)}`
+                                    : null}
+                                </PersonBirthData>
+                            </PersonInfo>
+                            <PersonInfo>
+                                Place of birth:
+                                <PersonBirthData>{details.place_of_birth}</PersonBirthData>
+                            </PersonInfo>
+                        </PersonBirthDetails>
+                        <Biography>{details.biography}</Biography>
+                    </Main>
+                </PersonTile>
+            </StyledPersonDetails>
+            <Content>
+                <Title>
+                    Movies - cast {credits.cast ? `(${credits.cast.length})` : null}
+                </Title>
+                <Wrapper>
+                    {credits.cast
+                        ? credits.cast.map((personCast) => (
+                            <HomeLink
+                                to={`/movie/${personCast.id}`}
+                                key={personCast.id}
+                                onClick={() => handleMovieClickHandler(personCast.id)}
+                            >
+                                <MovieTile
+                                    title={personCast.title ? personCast.title : null}
+                                    posterPath={
+                                        personCast.poster_path
+                                            ? `${basicImageUrl}${personCast.poster_path}`
+                                            : blankPoster
+                                    }
+                                    releaseDate={
+                                        personCast.release_date
+                                            ? personCast.release_date.slice(0, 4)
+                                            : null
+                                    }
+                                    voteAverage={
+                                        personCast.vote_average
+                                            ? personCast.vote_average.toFixed(1)
+                                            : null
+                                    }
+                                    voteCount={
+                                        personCast.vote_count ? personCast.vote_count : null
+                                    }
+                                    genre_ids={
+                                        personCast.genre_ids
+                                            ? personCast.genre_ids.slice(0, 2)
+                                            : null
+                                    }
+                                />
+                            </HomeLink>
+                        ))
+                        : null}
+                </Wrapper>
+            </Content>
+            <Content>
+                <Title>
+                    Movies - crew {credits.crew ? `(${credits.crew.length})` : null}
+                </Title>
+                <Wrapper>
+                    {credits.crew
+                        ? credits.crew.map((personCrew) => (
+                            <HomeLink
+                                to={`/movie/${personCrew.id}`}
+                                key={personCrew.id}
+                                onClick={() => handleMovieClickHandler(personCrew.id)}
+                            >
+                                <MovieTile
+                                    title={personCrew.title ? personCrew.title : null}
+                                    posterPath={
+                                        personCrew.poster_path
+                                            ? `${basicImageUrl}${personCrew.poster_path}`
+                                            : blankPoster
+                                    }
+                                    releaseDate={
+                                        personCrew.release_date
+                                            ? personCrew.release_date.slice(0, 4)
+                                            : null
+                                    }
+                                    voteAverage={
+                                        personCrew.vote_average ? personCrew.vote_average : null
+                                    }
+                                    voteCount={
+                                        personCrew.vote_count ? personCrew.vote_count : null
+                                    }
+                                    genre_ids={
+                                        personCrew.genre_ids
+                                            ? personCrew.genre_ids.slice(0, 2)
+                                            : null
+                                    }
+                                />
+                            </HomeLink>
+                        ))
+                        : null}
+                </Wrapper>
+            </Content>
+        </>
+    );
 };
