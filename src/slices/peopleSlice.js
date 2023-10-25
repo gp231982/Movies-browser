@@ -39,12 +39,21 @@ export const selectPersonId = (state) => selectPeopleState(state).peopleId;
 
 export const selectPeopleByQuery = (state, query) => {
   const people = selectData(state);
+  const seen = {};
   if (!query || query.trim() === "") {
     return people;
   }
-  return selectData(state).filter((person) =>
-    person.name.toUpperCase().includes(query.trim().toUpperCase())
-  );
+  return people
+    .filter((person) => {
+      if (!seen[person.name]) {
+        seen[person.name] = true;
+        return true;
+      }
+      return false;
+    })
+    .filter((person) =>
+      person.name.toUpperCase().includes(query.trim().toUpperCase())
+    );
 };
 
 export const {

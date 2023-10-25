@@ -10,15 +10,17 @@ import { selectData } from "../../slices/peopleSlice";
 import { useEffect, useState } from "react";
 
 export const usePagination = () => {
-    const location = useLocation();
-    const moviesData = useSelector(selectMovie);
-    const peopleData = useSelector(selectData);
-    const data = location.pathname.startsWith("/movies")
-        ? moviesData
-        : peopleData;
-    const totalPages = data.total_pages > 500 ? 500 : data.total_pages;
-    const replaceQueryParameter = useReplaceQueryParameter();
-    const [page, setPage] = useState(parseInt(useQueryParameter(paginationPage)) || 1);
+  const location = useLocation();
+  const moviesData = useSelector(selectMovie);
+  const peopleData = useSelector(selectData);
+  const data = location.pathname.startsWith("/movies")
+    ? moviesData
+    : peopleData;
+  const allPages = data.length > 500 ? 500 : data.length;
+  const replaceQueryParameter = useReplaceQueryParameter();
+  const [page, setPage] = useState(
+    parseInt(useQueryParameter(paginationPage)) || 1
+  );
 
     useEffect(() => {
         replaceQueryParameter({
