@@ -17,6 +17,7 @@ import { Error } from "../../common/States/Error";
 import { useQueryParameter } from "../../common/queryParameters";
 import searchQueryParamName from "../../common/searchQueryParamName";
 import { HomeLink } from "../../common/Header/styled";
+import SectionTileContent from "../../common/States/SectionTileContent";
 
 const MoviePeople = () => {
   const dispatch = useDispatch();
@@ -51,7 +52,9 @@ const MoviePeople = () => {
   return (
     <>
       <MoviePeopleWrapper>
-        <SectionTile>Popular people</SectionTile>
+        <SectionTile>
+          <SectionTileContent query={query} people={people} />
+        </SectionTile>
         <TilesWrapper>
           {visiblePeople.slice(0, 24).map((person) => (
             <HomeLink
