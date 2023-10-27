@@ -10,7 +10,7 @@ const personDetailsSlice = createSlice({
   reducers: {
     fetchPersonDetailsRequest: (state) => {
       state.loading = true;
-      state.personDetails = null;
+      state.error = null;
     },
     fetchPersonDetailsSuccess: (state, action) => {
       state.loading = false;
