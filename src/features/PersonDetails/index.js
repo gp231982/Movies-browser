@@ -23,6 +23,8 @@ import {
 import {
   fetchPersonCreditsRequest,
   selectData,
+  selectError,
+  selectLoading,
 } from "../../slices/personCreditsSlice";
 import { Loading } from "../../common/States/Loading";
 import { Error } from "../../common/States/Error";
@@ -32,13 +34,16 @@ import { handlePeopleClick } from "../../slices/peopleSlice";
 import blankPoster from "../MovieDetails/BlankMoviePoster.png";
 import { handleMovieClick } from "../../slices/movieSlice";
 import { HomeLink } from "../../common/Header/styled";
+import blankPicture from "../../common/PersonTile/BlankPicture.png";
 
 export const PersonDetails = () => {
   const dispatch = useDispatch();
   const selectedPersonId = useSelector(selectPersonId);
   const credits = useSelector(selectData);
-  const loading = useSelector(selectPersonLoading);
-  const error = useSelector(selectPersonError);
+  const loadingDetails = useSelector(selectPersonLoading);
+  const loadingCredits = useSelector(selectLoading);
+  const errorDetails = useSelector(selectPersonError);
+  const errorCredits = useSelector(selectError);
   const details = useSelector(selectPersonDetails);
 
   useEffect(() => {
@@ -63,21 +68,30 @@ export const PersonDetails = () => {
     dispatch(handleMovieClick(movieId));
   };
 
-  if (loading) {
+  if (loadingDetails || loadingCredits) {
     return <Loading />;
   }
 
-  if (error) {
+  if (errorDetails || errorDetails) {
     return <Error />;
   }
 
+  
   return (
     <>
       <StyledPersonDetails>
         <PersonTile>
-          <Picture src={`${basicImageUrl}${details.profile_path}`} />
+          <Picture
+            src={
+              details.poster_path
+                ? `${basicImageUrl}${details.poster_path}`
+                : blankPicture
+            }
+          />
           <Main>
-            <PersonTitle>{details.name}</PersonTitle>
+            <PersonTitle>
+              {details.name ? details.name : "No data available"}
+            </PersonTitle>
             <PersonBirthDetails>
               <PersonInfo>
                 Date of birth:
@@ -90,15 +104,21 @@ export const PersonDetails = () => {
                         5,
                         7
                       )}.${details.birthday.slice(0, 4)}`
-                    : null}
+                    : "No data available"}
                 </PersonBirthData>
               </PersonInfo>
               <PersonInfo>
                 Place of birth:
-                <PersonBirthData>{details.place_of_birth}</PersonBirthData>
+                <PersonBirthData>
+                  {details.place_of_birth
+                    ? details.place_of_birth
+                    : "No data available"}
+                </PersonBirthData>
               </PersonInfo>
             </PersonBirthDetails>
-            <Biography>{details.biography}</Biography>
+            <Biography>
+              {details.biography ? details.biography : "No data available"}
+            </Biography>
           </Main>
         </PersonTile>
       </StyledPersonDetails>
@@ -132,7 +152,7 @@ export const PersonDetails = () => {
                         : null
                     }
                     voteCount={
-                      personCast.vote_count ? personCast.vote_count : null
+                      personCast.vote_count ? personCast.vote_count : "No"
                     }
                     genre_ids={
                       personCast.genre_ids
@@ -173,7 +193,7 @@ export const PersonDetails = () => {
                       personCrew.vote_average ? personCrew.vote_average : null
                     }
                     voteCount={
-                      personCrew.vote_count ? personCrew.vote_count : null
+                      personCrew.vote_count ? personCrew.vote_count : "No"
                     }
                     genre_ids={
                       personCrew.genre_ids
