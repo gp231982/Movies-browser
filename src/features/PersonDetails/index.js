@@ -1,24 +1,25 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  Biography,
-  Main,
-  PersonBirthData,
-  PersonBirthDetails,
-  PersonInfo,
-  PersonTile,
-  PersonTitle,
-  Picture,
-  StyledPersonDetails,
-  Title,
+    Biography,
+    MainInfo,
+    PersonBirthDetails,
+    DateLabel,
+    PersonTile,
+    PersonTitle,
+    Picture,
+    StyledPersonDetails,
+    Title,
+    PersonBirthData,
+    PlaceLabel,
 } from "./styled";
 import { MovieTile } from "../../common/MovieTile";
 import { Content, Wrapper } from "../MovieList/styled";
 import {
-  fetchPersonDetailsRequest,
-  selectPersonDetails,
-  selectPersonError,
-  selectPersonLoading,
+    fetchPersonDetailsRequest,
+    selectPersonDetails,
+    selectPersonError,
+    selectPersonLoading,
 } from "../../slices/personDetailSlice";
 import {
   fetchPersonCreditsRequest,
@@ -46,33 +47,33 @@ export const PersonDetails = () => {
   const errorCredits = useSelector(selectError);
   const details = useSelector(selectPersonDetails);
 
-  useEffect(() => {
-    if (selectedPersonId) {
-      dispatch(fetchPersonCreditsRequest(selectedPersonId));
-      dispatch(fetchPersonDetailsRequest(selectedPersonId));
-      localStorage.setItem(
-        "selectedPersonId",
-        JSON.stringify(selectedPersonId)
-      );
-    }
-  }, [dispatch, selectedPersonId]);
+    useEffect(() => {
+        if (selectedPersonId) {
+            dispatch(fetchPersonCreditsRequest(selectedPersonId));
+            dispatch(fetchPersonDetailsRequest(selectedPersonId));
+            localStorage.setItem(
+                "selectedPersonId",
+                JSON.stringify(selectedPersonId)
+            );
+        }
+    }, [dispatch, selectedPersonId]);
 
-  useEffect(() => {
-    const storedPersonId = localStorage.getItem("selectedPersonId");
-    if (storedPersonId) {
-      dispatch(handlePeopleClick(JSON.parse(storedPersonId)));
-    }
-  }, [dispatch]);
+    useEffect(() => {
+        const storedPersonId = localStorage.getItem("selectedPersonId");
+        if (storedPersonId) {
+            dispatch(handlePeopleClick(JSON.parse(storedPersonId)));
+        }
+    }, [dispatch]);
 
-  const handleMovieClickHandler = (movieId) => {
-    dispatch(handleMovieClick(movieId));
-  };
+    const handleMovieClickHandler = (movieId) => {
+        dispatch(handleMovieClick(movieId));
+    };
 
   if (loadingDetails || loadingCredits) {
     return <Loading />;
   }
 
-  if (errorDetails || errorDetails) {
+  if (errorDetails || errorCredits) {
     return <Error />;
   }
 
@@ -88,12 +89,12 @@ export const PersonDetails = () => {
                 : blankPicture
             }
           />
-          <Main>
+          <MainInfo>
             <PersonTitle>
               {details.name ? details.name : "No data available"}
             </PersonTitle>
             <PersonBirthDetails>
-              <PersonInfo>
+              <DateLabel>
                 Date of birth:
                 <PersonBirthData>
                   {details.birthday
@@ -106,20 +107,20 @@ export const PersonDetails = () => {
                       )}.${details.birthday.slice(0, 4)}`
                     : "No data available"}
                 </PersonBirthData>
-              </PersonInfo>
-              <PersonInfo>
+              </DateLabel>
+              <PlaceLabel>
                 Place of birth:
                 <PersonBirthData>
                   {details.place_of_birth
                     ? details.place_of_birth
                     : "No data available"}
                 </PersonBirthData>
-              </PersonInfo>
+              </PlaceLabel>
             </PersonBirthDetails>
             <Biography>
               {details.biography ? details.biography : "No data available"}
             </Biography>
-          </Main>
+          </MainInfo>
         </PersonTile>
       </StyledPersonDetails>
       <Content>
