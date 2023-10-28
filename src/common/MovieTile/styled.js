@@ -61,7 +61,8 @@ export const Tile = styled.h2`
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  max-width: 300px;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 16px;

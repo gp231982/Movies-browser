@@ -27,7 +27,6 @@ import {
   Description,
   Rating,
   Rate,
-  TotalRate,
   Votes,
   RateIcon,
 } from "./styled";
@@ -46,6 +45,8 @@ import { Error } from "../../common/States/Error";
 import {
   fetchMovieDetailsRequest,
   selectDetailsData,
+  selectDetailsError,
+  selectDetailsLoading,
 } from "../../slices/movieDetailSlice";
 import { basicImageUrl } from "../MovieList";
 import blankPoster from "../MovieDetails/BlankMoviePoster.png";
@@ -59,8 +60,10 @@ const MovieDetails = () => {
   const selectedMovieId = useSelector(selectMovieId);
   const dispatch = useDispatch();
   const credits = useSelector(selectData);
-  const loading = useSelector(selectLoading);
-  const error = useSelector(selectError);
+  const loadingDetails = useSelector(selectDetailsLoading);
+  const loadingCredits = useSelector(selectLoading);
+  const errorCredits = useSelector(selectError);
+  const errorDetails = useSelector(selectDetailsError);
   const details = useSelector(selectDetailsData);
 
   useEffect(() => {
@@ -82,11 +85,11 @@ const MovieDetails = () => {
     dispatch(handlePeopleClick(movieId));
   };
 
-  if (loading) {
+  if (loadingCredits && loadingDetails) {
     return <Loading />;
   }
 
-  if (error) {
+  if (errorCredits && errorDetails) {
     return <Error />;
   }
 
@@ -119,7 +122,9 @@ const MovieDetails = () => {
                 <RateIcon />
               </BackgroundStar>
               <BackgroundValue>
-                {details.vote_average ? details.vote_average.toFixed(1).toString().replace(".",",") : null}
+                {details.vote_average
+                  ? details.vote_average.toFixed(1).toString().replace(".", ",")
+                  : null}
                 <BackgorundSmallerValue> /10</BackgorundSmallerValue>
               </BackgroundValue>
             </BackgroundRating>
@@ -130,51 +135,66 @@ const MovieDetails = () => {
         </BigPoster>
 
         <Tile>
-          <Picture src={
-            details.poster_path
-              ? `${basicImageUrl}${details.poster_path}`
-              : blankPoster} />
+          <Picture
+            src={
+              details.poster_path
+                ? `${basicImageUrl}${details.poster_path}`
+                : blankPoster
+            }
+          />
           <Main>
-            <Title>{details.title ? details.title : null}</Title>
+            <Title>{details.title ? details.title : "No title"}</Title>
             <Year>
-              {details.release_date ? details.release_date.slice(0, 4) : null}
+              {details.release_date
+                ? details.release_date.slice(0, 4)
+                : "No data available"}
             </Year>
             <ProductionAndRelease>
               <ProductionBox>
                 <Production>Production:</Production>
                 {details.production_countries
                   ? details.production_countries.map((country) => (
-                    <ProductionData key={country.name}>{country.name}, </ProductionData>
-                  ))
-                  : null}
+                      <ProductionData key={country.name}>
+                        {country.name},{" "}
+                      </ProductionData>
+                    ))
+                  : "No data available"}
               </ProductionBox>
               <ReleaseBox>
                 <Release>Release date:</Release>
                 <ReleaseData>
                   {details.release_date
-                    ? `${details.release_date.slice(8, 10)}.${details.release_date.slice(5, 7)}.${details.release_date.slice(0, 4)}`
-                    : null}
+                    ? `${details.release_date.slice(
+                        8,
+                        10
+                      )}.${details.release_date.slice(
+                        5,
+                        7
+                      )}.${details.release_date.slice(0, 4)}`
+                    : "No data available"}
                 </ReleaseData>
               </ReleaseBox>
             </ProductionAndRelease>
             <Genres>
-              {details.genres ? details.genres.map((genre) => (
-                <Genre key={genre.name}>{genre.name}</Genre>
-              ))
+              {details.genres
+                ? details.genres.map((genre) => (
+                    <Genre key={genre.name}>{genre.name}</Genre>
+                  ))
                 : null}
             </Genres>
             <Rating>
               <RateIcon />
               <Rate>
-                {details.vote_average ? details.vote_average.toFixed(1).toString().replace(".",",") : null}
+                {details.vote_average
+                  ? details.vote_average.toFixed(1).toString().replace(".", ",")
+                  : null}
               </Rate>
-              <TotalRate>/ 10</TotalRate>
               <Votes>
-                {details.vote_count ? details.vote_count : null} votes
+                {details.vote_count ? details.vote_count : "No"} votes
               </Votes>
             </Rating>
             <Description>
-              {details.overview ? details.overview : null}
+              {details.overview ? details.overview : "No data available"}
             </Description>
           </Main>
         </Tile>
