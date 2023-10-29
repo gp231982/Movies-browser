@@ -13,6 +13,7 @@ import { MovieTile } from "../../common/MovieTile";
 import { Pagination } from "../../common/Pagination";
 import { Loading } from "../../common/States/Loading";
 import { Error } from "../../common/States/Error";
+import { NoResults } from "../../common/States/NoResults";
 import { useQueryParameter } from "../../common/queryParameters";
 import searchQueryParamName from "../../common/searchQueryParamName";
 import { HomeLink } from "../../common/Header/styled";
@@ -20,7 +21,6 @@ import blankPoster from "../MovieDetails/BlankMoviePoster.png";
 import SectionTileContent from "../../common/States/SectionTileContent";
 
 import { usePagination } from "../../common/Pagination/usePagination";
-
 
 export const basicImageUrl = `https://image.tmdb.org/t/p/w500`;
 
@@ -46,7 +46,7 @@ export const MovieList = () => {
       pagination.setFirstPage();
     }
     dispatch(fetchMovieRequest());
-  },[page] );
+  }, [page, query]);
 
   if (loading) {
     return <Loading />;
@@ -54,6 +54,10 @@ export const MovieList = () => {
 
   if (error) {
     return <Error />;
+  }
+
+  if (movies.length === 0) {
+    return <NoResults />;
   }
 
   const handleMovieClickHandler = (movieId) => {

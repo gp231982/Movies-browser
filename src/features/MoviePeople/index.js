@@ -14,11 +14,13 @@ import { SectionTile } from "../MovieList/styled";
 import { Pagination } from "../../common/Pagination";
 import { Loading } from "../../common/States/Loading";
 import { Error } from "../../common/States/Error";
+import { NoResults } from "../../common/States/NoResults";
 import { useQueryParameter } from "../../common/queryParameters";
 import searchQueryParamName from "../../common/searchQueryParamName";
 import { HomeLink } from "../../common/Header/styled";
 import SectionTileContent from "../../common/States/SectionTileContent";
 import { usePagination } from "../../common/Pagination/usePagination";
+import BlankPicture from "../../common/PersonTile/BlankPicture.png";
 
 const MoviePeople = () => {
   const pagination = usePagination();
@@ -40,11 +42,7 @@ const MoviePeople = () => {
       pagination.setFirstPage();
     }
     dispatch(fetchPeopleRequest());
-  }, [page]);
-
-  useEffect(() => {
-    dispatch(fetchPeopleRequest());
-  }, [dispatch, page]);
+  }, [page, query]);
 
   const handlePeopleClickHandler = (personId) => {
     dispatch(handlePeopleClick(personId));
@@ -56,6 +54,10 @@ const MoviePeople = () => {
 
   if (error) {
     return <Error />;
+  }
+
+  if (people.length === 0) {
+    return <NoResults />;
   }
 
   return (
@@ -73,7 +75,11 @@ const MoviePeople = () => {
             >
               <PersonTile
                 key={person.id}
-                posterImage={`https://www.themoviedb.org/t/p/w185_and_h278_bestv2${person.profile_path}`}
+                posterImage={
+                  person.profile_path
+                    ? `https://www.themoviedb.org/t/p/w185_and_h278_bestv2${person.profile_path}`
+                    : BlankPicture
+                }
                 personName={person.name}
               />
             </HomeLink>
