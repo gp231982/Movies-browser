@@ -46,6 +46,10 @@ const MoviePeople = () => {
     dispatch(fetchPeopleRequest());
   }, [dispatch, page]);
 
+  const handlePeopleClickHandler = (personId) => {
+    dispatch(handlePeopleClick(personId));
+  };
+
   if (loading) {
     return <Loading />;
   }
@@ -53,10 +57,6 @@ const MoviePeople = () => {
   if (error) {
     return <Error />;
   }
-
-  const handlePeopleClickHandler = (personId) => {
-    dispatch(handlePeopleClick(personId));
-  };
 
   return (
     <>
