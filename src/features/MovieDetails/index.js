@@ -197,9 +197,9 @@ const MovieDetails = () => {
           </ProductionAndRelease>
           <Genres>
             {details.genres
-              ? details.genres.map((genre) => (
-                  <Genre key={genre.name}>{genre.name}</Genre>
-                ))
+              ? details.genres
+                  .slice(0, 2)
+                  .map((genre) => <Genre key={genre.name}>{genre.name}</Genre>)
               : null}
           </Genres>
           <Rating>
