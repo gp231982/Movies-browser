@@ -19,6 +19,9 @@ import { HomeLink } from "../../common/Header/styled";
 import blankPoster from "../MovieDetails/BlankMoviePoster.png";
 import SectionTileContent from "../../common/States/SectionTileContent";
 
+import { usePagination } from "../../common/Pagination/usePagination";
+
+
 export const basicImageUrl = `https://image.tmdb.org/t/p/w500`;
 
 export const MovieList = () => {
@@ -29,15 +32,21 @@ export const MovieList = () => {
   const movies = useSelector((state) => selectMoviesByQuery(state, query));
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const page = searchParams.get("page");
+  let page = searchParams.get("page");
   const itemsPerPage = 16;
   const startIndex = (page - 1) * itemsPerPage;
+
   const endIndex = startIndex + itemsPerPage;
   const visibleMovies = movies.slice(startIndex, endIndex);
 
+  const pagination = usePagination();
+
   useEffect(() => {
+    if (page !== 1 && query) {
+      pagination.setFirstPage();
+    }
     dispatch(fetchMovieRequest());
-  }, [dispatch, page]);
+  },[page] );
 
   if (loading) {
     return <Loading />;

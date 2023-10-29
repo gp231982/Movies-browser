@@ -33,19 +33,38 @@ import { selectPersonId } from "../../slices/peopleSlice";
 import { basicImageUrl } from "../MovieList";
 import { handlePeopleClick } from "../../slices/peopleSlice";
 import blankPoster from "../MovieDetails/BlankMoviePoster.png";
+import blankPicture from "../../common/PersonTile/BlankPicture.png"
 import { handleMovieClick } from "../../slices/movieSlice";
 import { HomeLink } from "../../common/Header/styled";
-import blankPicture from "../../common/PersonTile/BlankPicture.png";
+import { useNavigate } from "react-router-dom";
+import { useQueryParameter } from "../../common/queryParameters";
+import searchQueryParamName from "../../common/searchQueryParamName";
 
 export const PersonDetails = () => {
     const dispatch = useDispatch();
-    const selectedPersonId = useSelector(selectPersonId);
+    const navigate = useNavigate();
+  const selectedPersonId = useSelector(selectPersonId);
     const credits = useSelector(selectData);
     const loadingDetails = useSelector(selectPersonLoading);
     const loadingCredits = useSelector(selectLoading);
     const errorDetails = useSelector(selectPersonError);
     const errorCredits = useSelector(selectError);
     const details = useSelector(selectPersonDetails);
+  const query = useQueryParameter(searchQueryParamName);
+
+  useEffect(() => {
+    let timer;
+    if (query) {
+      timer = setTimeout(() => {
+        navigate(`/people?page=1&${searchQueryParamName}=${query}`);
+      }, 500);
+    }
+    return () => {
+      if (timer) {
+        clearTimeout(timer);
+      }
+    };
+  }, [query, navigate]);
 
     useEffect(() => {
         if (selectedPersonId) {
