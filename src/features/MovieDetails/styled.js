@@ -249,14 +249,14 @@ export const Tile = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobileDual}) {
     grid-template-columns: 114px auto;
-    gap: 8px;
+    gap: 12px;
     padding: 16px;
     margin: 10px 10px 0 10px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     grid-template-columns: 114px auto;
-    gap: 8px;
+    gap: 12px;
     padding: 16px;
     margin: 10px 10px 0 10px;
   }
@@ -511,6 +511,7 @@ export const Rate = styled.p`
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 13px;
+    
   }
 `;
 
@@ -536,12 +537,14 @@ export const Votes = styled.p`
     font-size: 13px;
     font-weight: 400;
     line-height: 1.3;
+    margin: 0;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 13px;
     font-weight: 400;
     line-height: 1.3;
+    margin: 0;
   }
 `;
 
@@ -554,5 +557,6 @@ export const RateIcon = styled(RateIc)`
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     width: 16px;
     height: 16px;
+    margin: 0;
   }
 `;
