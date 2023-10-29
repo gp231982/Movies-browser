@@ -51,7 +51,6 @@ export const PersonDetails = () => {
   const errorCredits = useSelector(selectError);
   const details = useSelector(selectPersonDetails);
   const query = useQueryParameter(searchQueryParamName);
-  console.log(credits);
 
   useEffect(() => {
     let timer;

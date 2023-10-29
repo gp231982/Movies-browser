@@ -229,7 +229,6 @@ const MovieDetails = () => {
               <HomeLink
                 onClick={() => handlePeopleClickHandler(person.id)}
                 to={`/person/${person.id}`}
-                key={person.id}
               >
                 <PersonTile
                   key={person.id}
@@ -255,7 +254,6 @@ const MovieDetails = () => {
               <HomeLink
                 onClick={() => handlePeopleClickHandler(person.id)}
                 to={`/person/${person.id}`}
-                key={person.id}
               >
                 <PersonTile
                   key={person.id}
