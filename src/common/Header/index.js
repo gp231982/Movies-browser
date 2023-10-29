@@ -19,7 +19,7 @@ import {
 } from "../queryParameters";
 import searchQueryParamName from "../searchQueryParamName";
 
-const Header = () => {
+const Header = ({ to }) => {
   const path = useLocation().pathname;
   const query = useQueryParameter(searchQueryParamName);
   const replaceQueryParameter = useReplaceQueryParameter();
@@ -41,12 +41,26 @@ const Header = () => {
           </PageLinkFrame>
         </HomeLink>
         <MenuItemsWrapper>
-          <StyledNavLink to="/movies">
+          <StyledNavLink
+            to="/movies"
+            className={
+              path.startsWith("/movie") || path.startsWith("/movies")
+                ? "active"
+                : ""
+            }
+          >
             <MenuItem>
               <MenuItemContent content="Movies" />
             </MenuItem>
           </StyledNavLink>
-          <StyledNavLink to="/people">
+          <StyledNavLink
+            to="/people"
+            className={
+              path.startsWith("/person") || path.startsWith("/people")
+                ? "active"
+                : ""
+            }
+          >
             <MenuItem>
               <MenuItemContent content="People" />
             </MenuItem>
@@ -56,7 +70,9 @@ const Header = () => {
           <StyledSearchIcon />
           <SearchInput
             placeholder={`Search for ${
-              path === "/people" ? "people" : "movies"
+              path.startsWith("/people") || path.startsWith("/person")
+                ? "people"
+                : "movies"
             }...`}
             value={query || ""}
             onChange={onInputChange}

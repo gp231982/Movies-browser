@@ -51,17 +51,36 @@ import { basicImageUrl } from "../MovieList";
 import blankPoster from "../MovieDetails/BlankMoviePoster.png";
 import { handlePeopleClick } from "../../slices/peopleSlice";
 import { HomeLink } from "../../common/Header/styled";
+import { useNavigate } from "react-router-dom";
+import { useQueryParameter } from "../../common/queryParameters";
+import searchQueryParamName from "../../common/searchQueryParamName";
 
 const baseURL = "https://image.tmdb.org/t/p/";
 const bigPosterSize = "original";
 
 const MovieDetails = () => {
+  const query = useQueryParameter(searchQueryParamName);
+  const navigate = useNavigate();
   const selectedMovieId = useSelector(selectMovieId);
   const dispatch = useDispatch();
   const credits = useSelector(selectData);
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
   const details = useSelector(selectDetailsData);
+
+  useEffect(() => {
+    let timer;
+    if (query) {
+      timer = setTimeout(() => {
+        navigate(`/movies?page=1&${searchQueryParamName}=${query}`);
+      }, 500);
+    }
+    return () => {
+      if (timer) {
+        clearTimeout(timer);
+      }
+    };
+  }, [query, navigate]);
 
   useEffect(() => {
     if (selectedMovieId) {
@@ -119,7 +138,9 @@ const MovieDetails = () => {
                 <RateIcon />
               </BackgroundStar>
               <BackgroundValue>
-                {details.vote_average ? details.vote_average.toFixed(1).toString().replace(".",",") : null}
+                {details.vote_average
+                  ? details.vote_average.toFixed(1).toString().replace(".", ",")
+                  : null}
                 <BackgorundSmallerValue> /10</BackgorundSmallerValue>
               </BackgroundValue>
             </BackgroundRating>
@@ -130,10 +151,13 @@ const MovieDetails = () => {
         </BigPoster>
 
         <Tile>
-          <Picture src={
-            details.poster_path
-              ? `${basicImageUrl}${details.poster_path}`
-              : blankPoster} />
+          <Picture
+            src={
+              details.poster_path
+                ? `${basicImageUrl}${details.poster_path}`
+                : blankPoster
+            }
+          />
           <Main>
             <Title>{details.title ? details.title : null}</Title>
             <Year>
@@ -144,29 +168,40 @@ const MovieDetails = () => {
                 <Production>Production:</Production>
                 {details.production_countries
                   ? details.production_countries.map((country) => (
-                    <ProductionData key={country.name}>{country.name}, </ProductionData>
-                  ))
+                      <ProductionData key={country.name}>
+                        {country.name},{" "}
+                      </ProductionData>
+                    ))
                   : null}
               </ProductionBox>
               <ReleaseBox>
                 <Release>Release date:</Release>
                 <ReleaseData>
                   {details.release_date
-                    ? `${details.release_date.slice(8, 10)}.${details.release_date.slice(5, 7)}.${details.release_date.slice(0, 4)}`
+                    ? `${details.release_date.slice(
+                        8,
+                        10
+                      )}.${details.release_date.slice(
+                        5,
+                        7
+                      )}.${details.release_date.slice(0, 4)}`
                     : null}
                 </ReleaseData>
               </ReleaseBox>
             </ProductionAndRelease>
             <Genres>
-              {details.genres ? details.genres.map((genre) => (
-                <Genre key={genre.name}>{genre.name}</Genre>
-              ))
+              {details.genres
+                ? details.genres.map((genre) => (
+                    <Genre key={genre.name}>{genre.name}</Genre>
+                  ))
                 : null}
             </Genres>
             <Rating>
               <RateIcon />
               <Rate>
-                {details.vote_average ? details.vote_average.toFixed(1).toString().replace(".",",") : null}
+                {details.vote_average
+                  ? details.vote_average.toFixed(1).toString().replace(".", ",")
+                  : null}
               </Rate>
               <TotalRate>/ 10</TotalRate>
               <Votes>
