@@ -161,6 +161,7 @@ const MovieDetails = () => {
               ? `${basicImageUrl}${details.poster_path}`
               : blankPoster
           }
+          alt="Movie poster"
         />
         <Main>
           <Title>{details.title ? details.title : "No title"}</Title>
