@@ -12,7 +12,7 @@ export const MovieWrapper = styled.button`
   border: none;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr 1fr;
-  transition: transform 0.2s;
+  transition: transform 0.3s;
   cursor: pointer;
 
   &:hover {
