@@ -20,7 +20,11 @@ export const TilesWrapper = styled.div`
   flex-shrink: 0;
   gap: 24px;
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1380px) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  @media (max-width: 1050px) {
     grid-template-columns: repeat(4, 1fr);
   }
 
