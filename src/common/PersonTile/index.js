@@ -5,9 +5,9 @@ const PersonTile = ({ posterImage, personName, characterName, job }) => {
   return (
     <Wrapper>
       {posterImage ? (
-        <Img src={posterImage} alt="picture" />
+        <Img src={posterImage} alt="Person poster" />
       ) : (
-        <Img src={BlankPicture} alt="no picture" />
+        <Img src={BlankPicture} alt="Placeholder photo" />
         
       )}
       <PersonName>{personName}</PersonName>
