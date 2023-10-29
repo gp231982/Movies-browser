@@ -232,21 +232,47 @@ export const Tile = styled.div`
   grid-template-rows: auto auto;
   gap: 40px;
   padding: 40px;
-  max-width: 1368px;
   margin: 0 auto;
+  margin-top: 30px;
+  max-width: 1340px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.desktop}) {
+    max-width: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+    gap: 30px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    gap: 20px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileDual}) {
+    grid-template-columns: 114px auto;
+    gap: 8px;
+    padding: 16px;
+    margin: 10px 10px 0 10px;
+  }
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     grid-template-columns: 114px auto;
-    gap: 16px;
+    gap: 8px;
     padding: 16px;
+    margin: 10px 10px 0 10px;
   }
 `;
 
 export const Picture = styled.img`
   grid-row: 1 /3;
-  width: 312px;
+  max-width: 100%;
   height: 464px;
   border-radius: 5px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileDual}) {
+    grid-row: 1;
+    width: 114px;
+    height: 169px;
+  }
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     grid-row: 1;
@@ -260,10 +286,20 @@ export const Main = styled.div`
   flex-direction: column;
   gap: 24px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.desktop}) {
+    gap: 10px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileDual}) {
     grid-row: 1;
     grid-column: 2;
     gap: 8px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
+    grid-row: 1;
+    grid-column: 2;
+    gap: 6px;
   }
 `;
 
@@ -275,11 +311,12 @@ export const Title = styled.h1`
   color: ${({ theme }) => theme.color.black};
   margin: 0;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 1.3;
-    margin: 0;
+  @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    font-size: 24px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileDual}) {
+    font-size: 14px;
   }
 `;
 
@@ -291,7 +328,16 @@ export const Year = styled.p`
   color: ${({ theme }) => theme.color.black};
   margin: 0;
 
+  @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    font-size: 14px;
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
+    font-size: 13px;
+    margin: 0;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileDual}) {
     font-size: 13px;
     margin: 0;
   }
@@ -304,6 +350,11 @@ export const ProductionAndRelease = styled.div`
   text-align: left;
   margin: 0;
 
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileDual}) {
+    font-size: 12px;
+    line-height: 2;
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 12px;
     line-height: 2;
@@ -313,6 +364,10 @@ export const ProductionAndRelease = styled.div`
 export const ProductionBox = styled.div`
   display: flex;
   gap: 10px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    gap: 6px;
+  }
 `;
 
 export const Production = styled.p`
@@ -321,6 +376,10 @@ export const Production = styled.p`
   line-height: 1.2;
   color: ${({ theme }) => theme.color.stormGray};
   margin: 0;
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    font-size: 12px;
+  }
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     display: none;
@@ -334,7 +393,17 @@ export const ProductionData = styled.p`
   color: ${({ theme }) => theme.color.black};
   margin: 0;
 
+  @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    font-size: 12px;
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.3;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileDual}) {
     font-size: 12px;
     font-weight: 400;
     line-height: 1.3;
@@ -345,6 +414,10 @@ export const ReleaseBox = styled.div`
   display: flex;
   gap: 10px;
   margin: 0px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    gap: 6px;
+  }
 `;
 
 export const Release = styled.p`
@@ -353,6 +426,10 @@ export const Release = styled.p`
   line-height: 1.2;
   color: ${({ theme }) => theme.color.stormGray};
   margin: 0;
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    font-size: 12px;
+  }
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     display: none;
@@ -366,7 +443,18 @@ export const ReleaseData = styled.p`
   color: ${({ theme }) => theme.color.black};
   margin: 0;
 
+  @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    font-size: 12px;
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.3;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileDual}) {
     font-size: 12px;
     font-style: normal;
     font-weight: 400;
@@ -381,13 +469,26 @@ export const Description = styled.p`
   line-height: 1.6;
   margin: 0;
 
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileDual}) {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.6;
+    grid-column: 1 / 3;
+    max-width: 100%;
+    margin: 0 0 0 -120px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    font-size: 16px;
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 14px;
     font-weight: 400;
     line-height: 1.6;
     grid-column: 1 / 3;
     max-width: 288px;
-    margin: 0 0 0 -130px;
+    margin: 15px 0 0 -120px;
   }
 `;
 
@@ -403,6 +504,10 @@ export const Rate = styled.p`
   font-size: 22px;
   font-weight: 500;
   line-height: 1.3;
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileDual}) {
+    font-size: 13px;
+  }
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 13px;
@@ -427,6 +532,12 @@ export const Votes = styled.p`
   font-weight: 400;
   line-height: 1.2;
 
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileDual}) {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.3;
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 13px;
     font-weight: 400;
@@ -435,6 +546,11 @@ export const Votes = styled.p`
 `;
 
 export const RateIcon = styled(RateIc)`
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileDual}) {
+    width: 16px;
+    height: 16px;
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     width: 16px;
     height: 16px;

@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
   background: #fff;
   height: 360px;
   cursor: pointer;
-  transition: all 0.5s ease 0s;
+  transition: all 0.3s ease 0s;
 
   &:hover {
     transform: scale(1.05);
