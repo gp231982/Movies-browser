@@ -1,13 +1,15 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  display: flex;
+  display: grid;
+  background: ${({ theme }) => theme.color.white};
   padding: 16px;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  background: #fff;
-  height: 360px;
+  margin: auto;
+  align-items: baseline;
+  -webkit-box-align: baseline;
+  min-height: 340px;
+  max-width: 208px;
+  height: 100%;
   cursor: pointer;
   transition: all 0.3s ease 0s;
 
@@ -20,7 +22,7 @@ export const Wrapper = styled.div`
 export const Img = styled.img`
   width: 100%;
   height: auto;
-  border-radius: 5px; 
+  border-radius: 5px;
   aspect-ratio: 194.56/291.83;
 `;
 
