@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 export const Content = styled.div`
   max-width: 1408px;
   margin: 0 auto;
-  margin-left: 10px;
-  margin-right: 10px;
   padding: 0 20px;
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
