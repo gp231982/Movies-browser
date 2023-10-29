@@ -32,6 +32,7 @@ function* fetchGenres() {
     yield delay(500);
     const response = yield call(axios.get, genresApiUrl);
     yield put(fetchMovieGenre(response.data.genres));
+    localStorage.setItem("genre_ids", JSON.stringify(response.data.genres));
   } catch (error) {
     yield put(fetchMovieFailure(error));
   }
