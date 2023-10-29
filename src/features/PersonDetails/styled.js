@@ -110,7 +110,7 @@ export const DateLabel = styled.div`
   font-size: 18px;
   font-weight: 400;
   line-height: 14.4px;
-  margin: 0px 10px 3px 0px;
+  margin: 0px 10px 12px 0px;
 
   @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
     font-size: 15px;
