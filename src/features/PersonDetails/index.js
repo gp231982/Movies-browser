@@ -107,6 +107,7 @@ export const PersonDetails = () => {
                 ? `${basicImageUrl}${details.profile_path}`
                 : blankPicture
             }
+            alt="Person poster"
           />
           <MainInfo>
             <PersonTitle>

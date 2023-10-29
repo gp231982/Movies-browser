@@ -21,6 +21,7 @@ import { HomeLink } from "../../common/Header/styled";
 import SectionTileContent from "../../common/States/SectionTileContent";
 import { usePagination } from "../../common/Pagination/usePagination";
 import BlankPicture from "../../common/PersonTile/BlankPicture.png";
+import { Content } from "../MovieList/styled";
 
 const MoviePeople = () => {
   const pagination = usePagination();
@@ -61,7 +62,7 @@ const MoviePeople = () => {
   }
 
   return (
-    <>
+    <Content>
       <MoviePeopleWrapper>
         <SectionTile>
           <SectionTileContent query={query} people={people} />
@@ -87,7 +88,7 @@ const MoviePeople = () => {
         </TilesWrapper>
       </MoviePeopleWrapper>
       <Pagination />
-    </>
+    </Content>
   );
 };
 

@@ -28,7 +28,7 @@ export const MovieTile = ({
   const genres = useSelector(selectGenre);
   return (
     <MovieWrapper key={id}>
-      <Picture src={posterPath} />
+      <Picture src={posterPath} alt="Movie poster"/>
       <Main>
         <Description>
           <Tile>{title}</Tile>
