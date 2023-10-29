@@ -2,20 +2,15 @@ import styled from "styled-components";
 
 export const MoviePeopleWrapper = styled.div`
   max-width: 1368px;
-  ${"" /* height: 777px; */}
   margin: 0 auto;
 `;
 
 export const StyledHeader = styled.h2`
-  color: #000;
   color: ${({ theme }) => theme.color.waterloo};
-
-  /* Desktop/H1 */
-  font-family: Poppins;
   font-size: 36px;
   font-style: normal;
   font-weight: 600;
-  line-height: 120%; /* 43.2px */
+  line-height: 120%;
 `;
 
 export const TilesWrapper = styled.div`
