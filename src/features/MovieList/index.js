@@ -13,6 +13,7 @@ import { MovieTile } from "../../common/MovieTile";
 import { Pagination } from "../../common/Pagination";
 import { Loading } from "../../common/States/Loading";
 import { Error } from "../../common/States/Error";
+import { NoResults } from "../../common/States/NoResults";
 import { useQueryParameter } from "../../common/queryParameters";
 import searchQueryParamName from "../../common/searchQueryParamName";
 import { HomeLink } from "../../common/Header/styled";
@@ -45,7 +46,7 @@ export const MovieList = () => {
       pagination.setFirstPage();
     }
     dispatch(fetchMovieRequest());
-  }, [query]);
+  }, [page, query]);
 
   if (loading) {
     return <Loading />;
@@ -53,6 +54,10 @@ export const MovieList = () => {
 
   if (error) {
     return <Error />;
+  }
+
+  if (movies.length === 0) {
+    return <NoResults />;
   }
 
   const handleMovieClickHandler = (movieId) => {
