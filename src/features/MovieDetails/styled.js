@@ -236,14 +236,7 @@ export const Tile = styled.div`
   margin-top: 30px;
   max-width: 1340px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
-    grid-template-columns: 114px auto;
-    gap: 16px;
-    padding: 16px;
-    margin: 10px 10px 0 10px;
-  }
-
-  @media(max-width: ${({theme}) => theme.breakpoint.desktop}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.desktop}) {
     max-width: 100%;
     margin-left: 10px;
     margin-right: 10px;
@@ -251,26 +244,40 @@ export const Tile = styled.div`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
-    gap: 2px;
+    gap: 20px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileDual}) {
+    grid-template-columns: 114px auto;
+    gap: 8px;
+    padding: 16px;
+    margin: 10px 10px 0 10px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
+    grid-template-columns: 114px auto;
+    gap: 8px;
+    padding: 16px;
+    margin: 10px 10px 0 10px;
   }
 `;
 
 export const Picture = styled.img`
   grid-row: 1 /3;
-  max-width: 312px;
+  max-width: 100%;
   height: 464px;
   border-radius: 5px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileDual}) {
     grid-row: 1;
     width: 114px;
     height: 169px;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     grid-row: 1;
-    max-width: 280px;
-    height: auto;
+    width: 114px;
+    height: 169px;
   }
 `;
 
@@ -279,14 +286,20 @@ export const Main = styled.div`
   flex-direction: column;
   gap: 24px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.desktop}) {
+    gap: 10px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileDual}) {
     grid-row: 1;
     grid-column: 2;
     gap: 8px;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.desktop}) {
-    gap: 10px;
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
+    grid-row: 1;
+    grid-column: 2;
+    gap: 6px;
   }
 `;
 
@@ -298,15 +311,12 @@ export const Title = styled.h1`
   color: ${({ theme }) => theme.color.black};
   margin: 0;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 1.3;
-    margin: 0;
-  }
-
   @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
     font-size: 24px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileDual}) {
+    font-size: 14px;
   }
 `;
 
@@ -318,13 +328,18 @@ export const Year = styled.p`
   color: ${({ theme }) => theme.color.black};
   margin: 0;
 
+  @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    font-size: 14px;
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 13px;
     margin: 0;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
-    font-size: 14px;
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileDual}) {
+    font-size: 13px;
+    margin: 0;
   }
 `;
 
@@ -334,6 +349,11 @@ export const ProductionAndRelease = styled.div`
   line-height: 1.2;
   text-align: left;
   margin: 0;
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileDual}) {
+    font-size: 12px;
+    line-height: 2;
+  }
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 12px;
@@ -346,7 +366,7 @@ export const ProductionBox = styled.div`
   gap: 10px;
 
   @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
-    gap: 6px
+    gap: 6px;
   }
 `;
 
@@ -357,12 +377,12 @@ export const Production = styled.p`
   color: ${({ theme }) => theme.color.stormGray};
   margin: 0;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
-    display: none;
-  }
-
   @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
     font-size: 12px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
+    display: none;
   }
 `;
 
@@ -373,14 +393,20 @@ export const ProductionData = styled.p`
   color: ${({ theme }) => theme.color.black};
   margin: 0;
 
+  @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    font-size: 12px;
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 12px;
     font-weight: 400;
     line-height: 1.3;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileDual}) {
     font-size: 12px;
+    font-weight: 400;
+    line-height: 1.3;
   }
 `;
 
@@ -390,7 +416,7 @@ export const ReleaseBox = styled.div`
   margin: 0px;
 
   @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
-    gap: 6px
+    gap: 6px;
   }
 `;
 
@@ -401,12 +427,12 @@ export const Release = styled.p`
   color: ${({ theme }) => theme.color.stormGray};
   margin: 0;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
-    display: none;
-  }
-
   @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
     font-size: 12px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
+    display: none;
   }
 `;
 
@@ -417,6 +443,10 @@ export const ReleaseData = styled.p`
   color: ${({ theme }) => theme.color.black};
   margin: 0;
 
+  @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    font-size: 12px;
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 12px;
     font-style: normal;
@@ -424,8 +454,11 @@ export const ReleaseData = styled.p`
     line-height: 1.3;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileDual}) {
     font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.3;
   }
 `;
 
@@ -436,17 +469,26 @@ export const Description = styled.p`
   line-height: 1.6;
   margin: 0;
 
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileDual}) {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.6;
+    grid-column: 1 / 3;
+    max-width: 100%;
+    margin: 0 0 0 -120px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    font-size: 16px;
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 14px;
     font-weight: 400;
     line-height: 1.6;
     grid-column: 1 / 3;
     max-width: 288px;
-    margin: 0 0 0 -120px;
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
-    font-size: 16px;
+    margin: 15px 0 0 -120px;
   }
 `;
 
@@ -462,6 +504,10 @@ export const Rate = styled.p`
   font-size: 22px;
   font-weight: 500;
   line-height: 1.3;
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileDual}) {
+    font-size: 13px;
+  }
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 13px;
@@ -486,6 +532,12 @@ export const Votes = styled.p`
   font-weight: 400;
   line-height: 1.2;
 
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileDual}) {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.3;
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 13px;
     font-weight: 400;
@@ -494,6 +546,11 @@ export const Votes = styled.p`
 `;
 
 export const RateIcon = styled(RateIc)`
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileDual}) {
+    width: 16px;
+    height: 16px;
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     width: 16px;
     height: 16px;
