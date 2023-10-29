@@ -46,7 +46,7 @@ export const MovieList = () => {
       pagination.setFirstPage();
     }
     dispatch(fetchMovieRequest());
-  }, [page]);
+  },[page] );
 
   if (loading) {
     return <Loading />;
@@ -87,7 +87,7 @@ export const MovieList = () => {
                   ? movie.vote_average.toFixed(1).toString().replace(".", ",")
                   : null
               }
-              voteCount={movie.vote_count ? movie.vote_count : null}
+              voteCount={movie.vote_count ? movie.vote_count : "No"}
               genre_ids={movie.genre_ids ? movie.genre_ids.slice(0, 2) : null}
             />
           </HomeLink>

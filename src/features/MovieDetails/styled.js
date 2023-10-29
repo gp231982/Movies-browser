@@ -74,13 +74,30 @@ export const BigPoster = styled.div`
 
 export const MainInfo = styled.div`
   position: absolute;
-  left: 15%;
-  bottom: 5%;
+  left: 14%;
+  bottom: 7%;
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: auto auto auto;
   row-gap: 8px;
   column-gap: 8px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.desktop}) {
+    bottom: 6%;
+    left: 13%;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    bottom: 5%;
+    left: 12%;
+    row-gap: 0;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileDual}) {
+    bottom: 4%;
+    left: 12%;
+    row-gap: 0;
+  }
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     bottom: 3%;
@@ -97,6 +114,18 @@ export const BackgroundTitle = styled.div`
   font-weight: 600;
   line-height: 1.2;
   text-align: left;
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.desktop}) {
+    font-size: 64px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    font-size: 48px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileDual}) {
+    font-size: 32px;
+  }
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 24px;
@@ -131,6 +160,18 @@ export const BackgroundValue = styled.div`
   align-items: baseline;
   color: ${({ theme }) => theme.color.white};
 
+  @media (max-width: ${({ theme }) => theme.breakpoint.desktop}) {
+    font-size: 30px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    font-size: 25px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileDual}) {
+    font-size: 20px;
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 14px;
   }
@@ -140,6 +181,18 @@ export const BackgorundSmallerValue = styled.span`
   font-size: 16px;
   font-weight: 400;
   text-align: left;
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.desktop}) {
+    font-size: 16px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    font-size: 14px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileDual}) {
+    font-size: 12px;
+  }
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 10px;
@@ -152,6 +205,18 @@ export const BackgroundVotes = styled.div`
   text-align: left;
   margin-top: 5px;
   color: ${({ theme }) => theme.color.white};
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.desktop}) {
+    font-size: 16px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    font-size: 14px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileDual}) {
+    font-size: 12px;
+  }
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 10px;
