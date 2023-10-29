@@ -3,7 +3,11 @@ import styled, { css } from "styled-components";
 export const StyledPersonDetails = styled.div`
   display: flex;
   justify-content: center;
-  margin: 40px;
+  margin: 20px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
+    margin: 16px;
+  }
 `;
 
 export const PersonTile = styled.div`
@@ -36,8 +40,8 @@ export const PersonTile = styled.div`
 `;
 
 export const Picture = styled.img`
-  width: 399px;
-  height: 564px;
+  max-width: 399px;
+  max-height: 564px;
   border-radius: 5px;
   align-self: start;
   justify-self: end;
