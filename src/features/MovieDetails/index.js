@@ -144,11 +144,10 @@ const MovieDetails = () => {
                 {details.vote_average
                   ? details.vote_average.toFixed(1).toString().replace(".", ",")
                   : null}
-                <BackgorundSmallerValue> /10</BackgorundSmallerValue>
               </BackgroundValue>
             </BackgroundRating>
             <BackgroundVotes>
-              {details.vote_count ? details.vote_count : null} votes
+              {details.vote_count ? details.vote_count : "No"} votes
             </BackgroundVotes>
           </MainInfo>
         </BigPoster>
