@@ -19,6 +19,7 @@ import searchQueryParamName from "../../common/searchQueryParamName";
 import { HomeLink } from "../../common/Header/styled";
 import SectionTileContent from "../../common/States/SectionTileContent";
 import { usePagination } from "../../common/Pagination/usePagination";
+import BlankPicture from "../../common/PersonTile/BlankPicture.png";
 
 const MoviePeople = () => {
   const pagination = usePagination();
@@ -37,10 +38,10 @@ const MoviePeople = () => {
 
   useEffect(() => {
     if (page !== 1 && query) {
-      pagination.setFirstPage();
+      pagination.setFirstPage();  
     }
     dispatch(fetchPeopleRequest());
-  }, [page]);
+  }, [query]);
 
   useEffect(() => {
     dispatch(fetchPeopleRequest());
@@ -70,10 +71,10 @@ const MoviePeople = () => {
               to={`/person/${person.id}`}
               onClick={() => handlePeopleClickHandler(person.id)}
               key={person.id}
-            >
+            >   
               <PersonTile
                 key={person.id}
-                posterImage={`https://www.themoviedb.org/t/p/w185_and_h278_bestv2${person.profile_path}`}
+                posterImage={person.profile_path ? `https://www.themoviedb.org/t/p/w185_and_h278_bestv2${person.profile_path}`: BlankPicture}
                 personName={person.name}
               />
             </HomeLink>
@@ -85,4 +86,4 @@ const MoviePeople = () => {
   );
 };
 
-export default MoviePeople;
+export default MoviePeople; 

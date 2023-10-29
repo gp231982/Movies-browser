@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   align-items: center;
   gap: 12px;
   background: #fff;
-  height: auto;
+  height: 360px;
   cursor: pointer;
   transition: all 0.5s ease 0s;
 
@@ -20,7 +20,7 @@ export const Wrapper = styled.div`
 export const Img = styled.img`
   width: 100%;
   height: auto;
-  border-radius: 5px;
+  border-radius: 5px; 
   aspect-ratio: 194.56/291.83;
 `;
 

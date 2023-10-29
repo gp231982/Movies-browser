@@ -21,7 +21,6 @@ import SectionTileContent from "../../common/States/SectionTileContent";
 
 import { usePagination } from "../../common/Pagination/usePagination";
 
-
 export const basicImageUrl = `https://image.tmdb.org/t/p/w500`;
 
 export const MovieList = () => {
@@ -46,7 +45,7 @@ export const MovieList = () => {
       pagination.setFirstPage();
     }
     dispatch(fetchMovieRequest());
-  },[page] );
+  }, [query]);
 
   if (loading) {
     return <Loading />;

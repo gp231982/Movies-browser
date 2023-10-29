@@ -36,7 +36,7 @@ export const usePagination = () => {
     setPage((page) => (page += 1));
   };
 
-  const setPreviousPage = () => {
+  const setPreviousPage = () => { 
     setPage((page) => (page -= 1));
   };
 
