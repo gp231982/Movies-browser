@@ -232,19 +232,32 @@ export const Tile = styled.div`
   grid-template-rows: auto auto;
   gap: 40px;
   padding: 40px;
-  max-width: 1368px;
   margin: 0 auto;
+  margin-top: 30px;
+  max-width: 1340px;
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     grid-template-columns: 114px auto;
     gap: 16px;
     padding: 16px;
+    margin: 10px 10px 0 10px;
+  }
+
+  @media(max-width: ${({theme}) => theme.breakpoint.desktop}) {
+    max-width: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+    gap: 30px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    gap: 2px;
   }
 `;
 
 export const Picture = styled.img`
   grid-row: 1 /3;
-  width: 312px;
+  max-width: 312px;
   height: 464px;
   border-radius: 5px;
 
@@ -252,6 +265,12 @@ export const Picture = styled.img`
     grid-row: 1;
     width: 114px;
     height: 169px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    grid-row: 1;
+    max-width: 280px;
+    height: auto;
   }
 `;
 
@@ -264,6 +283,10 @@ export const Main = styled.div`
     grid-row: 1;
     grid-column: 2;
     gap: 8px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.desktop}) {
+    gap: 10px;
   }
 `;
 
@@ -281,6 +304,10 @@ export const Title = styled.h1`
     line-height: 1.3;
     margin: 0;
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    font-size: 24px;
+  }
 `;
 
 export const Year = styled.p`
@@ -294,6 +321,10 @@ export const Year = styled.p`
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 13px;
     margin: 0;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    font-size: 14px;
   }
 `;
 
@@ -313,6 +344,10 @@ export const ProductionAndRelease = styled.div`
 export const ProductionBox = styled.div`
   display: flex;
   gap: 10px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    gap: 6px
+  }
 `;
 
 export const Production = styled.p`
@@ -324,6 +359,10 @@ export const Production = styled.p`
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     display: none;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    font-size: 12px;
   }
 `;
 
@@ -339,12 +378,20 @@ export const ProductionData = styled.p`
     font-weight: 400;
     line-height: 1.3;
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    font-size: 12px;
+  }
 `;
 
 export const ReleaseBox = styled.div`
   display: flex;
   gap: 10px;
   margin: 0px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    gap: 6px
+  }
 `;
 
 export const Release = styled.p`
@@ -356,6 +403,10 @@ export const Release = styled.p`
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     display: none;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    font-size: 12px;
   }
 `;
 
@@ -372,6 +423,10 @@ export const ReleaseData = styled.p`
     font-weight: 400;
     line-height: 1.3;
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    font-size: 12px;
+  }
 `;
 
 export const Description = styled.p`
@@ -387,7 +442,11 @@ export const Description = styled.p`
     line-height: 1.6;
     grid-column: 1 / 3;
     max-width: 288px;
-    margin: 0 0 0 -130px;
+    margin: 0 0 0 -120px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    font-size: 16px;
   }
 `;
 
