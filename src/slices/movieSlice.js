@@ -1,12 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const storedGenreIds = localStorage.getItem("genre_ids");
+const initialGenreIds = storedGenreIds ? JSON.parse(storedGenreIds) : [];
+
 const movieSlice = createSlice({
   name: "movie",
   initialState: {
     movies: [],
     loading: false,
     error: null,
-    genres: [],
+    genres: initialGenreIds,
     movieId: null,
   },
   reducers: {
