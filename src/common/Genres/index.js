@@ -7,9 +7,10 @@ export const Genres = styled.div`
   row-gap: 2px;
   margin: 8px 0 0 0;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     display: flex;
     align-items: flex-start;
-    gap: 8px;
+    gap: 6px;
+    margin: 0;
   }
 `;
