@@ -18,8 +18,10 @@ import { useQueryParameter } from "../../common/queryParameters";
 import searchQueryParamName from "../../common/searchQueryParamName";
 import { HomeLink } from "../../common/Header/styled";
 import SectionTileContent from "../../common/States/SectionTileContent";
+import { usePagination } from "../../common/Pagination/usePagination";
 
 const MoviePeople = () => {
+  const pagination = usePagination();
   const dispatch = useDispatch();
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
@@ -32,6 +34,13 @@ const MoviePeople = () => {
   const startIndex = (page - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const visiblePeople = people.slice(startIndex, endIndex);
+
+  useEffect(() => {
+    if (page !== 1 && query) {
+      pagination.setFirstPage();
+    }
+    dispatch(fetchPeopleRequest());
+  }, [page]);
 
   useEffect(() => {
     dispatch(fetchPeopleRequest());
