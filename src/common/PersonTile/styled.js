@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  background: #fff;
   display: grid;
+  background: ${({ theme }) => theme.color.white};
   padding: 16px;
   margin: auto;
   align-items: baseline;

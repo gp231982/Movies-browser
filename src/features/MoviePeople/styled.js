@@ -20,11 +20,12 @@ export const TilesWrapper = styled.div`
   flex-shrink: 0;
   gap: 24px;
 
-  @media (max-width: 1380px) {
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.desktop}) {
     grid-template-columns: repeat(5, 1fr);
   }
 
-  @media (max-width: 1050px) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
     grid-template-columns: repeat(4, 1fr);
   }
 
@@ -32,7 +33,7 @@ export const TilesWrapper = styled.div`
     grid-template-columns: repeat(3, 1fr);
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileDual}) {
     grid-template-columns: repeat(2, 1fr);
   }
 `;
