@@ -17,10 +17,12 @@ export const SectionTile = styled.h1`
   line-height: 1.2;
   text-align: left;
   margin: 56px 0 24px;
-  color: ${({theme}) => theme.color.woodSmoke};
+  color: ${({ theme }) => theme.color.woodSmoke};
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     width: 288px;
+    font-size: 22px;
+    margin: 24px 0;
   }
 `;
 
@@ -31,7 +33,7 @@ export const Wrapper = styled.div`
   gap: 24px;
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
-    grid-template-columns: repeat(auto-fill, minmax(324px, 1fr));
+    grid-template-columns: 1fr;
     width: 100%;
     gap: 16px;
     align-items: center;
