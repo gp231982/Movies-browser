@@ -18,10 +18,14 @@ export const Wrapper = styled.div`
     transform: scale(1.05);
     box-shadow: ${({ theme }) => theme.boxShadow.medium};
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
+    min-height: 204px;
+  }
 `;
 
 export const Img = styled.img`
-  width: 100%;
+  max-width: 100%;
   height: auto;
   border-radius: 5px;
   aspect-ratio: 194.56/291.83;
@@ -36,6 +40,10 @@ export const PersonName = styled.p`
   font-weight: 500;
   line-height: 130%;
   margin: 0px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
+    font-size: 14px;
+  }
 `;
 
 export const CharacterName = styled.p`

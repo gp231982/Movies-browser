@@ -36,4 +36,8 @@ export const TilesWrapper = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoint.mobileDual}) {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileDual}) {
+    gap: 16px;
+  }
 `;
