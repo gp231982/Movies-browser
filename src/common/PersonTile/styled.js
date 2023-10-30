@@ -28,7 +28,7 @@ export const Img = styled.img`
 `;
 
 export const PersonName = styled.p`
-  color: ${({ theme }) => theme.color.black};
+  color: ${({ theme }) => theme.color.woodSmoke};
   text-align: center;
   font-family: Poppins;
   font-size: 22px;
