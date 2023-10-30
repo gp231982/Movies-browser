@@ -78,6 +78,7 @@ export const PersonTitle = styled.h1`
   line-height: 43.2px;
   margin-bottom: 24px;
   margin-top: 0px;
+  color: ${({theme}) => theme.color.woodSmoke};
 
   @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
     font-size: 24px;
@@ -161,7 +162,7 @@ export const PlaceLabel = styled.div`
 
 
 export const PersonBirthData = styled.div`
-  color: ${({ theme }) => theme.color.black};
+    color: ${({theme}) => theme.color.woodSmoke};
   font-size: 18px;
   font-weight: 400;
   line-height: 14.4px;
@@ -177,6 +178,7 @@ export const PersonBirthData = styled.div`
 `;
 
 export const Biography = styled.p`
+  color: ${({theme}) => theme.color.woodSmoke};
   font-size: 20px;
   font-weight: 400;
   line-height: 32px;
@@ -198,6 +200,7 @@ export const Title = styled.h1`
   font-size: 36px;
   font-weight: 600;
   line-height: 43.2px;
+  color: ${({theme}) => theme.color.woodSmoke};
 
   @media (max-width: ${({ theme }) => theme.breakpoint.tablet}) {
     font-size: 16px;

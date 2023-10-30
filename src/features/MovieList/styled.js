@@ -17,6 +17,7 @@ export const SectionTile = styled.h1`
   line-height: 1.2;
   text-align: left;
   margin: 56px 0 24px;
+  color: ${({theme}) => theme.color.woodSmoke};
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     width: 288px;
