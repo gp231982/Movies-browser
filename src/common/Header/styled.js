@@ -68,7 +68,6 @@ export const PageLinkFrame = styled.div`
   justify-content: space-between;
   margin-right: 80px;
   @media (max-width: ${({ theme }) => theme.breakpoint.mobileDual}) {
-    width: 220px;
     margin-right: 8px;
   }
 
@@ -189,6 +188,11 @@ export const Search = styled.input`
   font-style: normal;
   font-weight: 400;
   line-height: 150%;
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
+    width: 180px;
+    margin-right: 50px;
+  }
 `;
 export const SearchInput = styled(Search)`
   &:focus {
