@@ -6,6 +6,8 @@ This is a group project made by our group called "Lima". Our task was to make th
 
 On our site you can browse movies from the most popular ones, search for given movies, enter details of movies and details of actors.
 
+![screen](https://raw.githubusercontent.com/KamilJustynski/Movies-browser/main/public/picture.png)
+
 # Demo
 
 [Movie browser](https://kamiljustynski.github.io/Movies-browser/#/movies?page=1)
