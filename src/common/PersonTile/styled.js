@@ -12,6 +12,7 @@ export const Wrapper = styled.div`
   height: 100%;
   cursor: pointer;
   transition: all 0.3s ease 0s;
+  border-radius: 5px;
 
   &:hover {
     transform: scale(1.05);
@@ -27,7 +28,7 @@ export const Img = styled.img`
 `;
 
 export const PersonName = styled.p`
-  color: var(--Black, #18181b);
+  color: ${({ theme }) => theme.color.woodSmoke};
   text-align: center;
   font-family: Poppins;
   font-size: 22px;
@@ -38,7 +39,7 @@ export const PersonName = styled.p`
 `;
 
 export const CharacterName = styled.p`
-  color: var(--Darker-grey, #7e839a);
+  color: ${({ theme }) => theme.color.waterloo};
   text-align: center;
   font-family: Poppins;
   font-size: 18px;
@@ -49,7 +50,7 @@ export const CharacterName = styled.p`
 `;
 
 export const Job = styled.p`
-  color: var(--Darker-grey, #7e839a);
+  color: ${({ theme }) => theme.color.waterloo};
   text-align: center;
   font-family: Poppins;
   font-size: 18px;
