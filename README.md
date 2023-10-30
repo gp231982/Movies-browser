@@ -11,15 +11,9 @@ This is a group project made by our group called "Lima". Our task was to make th
 [Movie browser](https://kamiljustynski.github.io/Movies-browser/#/movies?page=1)
 
 # Tools used
-- HTML
-- CSS
-- JAVASCRIPT
-- CREATE-REACT-APP
-- STYLED COMPONENTS
-- REACT-ROUTER-DOM
-- REDUX (REDUXJS/TOOLKIT, REACT-REDUX, REDUX-SAGA)
-- AXIOS
-- CUSTOM HOOKS
+
+`JavaScript ES+` `React` `React Redux` `React Redux-Saga` `React Redux-Toolkit` `API` `Axios` `styled-component` `RWD` `Normalize` `Immuntabbility`
+`Flex` `Grid` `Markdown` `Create-react-app`
 
 # Getting Started with Create React App
 
