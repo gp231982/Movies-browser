@@ -44,6 +44,7 @@ export const Picture = styled.img`
 
 export const Description = styled.div`
   height: 134px;
+  color: ${({ theme }) => theme.color.woodSmoke};
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     height: auto;
@@ -63,6 +64,7 @@ export const Tile = styled.h2`
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  color: ${({ theme }) => theme.color.woodSmoke};
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 16px;
@@ -82,6 +84,7 @@ export const Date = styled.p`
   line-height: 1.5;
   margin: 8px 0 0 0;
   color: ${({ theme }) => theme.color.waterloo};
+  margin-bottom: 10px;
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 13px;
@@ -116,6 +119,7 @@ export const Rate = styled.p`
   font-weight: 600;
   line-height: 1.5;
   margin: 0;
+  color: ${({ theme }) => theme.color.woodSmoke};
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     font-size: 13px;
