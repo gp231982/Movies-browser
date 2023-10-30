@@ -4,7 +4,7 @@ This is a group project made by our group called "Lima". Our task was to make th
 
 # Introduction
 
-
+On our site you can browse movies from the most popular ones, search for given movies, enter details of movies and details of actors.
 
 # Demo
 
