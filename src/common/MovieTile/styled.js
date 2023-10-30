@@ -104,6 +104,8 @@ export const Rating = styled.div`
     grid-column: 2;
     grid-row: 2;
     column-gap: 8px;
+    gap: 4px;
+    align-items: center;
   }
 `;
 
@@ -111,6 +113,8 @@ export const RateIcon = styled(RateIc)`
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
     width: 16px;
     height: 16px;
+    display: inline-block;
+    margin-top: 3px;
   }
 `;
 
@@ -134,7 +138,7 @@ export const Votes = styled.p`
   margin: 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobile3}) {
-    font-size: 13px;
+    font-size: 10px;
     font-weight: 400;
     line-height: 1.3;
   }
