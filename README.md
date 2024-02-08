@@ -10,7 +10,7 @@ On our site you can browse movies from the most popular ones, search for given m
 
 # Demo
 
-[Movie browser](https://kamiljustynski.github.io/Movies-browser/#/movies?page=1)
+[Movie browser](https://gp231982.github.io/Movies-browser/#/movies?page=1)
 
 # Tools used
 
